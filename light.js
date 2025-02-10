@@ -1,5 +1,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
+alert("This is a test");
+
 // Function to animate basic text elements
 function animateText() {
   gsap.fromTo(
