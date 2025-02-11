@@ -11,6 +11,8 @@ gsap.from(".footer_right-content-image", {
   },
 });
 
+console.log("Hello");
+
 gsap.from("[Image1=Animation]", {
   x: "-100%",
   y: "-100%",
