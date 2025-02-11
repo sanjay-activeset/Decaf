@@ -151,3 +151,106 @@ function initAnimations() {
 }
 
 document.addEventListener("DOMContentLoaded", handlePageLoader);
+
+gsap.to(".journey_component", {
+  scrollTrigger: {
+    trigger: ".journey_component",
+    start: "top top",
+    end: "bottom bottom",
+    pinSpacing: false,
+    scrub: 1,
+    markers: true,
+  },
+});
+
+let firstSequence = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".journey_component",
+    start: "top top",
+    end: "15% top", // Adjusted for smoother scrolling effect
+    scrub: true, // Makes it fully dependent on scroll
+  },
+});
+
+firstSequence.to(".is--line-2", {
+  width: "100%",
+  ease: "power2.inOut",
+});
+
+firstSequence.to(".is--dot-2", {
+  backgroundColor: "#ffffff",
+  ease: "power2.inOut",
+});
+
+let secondSequence = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".journey_component",
+    start: "15% top",
+    end: "30% top", // Adjusted for smoother scrolling effect
+    scrub: true, // Makes it fully dependent on scroll
+  },
+});
+
+secondSequence.to(".is--our-2015", {
+  opacity: 0,
+  ease: "power2.inOut",
+});
+
+secondSequence.to(".is--line-3", {
+  width: "100%",
+  ease: "power2.inOut",
+});
+
+secondSequence.to(".is--dot-3", {
+  backgroundColor: "#ffffff",
+  ease: "power2.inOut",
+});
+
+gsap.to(".journey_component", {
+  scrollTrigger: {
+    trigger: ".journey_component",
+    start: "top top",
+    end: "bottom bottom",
+    pinSpacing: false,
+    scrub: 1,
+    markers: true,
+  },
+});
+
+let image1Sequence = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".journey_component",
+    start: "12% top",
+    end: "15% top", // Adjusted for smoother scrolling effect
+    scrub: true, // Makes it fully dependent on scroll
+  },
+});
+
+image1Sequence.to(".is--our-2014", {
+  opacity: 0,
+  ease: "power2.inOut",
+});
+
+image1Sequence.to(".is--our-2015", {
+  opacity: 1,
+  ease: "power2.inOut",
+});
+
+image2Sequence = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".journey_component",
+    start: "29% top",
+    end: "30% top", // Adjusted for smoother scrolling effect
+    scrub: true, // Makes it fully dependent on scroll
+  },
+});
+
+image2Sequence.to(".is--our-2015", {
+  opacity: 0,
+  ease: "power2.inOut",
+});
+
+image2Sequence.to(".is--our-2016", {
+  opacity: 1,
+  ease: "power2.inOut",
+});
