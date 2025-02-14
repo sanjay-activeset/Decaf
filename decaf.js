@@ -1,31 +1,3 @@
-gsap.from(".footer_right-content-image", {
-  x: "100%",
-  y: "100%",
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: ".footer_right-content",
-    start: "top 90%",
-    toggleActions: "play none none none",
-  },
-});
-
-console.log("Hello");
-
-gsap.from("[Image1=Animation]", {
-  x: "-100%",
-  y: "-100%",
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: "[Image1=Animation]",
-    start: "top 80%",
-    toggleActions: "play none none none",
-  },
-});
-
 gsap.to(".home_component", {
   scrollTrigger: {
     trigger: ".section_home",
@@ -36,11 +8,10 @@ gsap.to(".home_component", {
   },
 });
 
-// First Sequence - Height increase with cover fade
 let firstSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "top top", // Adjusted to start from the top of the section
+    start: "top top",
     end: "5% top",
     scrub: 1,
   },
@@ -55,7 +26,7 @@ firstSequence.to(".home_your-content-wrapper", {
 let secondSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "5% top", // Start after the first sequence
+    start: "5% top",
     end: "20% top",
     scrub: 1,
   },
@@ -71,7 +42,7 @@ secondSequence.to(".home_your-bg-image", {
 let thirdSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "20% top", // After second sequence
+    start: "20% top",
     end: "25% top",
     scrub: 1,
   },
@@ -86,7 +57,7 @@ thirdSequence.to(".home_send", {
 let fourthSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "26% top", // After third sequence
+    start: "26% top",
     end: "30% top",
     scrub: 1,
   },
@@ -111,7 +82,7 @@ fourthSequence.to(
 let sixthSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "31% top", // After fourth sequence
+    start: "31% top",
     end: "35% top",
     scrub: 1,
   },
@@ -126,7 +97,7 @@ sixthSequence.to([".home_your-bg-image", ".home_send"], {
 let seventhSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "36% top", // After sixth sequence
+    start: "36% top",
     end: "40% top",
     scrub: 1,
   },
@@ -145,7 +116,7 @@ seventhSequence.to(
 let eighthSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "41% top", // After seventh sequence
+    start: "41% top",
     end: "45% top",
     scrub: 1,
   },
@@ -160,7 +131,7 @@ eighthSequence.to(".home_your-app", {
 let ninthSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "46% top", // After eighth sequence
+    start: "46% top",
     end: "50% top",
     scrub: 1,
   },
@@ -175,7 +146,7 @@ ninthSequence.to(".home_your-set", {
 let tenthSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "51% top", // After ninth sequence
+    start: "51% top",
     end: "55% top",
     scrub: 1,
   },
@@ -190,7 +161,7 @@ tenthSequence.to(".home_your-set", {
 let elevenSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "56% top", // After tenth sequence
+    start: "56% top",
     end: "60% top",
     scrub: 1,
   },
@@ -205,7 +176,7 @@ elevenSequence.to(".home_your-make", {
 let tweleSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "61% top", // After eleven sequence
+    start: "61% top",
     end: "65% top",
     scrub: 1,
   },
@@ -220,10 +191,9 @@ tweleSequence.to(".home_your-make", {
 let thirteenSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "66% top", // After twele sequence
+    start: "66% top",
     end: "70% top",
     scrub: 1,
-    // Debugging marker
   },
 });
 
@@ -236,7 +206,7 @@ thirteenSequence.to(".home_your-trans", {
 let fourteenSequence = gsap.timeline({
   scrollTrigger: {
     trigger: ".section_home",
-    start: "71% top", // After thirteen sequence
+    start: "71% top",
     end: "75% top",
     scrub: 1,
   },
@@ -493,88 +463,6 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 });
 
-gsap.fromTo(
-  ".send_globe-send",
-  { scale: 0, x: -50, opacity: 0 },
-  {
-    scale: 1,
-    x: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".send_globe-send",
-      start: "top 90%",
-      toggleActions: "play none none none",
-    },
-  }
-);
-
-gsap.from("[send='arrow']", {
-  y: 100,
-
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: ".send_globe-send",
-    start: "top 70%",
-    toggleActions: "play none none none",
-  },
-});
-
-gsap.from("[send='text']", {
-  y: 100,
-
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: ".send_globe-send",
-    start: "top 70%",
-    toggleActions: "play none none none",
-  },
-});
-
-gsap.from("[send2='arrow']", {
-  y: 100,
-
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: "[send2='animation']",
-    start: "top 70%",
-    toggleActions: "play none none none",
-  },
-});
-
-gsap.from("[send2='text']", {
-  y: 100,
-
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: "[send2='animation']",
-    start: "top 70%",
-    toggleActions: "play none none none",
-  },
-});
-
-gsap.fromTo(
-  ".send_globe-recevie",
-  { scale: 0, x: -50, opacity: 0 },
-  {
-    scale: 1,
-    x: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: "[send2='animation']",
-      start: "top 90%",
-      toggleActions: "play none none none",
-    },
-  }
-);
-
 document.addEventListener("DOMContentLoaded", function () {
   let headings = document.querySelectorAll("[Heading=wordanimation]");
 
@@ -598,7 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
     gsap.from(splitText.words, {
       scrollTrigger: {
         trigger: heading,
-        start: "top 85%",
+        start: "top 80%",
         toggleActions: "play none none none",
       },
       yPercent: 100,
@@ -616,15 +504,17 @@ gsap.from("[manage='ball']", {
   x: "-100%",
   opacity: 0,
   duration: 1,
-  stagger: 0.2,
   ease: "power2.out",
   scrollTrigger: {
     trigger: ".manage-component",
-    start: "top 70%", // Adjust based on when you want it to trigger
+    start: "top 70%",
     toggleActions: "play none none none",
   },
+  stagger: {
+    amount: 0.5, // Total time for the stagger effect
+    from: "center", // Stagger from the center outward
+  },
 });
-
 const cards = [
   "[us1='card']",
   "[us2='card']",
@@ -649,7 +539,7 @@ cards.forEach((card, index) => {
   });
 });
 
-gsap.set("[card='margin']", { marginTop: "0.5rem" }); // Initial margin-top set to 0
+gsap.set("[card='margin']", { marginTop: "-4.8rem" }); // Initial margin-top set to 0
 
 gsap.to("[card='margin']", {
   marginTop: "-3.5rem", // Animate margin-top to 3.5rem
@@ -703,4 +593,93 @@ document.querySelectorAll("[Textline='animation']").forEach((el) => {
       once: true, // Ensures it triggers every time the element enters the viewport
     },
   });
+});
+
+// Set initial states
+gsap.set(".send_globe-send", { scale: 0, x: -50, opacity: 0 });
+gsap.set("[send='arrow']", { y: 100, opacity: 0 });
+gsap.set("[send='text']", { y: 100, opacity: 0 });
+gsap.set(".send_globe-recevie", { scale: 0, x: -50, opacity: 0 });
+gsap.set("[send2='arrow']", { y: -100, opacity: 0 });
+gsap.set("[send2='text']", { y: -100, opacity: 0 });
+
+// Timeline for animations
+const t2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".send_globe-send",
+    start: "top 90%",
+    toggleActions: "play none none none",
+  },
+});
+
+// Ensure GSAP and ScrollTrigger are loaded
+gsap.registerPlugin(ScrollTrigger);
+
+// Create a timeline
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "[send2='animation']", // Element that triggers the animation
+    start: "top 90%", // When the top of the trigger hits 90% from the top of the viewport
+    toggleActions: "play none none none", // Play the animation, do not reverse, reset or restart
+  },
+});
+
+// First animation sequence
+tl.to(".send_globe-send", {
+  scale: 1,
+  x: 0,
+  opacity: 1,
+  duration: 1,
+  ease: "power2.out",
+})
+  .to(
+    "[send='arrow']",
+    { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+    "-=0.6"
+  )
+  .to(
+    "[send='text']",
+    { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+    "-=0.6"
+  )
+
+  // Second animation sequence
+  .to(
+    ".send_globe-recevie",
+    {
+      scale: 1,
+      x: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: "power2.out",
+    },
+    "-=0.5"
+  )
+  .to(
+    "[send2='arrow']",
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: "power2.out",
+    },
+    "-=0.5"
+  )
+  .to(
+    "[send2='text']",
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: "power2.out",
+    },
+    "-=0.5"
+  );
+
+//////////////  Navbar Animatio
+gsap.from(".nav", {
+  y: -100,
+  opacity: 0,
+  duration: 2,
+  ease: "expo.out",
 });

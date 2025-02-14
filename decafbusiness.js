@@ -264,3 +264,206 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+let tl = gsap.timeline();
+
+// Split text into words
+let splitText = new SplitType("[business=heading]", { types: "words" });
+
+// Wrap each word in a container
+splitText.words.forEach((word) => {
+  let wrapper = document.createElement("span");
+  wrapper.style.overflow = "hidden";
+  wrapper.style.display = "inline-block";
+  wrapper.style.verticalAlign = "top";
+  word.parentNode.insertBefore(wrapper, word);
+  wrapper.appendChild(word);
+});
+
+let splitLine = new SplitType("[business=line]", { types: "lines" });
+
+splitLine.lines.forEach((line) => {
+  let wrapper = document.createElement("div");
+  wrapper.style.overflow = "hidden";
+  wrapper.style.display = "block";
+  line.parentNode.insertBefore(wrapper, line);
+  wrapper.appendChild(line);
+});
+
+// Select business images
+let businessImage = document.querySelectorAll("[business=image]");
+
+// Timeline animations
+tl.fromTo(
+  splitText.words,
+  { yPercent: 100, opacity: 0 },
+  {
+    yPercent: 0,
+    opacity: 1,
+    duration: 0.7,
+    ease: "power3.out",
+    stagger: 0.1,
+  }
+)
+  .fromTo(
+    splitLine.lines,
+    { yPercent: 100, opacity: 0 },
+    {
+      yPercent: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power3.out",
+      stagger: 0.15,
+    },
+    "-=0.5"
+  )
+  .fromTo(
+    businessImage,
+    { scale: 0.8, y: 100, opacity: 0 },
+    {
+      scale: 1,
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+      stagger: 0.15,
+    },
+    "-=0.6"
+  );
+
+gsap.from("[up=animation]", {
+  y: 100,
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: "[up=animation]",
+    start: "top 80%",
+    toggleActions: "play none none none",
+  },
+});
+
+//////////////////////////  common animation for about and business page
+document.addEventListener("DOMContentLoaded", function () {
+  let headings = document.querySelectorAll("[Heading=wordanimation]");
+
+  headings.forEach((heading) => {
+    // Ensure the parent has overflow hidden
+    heading.style.overflow = "hidden";
+
+    let splitText = new SplitType(heading, { types: "words" });
+
+    // Wrap each word in a div with overflow hidden
+    splitText.words.forEach((word) => {
+      let wrapper = document.createElement("span");
+      wrapper.style.display = "inline-block";
+      wrapper.style.overflow = "hidden";
+      wrapper.style.verticalAlign = "top";
+
+      word.parentNode.insertBefore(wrapper, word);
+      wrapper.appendChild(word);
+    });
+
+    gsap.from(splitText.words, {
+      scrollTrigger: {
+        trigger: heading,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+      yPercent: 100,
+      opacity: 0,
+      stagger: 0.08,
+      duration: 1,
+      ease: "expo.out",
+    });
+  });
+});
+
+gsap.from("[Card='stagger']", {
+  y: 100,
+  opacity: 0,
+  stagger: 0.1,
+  duration: 1,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: "[Card='stagger']", // trigger different from about page
+    start: "top 90%",
+    toggleActions: "play none none none",
+  },
+});
+
+gsap.from("[Image=Animation]", {
+  x: "100%",
+  y: "-100%",
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: "[Image=Animation]",
+    start: "top 60%",
+    toggleActions: "play none none none",
+  },
+});
+
+gsap.utils.toArray("[bottom=animation]").forEach((element) => {
+  gsap.from(element, {
+    y: 100,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: element,
+      start: "top 90%",
+      toggleActions: "play none none none",
+    },
+  });
+});
+
+gsap.from("[Image=try]", {
+  x: "100%",
+  y: "100%",
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: "[Image=try]",
+    start: "top 90%",
+    toggleActions: "play none none none",
+  },
+});
+
+///////////////////////// Footer animation
+
+gsap.from("[Image1=Animation]", {
+  x: "-100%",
+  y: "-100%",
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: "[Image1=Animation]",
+    start: "top 80%",
+    toggleActions: "play none none none",
+  },
+});
+
+gsap.from(".footer_right-content-image", {
+  x: "100%",
+  y: "100%",
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: ".footer_right-content",
+    start: "top 90%",
+    toggleActions: "play none none none",
+  },
+});
+
+//////////////  Navbar Animatio
+gsap.from(".nav", {
+  y: -100,
+  opacity: 0,
+  duration: 2,
+  ease: "expo.out",
+});

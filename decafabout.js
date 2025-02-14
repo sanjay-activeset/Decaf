@@ -85,30 +85,17 @@ gsap.from("[Image=Animation]", {
   },
 });
 
-gsap.from(".footer_right-content-image", {
-  x: "100%",
-  y: "100%",
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: ".footer_right-content",
-    start: "top 80%",
-    toggleActions: "play none none none",
-  },
-});
-
 gsap.registerPlugin(ScrollTrigger);
 
 const splitTypes = document.querySelectorAll("[text='highlight']");
 splitTypes.forEach((char) => {
-  const text = new SplitType(char, { types: ["lines", "words"] }); // Use "lines"
+  const text = new SplitType(char, { types: ["lines", "words"] });
 
   gsap.from(text.lines, {
     scrollTrigger: {
       trigger: char,
-      start: "top 70%",
-      end: "top 20%",
+      start: "top 50%",
+      end: "bottom 50%",
       scrub: true,
       markers: false,
     },
@@ -189,3 +176,47 @@ if (storyHeadingLine) {
     ease: "expo.out",
   });
 }
+
+//////////////  Navbar Animatio
+gsap.from(".nav", {
+  y: -100,
+  opacity: 0,
+  duration: 2,
+  ease: "expo.out",
+});
+
+document.querySelectorAll("[Textline='animation']").forEach((el) => {
+  // Initialize SplitType for each element separately
+  const text = new SplitType(el, { types: "lines" });
+
+  gsap.set(text.lines, { yPercent: 100, opacity: 0 });
+
+  // Create GSAP animation
+  gsap.to(text.lines, {
+    yPercent: 0,
+    opacity: 1,
+    duration: 1,
+    stagger: 0.1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: el,
+      start: "top 80%",
+      end: "bottom 20%", // Ensures it resets when scrolling back up
+      toggleActions: "play none none none", // Play on enter, reset when out
+      once: true, // Ensures it triggers every time the element enters the viewport
+    },
+  });
+});
+
+gsap.from(".footer_right-content-image", {
+  x: "100%",
+  y: "100%",
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: ".footer_right-content",
+    start: "top 90%",
+    toggleActions: "play none none none",
+  },
+});
