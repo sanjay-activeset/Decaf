@@ -85,28 +85,23 @@ gsap.from("[Image=Animation]", {
   },
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-  const splitTypes = document.querySelectorAll("[text='highlight']");
-  splitTypes.forEach((char) => {
-    const text = new SplitType(char, { types: ["lines", "words"] });
+const splitTypes = document.querySelectorAll("[text='highlight']");
+splitTypes.forEach((char) => {
+  const text = new SplitType(char, { types: ["lines", "words"] });
 
-    // Ensure text.lines exist before animating
-    if (text.lines.length) {
-      gsap.from(text.lines, {
-        scrollTrigger: {
-          trigger: char,
-          start: "top 50%",
-          end: "bottom 50%",
-          scrub: true,
-          markers: false,
-        },
-        opacity: 0.2,
-        stagger: 0.1,
-        ease: "expo.out", // Changed from expoScale.out
-      });
-    }
+  gsap.from(text.lines, {
+    scrollTrigger: {
+      trigger: char,
+      start: "top 50%",
+      end: "bottom 50%",
+      scrub: true,
+      markers: false,
+    },
+    opacity: 0.2,
+    stagger: 0.1,
+    ease: "expoScale.out",
   });
 });
 
