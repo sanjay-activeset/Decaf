@@ -85,25 +85,25 @@ gsap.from("[Image=Animation]", {
   },
 });
 
-// gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-// const splitTypes = document.querySelectorAll("[text='highlight']");
-// splitTypes.forEach((char) => {
-//   const text = new SplitType(char, { types: ["lines", "words"] });
+const splitTypes = document.querySelectorAll("[text='highlight']");
+splitTypes.forEach((char) => {
+  const text = new SplitType(char, { types: ["lines", "words"] });
 
-//   gsap.from(text.lines, {
-//     scrollTrigger: {
-//       trigger: char,
-//       start: "top 50%",
-//       end: "bottom 50%",
-//       scrub: true,
-//       markers: false,
-//     },
-//     opacity: 0.2,
-//     stagger: 0.1,
-//     ease: "expoScale.out",
-//   });
-// });
+  gsap.from(text.lines, {
+    scrollTrigger: {
+      trigger: char,
+      start: "top 50%",
+      end: "bottom 50%",
+      scrub: true,
+      markers: false,
+    },
+    opacity: 0.2,
+    stagger: 0.1,
+    ease: "expoScale.out",
+  });
+});
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -220,43 +220,3 @@ gsap.from(".footer_right-content-image", {
     toggleActions: "play none none none",
   },
 });
-
-let typeSplit;
-
-// Split the text up
-function runSplit() {
-  typeSplit = new SplitType(".split-word", {
-    types: "lines, words",
-  });
-  $(".word").append("<div class='line-mask'></div>");
-  createAnimation();
-}
-
-runSplit();
-
-// Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
-
-// Create staggered animation
-function createAnimation() {
-  let allMasks = $(".word")
-    .map(function () {
-      return $(this).find(".line-mask");
-    })
-    .get();
-
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".split-word",
-      start: "top center",
-      end: "bottom center",
-      scrub: 1,
-    },
-  });
-
-  tl.to(allMasks, {
-    width: "0%",
-    duration: 1,
-    stagger: 0.5,
-  });
-}
