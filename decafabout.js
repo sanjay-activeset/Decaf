@@ -90,7 +90,7 @@ gsap.registerPlugin(ScrollTrigger);
 const splitTypes = document.querySelectorAll("[text='highlight']");
 splitTypes.forEach((char) => {
   const text = new SplitType(char, { types: ["lines", "words"] });
-  length;
+
   gsap.from(text.lines, {
     scrollTrigger: {
       trigger: char,
