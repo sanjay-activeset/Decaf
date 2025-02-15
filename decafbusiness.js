@@ -515,3 +515,103 @@ gsap.from(".nav", {
     });
   });
 })();
+
+gsap.set(".all-contant-card-image-block", { y: 100, opacity: 0 });
+gsap.set("[user='card']", { opacity: 0 });
+
+const hovercard = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".all-contant-card-image-block",
+    start: "top 80%",
+    end: "top 50%",
+    toggleActions: "play none none none",
+  },
+});
+
+hovercard
+  .to(".all-contant-card-image-block", {
+    y: 0,
+    opacity: 1,
+    stagger: 0.2,
+    duration: 1,
+    ease: "power3.out",
+  })
+  .to(
+    "[user='card']",
+    {
+      opacity: 1,
+      duration: 1,
+    },
+    "-=0.2"
+  );
+
+gsap.registerPlugin(ScrollTrigger);
+
+let allcontent = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".all-contant-card-image",
+    start: "top 80%",
+    end: "bottom 50%",
+    toggleActions: "play none none none",
+  },
+});
+
+allcontent
+  .from(".all-contant-card-image", {
+    y: 100,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out",
+  })
+  .from(
+    ".all-contant-card-image-card",
+    {
+      scale: 0,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    },
+    "-=0.5"
+  )
+  .from(
+    "[all='animation']",
+    {
+      y: 50,
+      opacity: 0,
+      stagger: 0.5,
+      duration: 1,
+      ease: "power3.out",
+    },
+    "-=0.5"
+  );
+
+gsap.registerPlugin(ScrollTrigger);
+
+let allCountryName = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".all-contant-card-image-no",
+    start: "top 80%",
+    end: "bottom 20%",
+    toggleActions: "play none none none",
+  },
+});
+
+allCountryName.from(".all-contant-card-image-no", {
+  scale: 0,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.5,
+  ease: "power3.out",
+});
+
+allCountryName.from(
+  "[country='all']",
+  {
+    y: 100,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2,
+    ease: "power3.out",
+  },
+  "<"
+);
