@@ -237,128 +237,124 @@
 //   ease: "power2.inOut",
 // });
 
+gsap.registerPlugin(ScrollTrigger);
+
+// Background Image Animation
 gsap.fromTo(
   ".home_your-bg-image",
   { scale: 1.2 },
   { scale: 1, duration: 1, ease: "power2.out" }
 );
 
+// Text Line Animation on Scroll
 document.addEventListener("DOMContentLoaded", function () {
   let headings = document.querySelectorAll("[Heading=Animation]");
 
   headings.forEach((heading) => {
-    // Ensure the parent has overflow hidden
     heading.style.overflow = "hidden";
-
     let splitText = new SplitType(heading, { types: "lines" });
 
     gsap.from(splitText.lines, {
-      scrollTrigger: {
-        trigger: heading,
-      },
+      scrollTrigger: { trigger: heading },
       yPercent: 100,
       opacity: 0,
-      stagger: 0.2, // Increased stagger for line-by-line effect
+      stagger: 0.2,
       duration: 0.7,
       ease: "power2.out",
     });
   });
 });
 
+// Business Page Animations
 let tl = gsap.timeline();
 
-// Split text into words
-let splitText = new SplitType("[business=heading]", { types: "words" });
+// Business Heading Split Animation
+let businessHeadings = document.querySelectorAll("[business=heading]");
+businessHeadings.forEach((heading) => {
+  let splitText = new SplitType(heading, { types: "words" });
 
-// Wrap each word in a container
-splitText.words.forEach((word) => {
-  let wrapper = document.createElement("span");
-  wrapper.style.overflow = "hidden";
-  wrapper.style.display = "inline-block";
-  wrapper.style.verticalAlign = "top";
-  word.parentNode.insertBefore(wrapper, word);
-  wrapper.appendChild(word);
-});
+  splitText.words.forEach((word) => {
+    let wrapper = document.createElement("span");
+    Object.assign(wrapper.style, {
+      overflow: "hidden",
+      display: "inline-block",
+      verticalAlign: "top",
+    });
 
-let splitLine = new SplitType("[business=line]", { types: "lines" });
+    word.parentNode.insertBefore(wrapper, word);
+    wrapper.appendChild(word);
+  });
 
-splitLine.lines.forEach((line) => {
-  let wrapper = document.createElement("div");
-  wrapper.style.overflow = "hidden";
-  wrapper.style.display = "block";
-  line.parentNode.insertBefore(wrapper, line);
-  wrapper.appendChild(line);
-});
-
-// Select business images
-let businessImage = document.querySelectorAll("[business=image]");
-
-// Timeline animations
-tl.fromTo(
-  splitText.words,
-  { yPercent: 100, opacity: 0 },
-  {
-    yPercent: 0,
-    opacity: 1,
-    duration: 0.7,
-    ease: "power3.out",
-    stagger: 0.1,
-  }
-)
-  .fromTo(
-    splitLine.lines,
+  tl.fromTo(
+    splitText.words,
     { yPercent: 100, opacity: 0 },
     {
       yPercent: 0,
       opacity: 1,
-      duration: 1,
+      duration: 0.7,
       ease: "power3.out",
-      stagger: 0.15,
-    },
-    "-=0.5"
-  )
-  .fromTo(
-    businessImage,
-    { scale: 0.8, y: 100, opacity: 0 },
-    {
-      scale: 1,
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power2.out",
-      stagger: 0.15,
-    },
-    "-=0.6"
+      stagger: 0.1,
+    }
   );
-
-gsap.from("[up=animation]", {
-  y: 100,
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: "[up=animation]",
-    start: "top 80%",
-    toggleActions: "play none none none",
-  },
 });
 
-//////////////////////////  common animation for about and business page
+// Business Line Animation
+let splitLine = new SplitType("[business=line]", { types: "lines" });
+
+splitLine.lines.forEach((line) => {
+  let wrapper = document.createElement("div");
+  Object.assign(wrapper.style, {
+    overflow: "hidden",
+    display: "block",
+  });
+
+  line.parentNode.insertBefore(wrapper, line);
+  wrapper.appendChild(line);
+});
+
+tl.fromTo(
+  splitLine.lines,
+  { yPercent: 100, opacity: 0 },
+  {
+    yPercent: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power3.out",
+    stagger: 0.15,
+  },
+  "-=0.5"
+);
+
+// Business Image Animation
+gsap.fromTo(
+  "[business=image]",
+  { scale: 0.8, y: 100, opacity: 0 },
+  {
+    scale: 1,
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.15,
+  },
+  "-=0.6"
+);
+
+// Common Animations for About & Business Page
 document.addEventListener("DOMContentLoaded", function () {
   let headings = document.querySelectorAll("[Heading=wordanimation]");
 
   headings.forEach((heading) => {
-    // Ensure the parent has overflow hidden
     heading.style.overflow = "hidden";
-
     let splitText = new SplitType(heading, { types: "words" });
 
-    // Wrap each word in a div with overflow hidden
     splitText.words.forEach((word) => {
       let wrapper = document.createElement("span");
-      wrapper.style.display = "inline-block";
-      wrapper.style.overflow = "hidden";
-      wrapper.style.verticalAlign = "top";
+      Object.assign(wrapper.style, {
+        display: "inline-block",
+        overflow: "hidden",
+        verticalAlign: "top",
+      });
 
       word.parentNode.insertBefore(wrapper, word);
       wrapper.appendChild(word);
@@ -379,6 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Staggered Animations
 gsap.from("[Card='stagger']", {
   y: 100,
   opacity: 0,
@@ -386,12 +383,13 @@ gsap.from("[Card='stagger']", {
   duration: 1,
   ease: "power3.out",
   scrollTrigger: {
-    trigger: "[Card='stagger']", // trigger different from about page
+    trigger: "[Card='stagger']",
     start: "top 90%",
     toggleActions: "play none none none",
   },
 });
 
+// Image Animations
 gsap.from("[Image=Animation]", {
   x: "100%",
   y: "-100%",
@@ -403,20 +401,6 @@ gsap.from("[Image=Animation]", {
     start: "top 60%",
     toggleActions: "play none none none",
   },
-});
-
-gsap.utils.toArray("[bottom=animation]").forEach((element) => {
-  gsap.from(element, {
-    y: 100,
-    opacity: 0,
-    duration: 1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: element,
-      start: "top 90%",
-      toggleActions: "play none none none",
-    },
-  });
 });
 
 gsap.from("[Image=try]", {
@@ -432,8 +416,7 @@ gsap.from("[Image=try]", {
   },
 });
 
-///////////////////////// Footer animation
-
+// Footer Animation
 gsap.from("[Image1=Animation]", {
   x: "-100%",
   y: "-100%",
@@ -460,7 +443,7 @@ gsap.from(".footer_right-content-image", {
   },
 });
 
-//////////////  Navbar Animatio
+// Navbar Animation
 gsap.from(".nav", {
   y: -100,
   opacity: 0,
@@ -468,21 +451,17 @@ gsap.from(".nav", {
   ease: "expo.out",
 });
 
+// Counter Animation
 (function () {
   const animateNumber = (element, target, duration) => {
     let startTime;
-    const initialNumber = 0;
-
     const easingFunction = (t) => 1 - Math.pow(1 - t, 4);
 
     const animate = (time) => {
       if (!startTime) startTime = time;
       const elapsedTime = time - startTime;
       const t = Math.min(elapsedTime / duration, 1);
-      const newValue =
-        initialNumber + (target - initialNumber) * easingFunction(t);
-
-      element.textContent = Math.round(newValue);
+      element.textContent = Math.round(target * easingFunction(t));
 
       if (elapsedTime < duration) {
         requestAnimationFrame(animate);
@@ -494,143 +473,36 @@ gsap.from(".nav", {
     requestAnimationFrame(animate);
   };
 
-  const onIntersection = (entries) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const el = entry.target;
-        const finalNumber = parseInt(el.textContent, 10);
-        const animDuration = parseInt(el.getAttribute("duration"), 10) || 2000;
-
+        let el = entry.target;
+        let finalNumber = parseInt(el.textContent, 10);
+        let animDuration = parseInt(el.getAttribute("duration"), 10) || 2000;
         animateNumber(el, finalNumber, animDuration);
         observer.unobserve(el);
       }
     });
-  };
+  });
 
-  const observer = new IntersectionObserver(onIntersection);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('[counter-element="number"]').forEach((el) => {
-      observer.observe(el);
-    });
+  document.querySelectorAll('[counter-element="number"]').forEach((el) => {
+    observer.observe(el);
   });
 })();
 
-gsap.set(".all-contant-card-image-block", { y: 100, opacity: 0 });
-gsap.set("[user='card']", { opacity: 0 });
-
-const hovercard = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".all-contant-card-image-block",
-    start: "top 80%",
-    end: "top 50%",
-    toggleActions: "play none none none",
-  },
-});
-
-hovercard
-  .to(".all-contant-card-image-block", {
-    y: 0,
-    opacity: 1,
-    stagger: 0.2,
-    duration: 1,
-    ease: "power3.out",
+// Sign-in Form Animation
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".section_sign-in",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    },
   })
-  .to(
-    "[user='card']",
-    {
-      opacity: 1,
-      duration: 1,
-    },
-    "-=0.2"
-  );
-
-gsap.registerPlugin(ScrollTrigger);
-
-let allcontent = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".all-contant-card-image",
-    start: "top 80%",
-    end: "bottom 50%",
-    toggleActions: "play none none none",
-  },
-});
-
-allcontent
-  .from(".all-contant-card-image", {
-    y: 100,
-    opacity: 0,
-    duration: 1,
-    ease: "power3.out",
-  })
-  .from(
-    ".all-contant-card-image-card",
-    {
-      scale: 0,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    },
-    "-=0.5"
-  )
-  .from(
-    "[all='animation']",
-    {
-      y: 50,
-      opacity: 0,
-      stagger: 0.5,
-      duration: 1,
-      ease: "power3.out",
-    },
-    "-=0.5"
-  );
-
-gsap.registerPlugin(ScrollTrigger);
-
-let allCountryName = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".all-contant-card-image-no",
-    start: "top 80%",
-    end: "bottom 20%",
-    toggleActions: "play none none none",
-  },
-});
-
-allCountryName.from(".all-contant-card-image-no", {
-  scale: 0,
-  opacity: 0,
-  duration: 1,
-  stagger: 0.5,
-  ease: "power3.out",
-});
-
-allCountryName.from(
-  "[country='all']",
-  {
-    y: 100,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.2,
-    ease: "power3.out",
-  },
-  "<"
-);
-
-const form = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_sign-in",
-    start: "top top",
-    end: "bottom bottom",
-    scrub: true,
-  },
-  defaults: { duration: 1, ease: "none" },
-});
-
-form
   .to(".sign-in_form-block", { opacity: 0.2 })
   .to(".sign-in_simple", { opacity: 1 })
   .to(".sign-in_simple-text-1", { opacity: 0.2 })
   .to(".sign-in_simple-text-2", { opacity: 1 })
-  .to(".sign-in_simple-text-2", { opacity: 0.2 })
   .to(".sign-in_simple-text-3", { opacity: 1 })
   .to(".sign-in_simple", { opacity: 0 });
