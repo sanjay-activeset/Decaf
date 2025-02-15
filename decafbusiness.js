@@ -627,5 +627,10 @@ const form = gsap.timeline({
 });
 
 form
-  .to(".sign-in_form-block", { opacity: 0.2 }, 0)
-  .fromTo(".sign-in_simple", { opacity: 0 }, { opacity: 1 }, 0);
+  .to(".sign-in_form-block", { opacity: 0.2 })
+  .to(".sign-in_simple", { opacity: 1 })
+  .to(".sign-in_simple-text-1", { opacity: 0.2 })
+  .to(".sign-in_simple-text-2", { opacity: 1 })
+  .to(".sign-in_simple-text-2", { opacity: 0.2 })
+  .to(".sign-in_simple-text-3", { opacity: 1 })
+  .to(".sign-in_simple", { opacity: 0 });
