@@ -232,8 +232,6 @@ split2type.forEach((char) => {
       trigger: ".split",
       start: "top 50%",
       end: "bottom 50%",
-      scrub: true,
-      markers: true, // Debugging
     },
     opacity: 0.2,
     stagger: 0.1,
