@@ -387,31 +387,73 @@ allCountryName.from(
   "<"
 );
 
-const form = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_sign-in",
-    start: "top top",
-    end: "bottom bottom",
-    scrub: true,
-  },
-  defaults: { duration: 1, ease: "none" },
+const mm = gsap.matchMedia();
+
+mm.add("(min-width: 768px)", () => {
+  // Create the timeline
+  const form = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".section_sign-in",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    },
+    defaults: { duration: 1, ease: "none" },
+  });
+
+  form
+    .to(".is--sign-1", { opacity: 0.2 })
+    .to(".sign-in_simple", { opacity: 1 })
+    .to(".sign-in_simple-text-1", { opacity: 0.2 })
+    .to(".sign-in_simple-text-2", { opacity: 1 })
+    .to(".sign-in_simple-text-2", { opacity: 0.2 })
+    .to(".sign-in_simple-text-3", { opacity: 1 })
+    .to(".sign-in_simple", { opacity: 0 })
+    .to(".is--sign-1", { opacity: 1 })
+    .to("[signform='image']", { x: "-10%", width: "70%" })
+    .to(".is--sign-contenr1", { opacity: 1 })
+    .to(".is--sign-1", { opacity: 0 })
+    .to(".is--sign-2", { opacity: 1 })
+    .to(".is--sign-2", { opacity: 0 })
+    .to(".is--sign-3", { opacity: 1 })
+    .to(".is--sign-3", { opacity: 0 })
+    .to(".is--sign-4", { opacity: 1 });
+
+  return () => {
+    form.kill();
+  };
 });
 
-form
-  .to(".is--sign-1", { opacity: 0.2 })
-  .to(".sign-in_simple", { opacity: 1 })
-  .to(".sign-in_simple-text-1", { opacity: 0.2 })
-  .to(".sign-in_simple-text-2", { opacity: 1 })
-  .to(".sign-in_simple-text-2", { opacity: 0.2 })
-  .to(".sign-in_simple-text-3", { opacity: 1 })
-  .to(".sign-in_simple", { opacity: 0 })
-  .to(".is--sign-1", { opacity: 1 })
-  .to("[signform='image']", { x: "-10%", width: "70%" })
-  .to(".is--sign-contenr1", { opacity: 1 })
-  .to(".is--sign-1", { opacity: 0 })
-  .to(".is--sign-2", { opacity: 1 })
-  .to(".is--sign-2", { opacity: 0 })
-  .to(".is--sign-3", { opacity: 1 })
-  .to(".is--sign-3", { opacity: 0 })
-  .to(".is--sign-4", { opacity: 1 })
-  .to(".is--sign-4", { opacity: 0 });
+mm.add("(max-width: 767px)", () => {
+  const formMobile = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".section_sign-in",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    },
+    defaults: { duration: 1, ease: "none" },
+  });
+
+  formMobile
+    .to(".is--sign-1", { opacity: 0.2 })
+    .to(".sign-in_simple", { opacity: 1 })
+    .to(".sign-in_simple-text-1", { opacity: 0.2 })
+    .to(".sign-in_simple-text-2", { opacity: 1 })
+    .to(".sign-in_simple-text-2", { opacity: 0.2 })
+    .to(".sign-in_simple-text-3", { opacity: 1 })
+    .to(".sign-in_simple", { opacity: 0 })
+    .to(".is--sign-1", { opacity: 1 })
+    .to("[signform='image']", { y: "22%" })
+    .to(".is--sign-contenr1", { opacity: 1 })
+    .to(".is--sign-1", { opacity: 0 })
+    .to(".is--sign-2", { opacity: 1 })
+    .to(".is--sign-2", { opacity: 0 })
+    .to(".is--sign-3", { opacity: 1 })
+    .to(".is--sign-3", { opacity: 0 })
+    .to(".is--sign-4", { opacity: 1 });
+
+  return () => {
+    formMobile.kill();
+  };
+});
