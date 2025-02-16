@@ -224,8 +224,8 @@ gsap.from(".footer_right-content-image", {
 gsap.registerPlugin(ScrollTrigger);
 
 const split2Types = document.querySelectorAll("[text='highlight2']");
-splitTypes.forEach((char) => {
-  const text = new SplitType(char, { types: ["lines", "words"] });
+split2Types.forEach((char) => {
+  const text = new Split2Type(char, { types: ["lines", "words"] });
 
   gsap.from(text.lines, {
     scrollTrigger: {
