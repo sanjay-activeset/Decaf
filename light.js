@@ -1,256 +1,286 @@
-gsap.registerPlugin(ScrollTrigger);
-
-// Function to animate basic text elements
-function animateText() {
-  gsap.fromTo(
-    "[text=animation]",
-    { y: 100, opacity: 0 },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.5,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: "[text=animation]",
-        start: "top 80%",
-        once: true,
-      },
-    }
-  );
-}
-
-// Function to animate SplitType text (line-based)
-function animateSplitType() {
-  const peoplePara = new SplitType(".people_para", { types: "lines" });
-
-  peoplePara.lines.forEach((line) => {
-    const wrapper = document.createElement("div");
-    wrapper.style.overflow = "hidden";
-    wrapper.style.display = "block";
-    line.parentNode.insertBefore(wrapper, line);
-    wrapper.appendChild(line);
-  });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".people_para",
-      start: "top 80%",
-      once: true,
-    },
-  });
-
-  tl.fromTo(
-    peoplePara.lines,
-    { yPercent: 100, opacity: 0 },
-    {
-      yPercent: 0,
-      opacity: 1,
-      delay: 0.3,
-      duration: 0.5,
-      stagger: 0.2,
-      ease: "power2.out",
-    },
-    "start" // Label for timing reference
-  ).call(animateImages, [], "-=0.8"); // Start `animateImages` 0.5s before text finishes
-}
-
-// Function to animate images
-function animateImages() {
-  const images = [
-    { selector: ".is--image-4", left: "33%", top: "1%" },
-    { selector: ".is--image-5", left: "56%", top: "14%" },
-    { selector: ".is--image-6", left: "80%", top: "3%" },
-    { selector: ".is--image-1", left: "84%", top: "28%" },
-    { selector: ".is--image-7", left: "80%", top: "72%" },
-    { selector: ".is--image-8", left: "56%", top: "67%" },
-    { selector: ".is--image-9", left: "32%", top: "70%" },
-    { selector: ".is--image-2", left: "-2%", top: "35%" },
-    { selector: ".is--image-3", left: "10%", top: "10%" },
-  ];
-
-  images
-    .sort(() => Math.random() - 0.5)
-    .forEach((image, index) => {
-      gsap.to(image.selector, {
-        left: image.left,
-        top: image.top,
-        opacity: 1,
-        duration: 0.7,
-        ease: "power2.out",
-        delay: index * 0.1,
-        scrollTrigger: {
-          trigger: image.selector,
-          start: "top 80%",
-          once: true,
-        },
-      });
-    });
-}
-
-// Function to animate home component image
-function animateHomeComponent() {
-  gsap.fromTo(
-    ".home_component-image",
-    { y: "-100%", opacity: 0 },
-    {
-      y: "0%",
-      opacity: 1,
-      duration: 1,
-      ease: "power2.out",
-      onComplete: () => {
-        gsap.to("[home='animation']", {
-          y: "0%",
-          opacity: 1,
-          duration: 1,
-          ease: "power2.out",
-          stagger: 0.5,
-        });
-      },
-    }
-  );
-}
-
-// Function to animate word-based SplitType elements
-function animateWords() {
-  document.querySelectorAll("[word='animation']").forEach((char) => {
-    const text = new SplitType(char, { types: ["words"] });
-
-    gsap.from(text.words, {
-      scrollTrigger: {
-        trigger: char,
-        start: "top 70%",
-        end: "top 50%",
-        scrub: true,
-      },
-      opacity: 0,
-      stagger: 0.1,
-    });
-  });
-}
-
-// Function to handle page loader
-function handlePageLoader() {
-  gsap.to(".page_load-lottie-wrap", {
-    opacity: 0,
-    duration: 0.5,
-    ease: "power2.out",
-    delay: 4, // Delay to match loader time
-    onComplete: () => {
-      document.querySelector(".page_load-lottie-wrap").style.display = "none";
-      initAnimations();
-    },
-  });
-}
-
-// Initialize all animations after loader completes
-function initAnimations() {
-  animateText();
-  animateSplitType();
-  animateHomeComponent();
-  animateWords();
-}
-
-document.addEventListener("DOMContentLoaded", handlePageLoader);
-
-gsap.to(".journey_component", {
+const cardAnimTL = gsap.timeline({
   scrollTrigger: {
-    trigger: ".journey_component",
+    trigger: ".horizontal-scroll_section-height",
     start: "top top",
     end: "bottom bottom",
-    pinSpacing: false,
-    scrub: 1,
-    markers: true,
+    scrub: true,
+  },
+  defaults: { duration: 1, ease: "none" },
+});
+
+function animateLineAndDot(line, dot, hideElement, showElement) {
+  cardAnimTL
+    .to(line, { width: "100%", opacity: "1" })
+    .to(dot, { backgroundColor: "white" }, "<")
+    .to(hideElement, { opacity: 0, duration: 0.6, ease: "power1.out" }, ">")
+    .to(showElement, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, ">");
+}
+
+animateLineAndDot(
+  ".is--line-2",
+  ".is--dot-2",
+  ".is--our-2014",
+  ".is--our-2015"
+);
+animateLineAndDot(
+  ".is--line-3",
+  ".is--dot-3",
+  ".is--our-2015",
+  ".is--our-2016"
+);
+animateLineAndDot(
+  ".is--line-4",
+  ".is--dot-4",
+  ".is--our-2016",
+  ".is--our-2017"
+);
+animateLineAndDot(
+  ".is--line-5",
+  ".is--dot-5",
+  ".is--our-2017",
+  ".is--our-2018"
+);
+animateLineAndDot(
+  ".is--line-6",
+  ".is--dot-6",
+  ".is--our-2018",
+  ".is--our-2019"
+);
+animateLineAndDot(
+  ".is--line-7",
+  ".is--dot-7",
+  ".is--our-2019",
+  ".is--our-2020"
+);
+animateLineAndDot(
+  ".is--line-8",
+  ".is--dot-8",
+  ".is--our-2020",
+  ".is--our-2021"
+);
+animateLineAndDot(
+  ".is--line-9",
+  ".is--dot-9",
+  ".is--our-2021",
+  ".is--our-2022"
+);
+
+const Gallery = new Swiper(".swiper", {
+  loop: true,
+  slidesPerView: 1,
+  //spaceBetween: 16,
+  speed: 600,
+  direction: "horizontal",
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
   },
 });
 
-let firstSequence = gsap.timeline({
+// const images = [
+//   { selector: ".is--image-4", position: { top: "8%", left: "25%" } },
+//   { selector: ".is--image-5", position: { top: "10%", left: "20%" } },
+//   { selector: ".is--image-6", position: { top: "5%", left: "72.5vw" } },
+//   { selector: ".is--image-1", position: { top: "32%", left: "-24%" } },
+//   { selector: ".is--image-7", position: { bottom: "8%", right: "8%" } },
+//   { selector: ".is--image-8", position: { bottom: "19%", right: "20%" } },
+//   { selector: ".is--image-9", position: { top: "71%", left: "25%" } },
+//   { selector: ".is--image-2", position: { bottom: "10%", left: "-17%" } },
+//   { selector: ".is--image-3", position: { top: "-9%", left: "16vh" } },
+// ];
+
+// // Shuffle images randomly
+// const shuffledImages = images.sort(() => Math.random() - 0.5);
+
+// // Create a GSAP timeline to animate text and images at the same time
+// const tl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: ".people_para",
+//     start: "top 80%",
+//     once: true,
+//   },
+// });
+
+// Create a GSAP timeline
+// Create a GSAP timeline
+// Create a GSAP timeline with scrollTrigger using .people_component as the trigger
+// const tl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: ".people_component", // The element that will trigger the animation
+//     start: "top center", // When the top of the trigger element reaches the center of the viewport
+//     end: "bottom top", // When the bottom of the trigger element reaches the top of the viewport
+//     toggleActions: "play none none none", // Play animation on enter, no action on leave, etc.
+//     markers: true, // Optional, to visualize the start and end of the ScrollTrigger
+//   },
+// });
+
+// // Add animations for each element (total duration = 1 second)
+// tl.to(".is--image-2", {
+//   position: "absolute",
+//   left: "-17%",
+//   bottom: "10%",
+//   ease: "power1.inOut",
+//   duration: 0.5, // 50% of the total time
+// })
+//   .to(".is--image-3", {
+//     position: "absolute",
+//     left: "-9%",
+//     top: "16%",
+//     ease: "power1.inOut",
+//     duration: 0.5, // 50% of the total time
+//   })
+//   .to(".is--image-4", {
+//     position: "absolute",
+//     left: "25%",
+//     top: "8%",
+//     ease: "power1.inOut",
+//     duration: 0.5, // 50% of the total time
+//   })
+//   .to(".is--image-5", {
+//     position: "absolute",
+//     right: "25%",
+//     top: "10%",
+//     ease: "power1.inOut",
+//     duration: 0.5, // 50% of the total time
+//   })
+//   .to(".is--image-6", {
+//     position: "absolute",
+//     left: "90%",
+//     top: "5%",
+//     ease: "power1.inOut",
+//     duration: 0.5, // 50% of the total time
+//   })
+//   .to(".is--image-1", {
+//     position: "absolute",
+//     top: "32%",
+//     right: "-24%",
+//     ease: "power1.inOut",
+//     duration: 0.5, // 50% of the total time
+//   })
+//   .to(".is--image-7", {
+//     position: "absolute",
+//     bottom: "8%",
+//     right: "-15%",
+//     ease: "power1.inOut",
+//     duration: 0.5, // 50% of the total time
+//   })
+//   .to(".is--image-9", {
+//     position: "absolute",
+//     top: "71%",
+//     left: "25%",
+//     ease: "power1.inOut",
+//     duration: 0.5, // 50% of the total time
+//   })
+//   .to(".is--image-8", {
+//     position: "absolute",
+//     bottom: "  15%",
+//     right: "22%",
+//     ease: "power1.inOut",
+//     duration: 0.5, // 50% of the total time
+//   });
+
+//
+const tl = gsap.timeline({
   scrollTrigger: {
-    trigger: ".journey_component",
-    start: "top top",
-    end: "15% top", // Adjusted for smoother scrolling effect
-    scrub: true, // Makes it fully dependent on scroll
+    trigger: ".people_component",
+    start: "top center",
+    end: "bottom top",
+    toggleActions: "play none none none",
   },
 });
 
-firstSequence.to(".is--line-2", {
-  width: "100%",
-  ease: "power2.inOut",
-});
-
-firstSequence.to(".is--dot-2", {
-  backgroundColor: "#ffffff",
-  ease: "power2.inOut",
-});
-
-let secondSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".journey_component",
-    start: "15% top",
-    end: "30% top", // Adjusted for smoother scrolling effect
-    scrub: true, // Makes it fully dependent on scroll
-  },
-});
-
-secondSequence.to(".is--our-2015", {
-  opacity: 0,
-  ease: "power2.inOut",
-});
-
-secondSequence.to(".is--line-3", {
-  width: "100%",
-  ease: "power2.inOut",
-});
-
-secondSequence.to(".is--dot-3", {
-  backgroundColor: "#ffffff",
-  ease: "power2.inOut",
-});
-
-gsap.to(".journey_component", {
-  scrollTrigger: {
-    trigger: ".journey_component",
-    start: "top top",
-    end: "bottom bottom",
-    pinSpacing: false,
-    scrub: 1,
-    markers: true,
-  },
-});
-
-let image1Sequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".journey_component",
-    start: "12% top",
-    end: "15% top", // Adjusted for smoother scrolling effect
-    scrub: true, // Makes it fully dependent on scroll
-  },
-});
-
-image1Sequence.to(".is--our-2014", {
-  opacity: 0,
-  ease: "power2.inOut",
-});
-
-image1Sequence.to(".is--our-2015", {
-  opacity: 1,
-  ease: "power2.inOut",
-});
-
-image2Sequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".journey_component",
-    start: "29% top",
-    end: "30% top", // Adjusted for smoother scrolling effect
-    scrub: true, // Makes it fully dependent on scroll
-  },
-});
-
-image2Sequence.to(".is--our-2015", {
-  opacity: 0,
-  ease: "power2.inOut",
-});
-
-image2Sequence.to(".is--our-2016", {
-  opacity: 1,
-  ease: "power2.inOut",
-});
+tl.to(".is--image-2", {
+  position: "absolute",
+  left: "-17%",
+  bottom: "10%",
+  ease: "power1.out",
+  duration: 0.2,
+})
+  .to(
+    ".is--image-3",
+    {
+      position: "absolute",
+      left: "-9%",
+      top: "16%",
+      ease: "power1.out",
+      duration: 0.2,
+    },
+    "-=0.1"
+  ) // Overlapping for smoothness
+  .to(
+    ".is--image-4",
+    {
+      position: "absolute",
+      left: "25%",
+      top: "8%",
+      ease: "power1.out",
+      duration: 0.2,
+    },
+    "-=0.1"
+  )
+  .to(
+    ".is--image-5",
+    {
+      position: "absolute",
+      right: "25%",
+      top: "10%",
+      ease: "power1.out",
+      duration: 0.2,
+    },
+    "-=0.1"
+  )
+  .to(
+    ".is--image-6",
+    {
+      position: "absolute",
+      left: "90%",
+      top: "5%",
+      ease: "power1.out",
+      duration: 0.2,
+    },
+    "-=0.1"
+  )
+  .to(
+    ".is--image-1",
+    {
+      position: "absolute",
+      top: "32%",
+      right: "-24%",
+      ease: "power1.out",
+      duration: 0.2,
+    },
+    "-=0.1"
+  )
+  .to(
+    ".is--image-7",
+    {
+      position: "absolute",
+      bottom: "8%",
+      right: "-15%",
+      ease: "power1.out",
+      duration: 0.2,
+    },
+    "-=0.1"
+  )
+  .to(
+    ".is--image-9",
+    {
+      position: "absolute",
+      top: "71%",
+      left: "25%",
+      ease: "power1.out",
+      duration: 0.2,
+    },
+    "-=0.1"
+  )
+  .to(
+    ".is--image-8",
+    {
+      position: "absolute",
+      bottom: "15%",
+      right: "22%",
+      ease: "power1.out",
+      duration: 0.2,
+    },
+    "-=0.1"
+  );

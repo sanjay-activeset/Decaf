@@ -1,8 +1,63 @@
-gsap.fromTo(
-  ".home_your-bg-image",
-  { scale: 1.2 },
-  { scale: 1, duration: 1, ease: "power2.out" }
-);
+document.addEventListener("DOMContentLoaded", function () {
+  let tl = gsap.timeline();
+
+  // Timeline 1: Animate .home_contact-image from bottom to top
+  tl.from(".home_contact-image", {
+    scale: 0.7,
+    duration: 1,
+    ease: "power2.out",
+  });
+
+  // Timeline 2: Animate words inside [business=heading]
+  let headingsWords = document.querySelectorAll("[business=heading]");
+
+  if (headingsWords.length) {
+    let splitTextWords = new SplitType(headingsWords, { types: "words" });
+
+    tl.from(
+      splitTextWords.words,
+      {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 1,
+        ease: "expo.out",
+      },
+      "-=0.5"
+    );
+  }
+
+  // Timeline 3: Animate lines inside [business=line]
+  let headingsLines = document.querySelectorAll("[business=line]");
+
+  if (headingsLines.length) {
+    let splitTextLines = new SplitType(headingsLines, { types: "lines" });
+
+    tl.from(
+      splitTextLines.lines,
+      {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.7,
+        ease: "power2.out",
+      },
+      "-=0.5"
+    );
+  }
+
+  // Timeline 4: Animate .home_contact-button-wrapper from bottom to top
+  tl.from(
+    ".home_contact-button-wrapper",
+    {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    },
+    "-=0.5"
+  );
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   let headings = document.querySelectorAll("[Heading=Animation]");
@@ -24,84 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ease: "power2.out",
     });
   });
-});
-
-let tl = gsap.timeline();
-
-// Split text into words
-let splitText = new SplitType("[business=heading]", { types: "words" });
-
-// Wrap each word in a container
-splitText.words.forEach((word) => {
-  let wrapper = document.createElement("span");
-  wrapper.style.overflow = "hidden";
-  wrapper.style.display = "inline-block";
-  wrapper.style.verticalAlign = "top";
-  word.parentNode.insertBefore(wrapper, word);
-  wrapper.appendChild(word);
-});
-
-let splitLine = new SplitType("[business=line]", { types: "lines" });
-
-splitLine.lines.forEach((line) => {
-  let wrapper = document.createElement("div");
-  wrapper.style.overflow = "hidden";
-  wrapper.style.display = "block";
-  line.parentNode.insertBefore(wrapper, line);
-  wrapper.appendChild(line);
-});
-
-// Select business images
-let businessImage = document.querySelectorAll("[business=image]");
-
-// Timeline animations
-tl.fromTo(
-  splitText.words,
-  { yPercent: 100, opacity: 0 },
-  {
-    yPercent: 0,
-    opacity: 1,
-    duration: 0.7,
-    ease: "power3.out",
-    stagger: 0.1,
-  }
-)
-  .fromTo(
-    splitLine.lines,
-    { yPercent: 100, opacity: 0 },
-    {
-      yPercent: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out",
-      stagger: 0.15,
-    },
-    "-=0.5"
-  )
-  .fromTo(
-    businessImage,
-    { scale: 0.8, y: 100, opacity: 0 },
-    {
-      scale: 1,
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power2.out",
-      stagger: 0.15,
-    },
-    "-=0.6"
-  );
-
-gsap.from("[up=animation]", {
-  y: 100,
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: "[up=animation]",
-    start: "top 80%",
-    toggleActions: "play none none none",
-  },
 });
 
 //////////////////////////  common animation for about and business page
@@ -229,53 +206,53 @@ gsap.from(".nav", {
   ease: "expo.out",
 });
 
-(function () {
-  const animateNumber = (element, target, duration) => {
-    let startTime;
-    const initialNumber = 0;
+// (function () {
+//   const animateNumber = (element, target, duration) => {
+//     let startTime;
+//     const initialNumber = 0;
 
-    const easingFunction = (t) => 1 - Math.pow(1 - t, 4);
+//     const easingFunction = (t) => 1 - Math.pow(1 - t, 4);
 
-    const animate = (time) => {
-      if (!startTime) startTime = time;
-      const elapsedTime = time - startTime;
-      const t = Math.min(elapsedTime / duration, 1);
-      const newValue =
-        initialNumber + (target - initialNumber) * easingFunction(t);
+//     const animate = (time) => {
+//       if (!startTime) startTime = time;
+//       const elapsedTime = time - startTime;
+//       const t = Math.min(elapsedTime / duration, 1);
+//       const newValue =
+//         initialNumber + (target - initialNumber) * easingFunction(t);
 
-      element.textContent = Math.round(newValue);
+//       element.textContent = Math.round(newValue);
 
-      if (elapsedTime < duration) {
-        requestAnimationFrame(animate);
-      } else {
-        element.textContent = target;
-      }
-    };
+//       if (elapsedTime < duration) {
+//         requestAnimationFrame(animate);
+//       } else {
+//         element.textContent = target;
+//       }
+//     };
 
-    requestAnimationFrame(animate);
-  };
+//     requestAnimationFrame(animate);
+//   };
 
-  const onIntersection = (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const finalNumber = parseInt(el.textContent, 10);
-        const animDuration = parseInt(el.getAttribute("duration"), 10) || 2000;
+//   const onIntersection = (entries) => {
+//     entries.forEach((entry) => {
+//       if (entry.isIntersecting) {
+//         const el = entry.target;
+//         const finalNumber = parseInt(el.textContent, 10);
+//         const animDuration = parseInt(el.getAttribute("duration"), 10) || 2000;
 
-        animateNumber(el, finalNumber, animDuration);
-        observer.unobserve(el);
-      }
-    });
-  };
+//         animateNumber(el, finalNumber, animDuration);
+//         observer.unobserve(el);
+//       }
+//     });
+//   };
 
-  const observer = new IntersectionObserver(onIntersection);
+//   const observer = new IntersectionObserver(onIntersection);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('[counter-element="number"]').forEach((el) => {
-      observer.observe(el);
-    });
-  });
-})();
+//   document.addEventListener("DOMContentLoaded", () => {
+//     document.querySelectorAll('[counter-element="number"]').forEach((el) => {
+//       observer.observe(el);
+//     });
+//   });
+// })();
 
 gsap.set(".all-contant-card-image-block", { y: 100, opacity: 0 });
 gsap.set("[user='card']", { opacity: 0 });
@@ -402,6 +379,7 @@ mm.add("(min-width: 768px)", () => {
   });
 
   form
+    .to(".is--form-top", { y: "0%" }) // Updated to transform: translateY(0%)
     .to(".is--sign-1", { opacity: 0.2 })
     .to(".sign-in_simple", { opacity: 1 })
     .to(".sign-in_simple-text-1", { opacity: 0.2 })
@@ -436,6 +414,7 @@ mm.add("(max-width: 767px)", () => {
   });
 
   formMobile
+    .to(".is--form-top", { y: "0%" }) // Updated to transform: translateY(0%)
     .to(".is--sign-1", { opacity: 0.2 })
     .to(".sign-in_simple", { opacity: 1 })
     .to(".sign-in_simple-text-1", { opacity: 0.2 })
@@ -457,3 +436,75 @@ mm.add("(max-width: 767px)", () => {
     formMobile.kill();
   };
 });
+
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".is--usd-3",
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+    defaults: { duration: 1, ease: "power1.inOut" },
+  })
+  .to(".is--usd-3", { backgroundColor: "#000", color: "#fcee54" })
+  .to(".is--usd-3", { backgroundColor: "#a3abe3", color: "#000" });
+
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".is--usd-3",
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+    defaults: { duration: 1, ease: "power1.inOut" },
+  })
+  .to(".is--usd-arrow3", { backgroundColor: "#fcee54", color: "#000" })
+  .to(".is--usd-arrow3", { backgroundColor: "#000", color: "white" });
+
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".is--usd-3",
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+    defaults: { duration: 1, ease: "power1.inOut" },
+  })
+  .to(".is--usd-1", { backgroundColor: "white", color: "#000" })
+  .to(".is--usd-1", { backgroundColor: "#000", color: "#fcee54" });
+
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".is--usd-3",
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+    defaults: { duration: 1, ease: "power1.inOut" },
+  })
+  .to(".is--usd-arrow-23", { backgroundColor: "#000", color: "white" })
+  .to(".is--usd-arrow-23", { backgroundColor: "#fcee54", color: "#000" });
+
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".is--usd-3",
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+    defaults: { duration: 1, ease: "power1.inOut" },
+  })
+  .to(".is--usd-2", { backgroundColor: "#a3abe3", color: "#000" })
+  .to(".is--usd-2", { backgroundColor: "white", color: "black" });
+
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".is--usd-3",
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+    defaults: { duration: 1, ease: "power1.inOut" },
+  })
+  .to(".is--usd-arrow33", { backgroundColor: "#000", color: "#a3abe3" })
+  .to(".is--usd-arrow33", { backgroundColor: "black", color: "white" });

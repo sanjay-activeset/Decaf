@@ -1,399 +1,131 @@
-gsap.to(".home_component", {
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "top top",
-    end: "bottom bottom",
-    pinSpacing: false,
-    scrub: 1,
-  },
-});
-
-let firstSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "top top",
-    end: "5% top",
-    scrub: 1,
-  },
-});
-
-firstSequence.to(".home_your-content-wrapper", {
-  opacity: 0,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
-
-let secondSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "5% top",
-    end: "20% top",
-    scrub: 1,
-  },
-});
-
-secondSequence.to(".home_your-bg-image", {
-  width: "348px",
-  height: "80vh",
-  duration: 2,
-  ease: "power3.inOut",
-});
-
-let thirdSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "20% top",
-    end: "25% top",
-    scrub: 1,
-  },
-});
-
-thirdSequence.to(".home_send", {
-  opacity: 1,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-let fourthSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "26% top",
-    end: "30% top",
-    scrub: 1,
-  },
-});
-
-fourthSequence.to(".home_send-h1", {
-  opacity: 0.2,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-fourthSequence.to(
-  ".home_send-h2",
-  {
-    opacity: 1,
-    duration: 1,
-    ease: "power2.inOut",
-  },
-  ">"
-);
-
-let sixthSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "31% top",
-    end: "35% top",
-    scrub: 1,
-  },
-});
-
-sixthSequence.to([".home_your-bg-image", ".home_send"], {
-  opacity: 0,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-let seventhSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "36% top",
-    end: "40% top",
-    scrub: 1,
-  },
-});
-
-seventhSequence.to(
-  ".home_your-app",
-  {
-    opacity: 1,
-    duration: 1,
-    ease: "power2.inOut",
-  },
-  ">"
-);
-
-let eighthSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "41% top",
-    end: "45% top",
-    scrub: 1,
-  },
-});
-
-eighthSequence.to(".home_your-app", {
-  opacity: 0,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-let ninthSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "46% top",
-    end: "50% top",
-    scrub: 1,
-  },
-});
-
-ninthSequence.to(".home_your-set", {
-  opacity: 1,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-let tenthSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "51% top",
-    end: "55% top",
-    scrub: 1,
-  },
-});
-
-tenthSequence.to(".home_your-set", {
-  opacity: 0,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-let elevenSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "56% top",
-    end: "60% top",
-    scrub: 1,
-  },
-});
-
-elevenSequence.to(".home_your-make", {
-  opacity: 1,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-let tweleSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "61% top",
-    end: "65% top",
-    scrub: 1,
-  },
-});
-
-tweleSequence.to(".home_your-make", {
-  opacity: 0,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-let thirteenSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "66% top",
-    end: "70% top",
-    scrub: 1,
-  },
-});
-
-thirteenSequence.to(".home_your-trans", {
-  opacity: 1,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-let fourteenSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "71% top",
-    end: "75% top",
-    scrub: 1,
-  },
-});
-
-fourteenSequence.to(".home_your-trans", {
-  opacity: 0,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-let fifteenSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_home",
-    start: "76% top", // After fourteen sequence
-    end: "80% top",
-    scrub: 1,
-  },
-});
-
-fifteenSequence.to(".home_your-phone-image", {
-  opacity: 1,
-  duration: 1,
-  ease: "power2.inOut",
-});
-
-gsap.to(".home_component", {
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "top top",
-    end: "bottom bottom",
-    pinSpacing: false,
-    scrub: 1,
-  },
-});
-
-// First Sequence - Height increase with cover fade
-let decaffirstSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "top top",
-    end: "6% top",
-    scrub: 1,
-  },
-});
-
-decaffirstSequence.to(".decaf_visa-card", {
-  opacity: 0.2,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
-
-let decafsecondSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "8% top",
-    end: "14% top",
-    scrub: 1,
-  },
-});
-
-decafsecondSequence.to(".decaf_every", {
-  opacity: 1,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
-
-let decafthirdSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "15% top",
-    end: "20% top",
-    scrub: 1,
-  },
-});
-
-decafthirdSequence.to(".decaf_every-content-h-1", {
-  opacity: 0.2,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
-
-let decaffourthSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "22% top",
-    end: "28% top",
-    scrub: 1,
-  },
-});
-
-decaffourthSequence.to(".decaf_every-content-h-2", {
-  opacity: 1,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
-
-let decaffifthSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "30% top",
-    end: "36% top",
-    scrub: 1,
-  },
-});
-
-decaffifthSequence.to(".decaf_every", {
-  opacity: 0,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
-
-let decafsixthSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "38% top",
-    end: "46% top",
-    scrub: 1,
-  },
-});
-
-decafsixthSequence.to(".decaf_wallet", {
-  opacity: 1,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
-
-let decafseventhSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "48% top",
-    end: "54% top",
-    scrub: 1,
-  },
-});
-
-decafseventhSequence.to(".decaf_wallet-content-h-1", {
-  opacity: 0.2,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
-
-let decafeightSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "56% top",
-    end: "62% top",
-    scrub: 1,
-  },
-});
-
-decafeightSequence.to(".decaf_wallet-content-h-2", {
-  opacity: 1,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
-
-let decafnineSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "64% top",
-    end: "70% top",
-    scrub: 1,
-  },
-});
-
-decafnineSequence.to(".decaf_wallet", {
-  opacity: 0,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
-
-let decaftenSequence = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section_decaf",
-    start: "72% top",
-    end: "80% top",
-    scrub: 1,
-  },
-});
-
-decaftenSequence.to(".decaf_visa-card", {
-  opacity: 1,
-  duration: 1.5,
-  ease: "power2.inOut",
-});
 ///////////////////////////////////////////
+function heroAnim() {
+  const mm = gsap.matchMedia();
+
+  // Ensure SplitType applies to all screen sizes
+  const splitHeroPara = new SplitType("[home='head']", { types: "words" });
+
+  mm.add("(min-width: 768px)", () => {
+    // Desktop & Tablet Animation
+    const heroAnimTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section_home",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+      defaults: { duration: 1, ease: "none" },
+    });
+
+    heroAnimTL
+      .to(".home_your-content-wrapper", { opacity: 0 })
+      .to(
+        ".home_your-bg-image",
+        {
+          width: "23rem",
+          height: "760px",
+          ease: "power1.out",
+          duration: 3,
+        },
+        0
+      )
+      .to(".home_your-bg-image", { opacity: 0.2 })
+      .to(".home_send", { opacity: 1 })
+      .from(splitHeroPara.words, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.2,
+      }) // Word Animation
+      .to(".home_send-h1", { opacity: 0.2 })
+      .to(".home_send-h2", { opacity: 1 })
+      .to(".home_send", { opacity: 0 })
+      .to(".home_your-bg-image", { opacity: 0 })
+      .to(".home_your-app", { opacity: 1 })
+      .to(".home_your-app", { opacity: 0 })
+      .to(".home_your-set", { opacity: 1 })
+      .to(".home_your-set", { opacity: 0 })
+      .to(".home_your-make", { opacity: 1 })
+      .to(".home_your-make", { opacity: 0 })
+      .to(".home_your-trans", { opacity: 1 })
+      .to(".home_your-trans", { opacity: 0 })
+      .to(".home_your-phone-image", { opacity: 1 });
+  });
+
+  mm.add("(max-width: 767px)", () => {
+    // Mobile Animation
+    const heroAnimTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section_home",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+      defaults: { duration: 1, ease: "none" },
+    });
+
+    heroAnimTL
+      .to(".home_your-content-wrapper", { opacity: 0 })
+      .to(
+        ".home_your-bg-image",
+        {
+          width: "16rem",
+          height: "500px",
+          borderRadius: "1.5rem",
+          ease: "power1.out",
+          duration: 2,
+        },
+        0
+      )
+      .to(".home_your-bg-image", { opacity: 0.2 })
+      .to(".home_send", { opacity: 1 })
+      .from(splitHeroPara.words, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.2,
+      }) // Word Animation
+      .to(".home_send-h1", { opacity: 0.2 })
+      .to(".home_send-h2", { opacity: 1 })
+      .to(".home_send", { opacity: 0 })
+      .to(".home_your-bg-image", { opacity: 0 })
+      .to(".home_your-app", { opacity: 1 })
+      .to(".home_your-app", { opacity: 0 })
+      .to(".home_your-set", { opacity: 1 })
+      .to(".home_your-set", { opacity: 0 })
+      .to(".home_your-make", { opacity: 1 })
+      .to(".home_your-make", { opacity: 0 })
+      .to(".home_your-trans", { opacity: 1 })
+      .to(".home_your-trans", { opacity: 0 })
+      .to(".home_your-phone-image", { opacity: 1 });
+  });
+}
+gsap.from(".nav", {
+  y: -100,
+  opacity: 0,
+  duration: 2,
+  ease: "expo.out",
+});
+
+const cardAnimTL = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".section_decaf",
+    start: "top top",
+    end: "bottom bottom",
+    scrub: true,
+  },
+  defaults: { duration: 1, ease: "none" },
+});
+
+cardAnimTL
+  .to(".decaf_visa-card", { opacity: 0.2 })
+  .to(".decaf_every", { opacity: 1 })
+  .to(".decaf_every-content-h-1", { opacity: 0.2 })
+  .to(".decaf_every-content-h-2", { opacity: 1 })
+  .to(".decaf_every", { opacity: 0 })
+  .to(".decaf_wallet", { opacity: 1 })
+  .to(".decaf_wallet-content-h-1", { opacity: 0.2 })
+  .to(".decaf_wallet-content-h-2", { opacity: 1 })
+  .to(".decaf_wallet", { opacity: 0 })
+  .to(".decaf_visa-card", { opacity: 1 });
 
 document.addEventListener("DOMContentLoaded", function () {
   function prepareText(selector) {
