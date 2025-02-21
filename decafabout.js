@@ -1,28 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let heading = document.querySelectorAll("[Heading=Animation]");
-
-  heading.forEach((heading) => {
-    // Ensure the parent has overflow hidden
-    heading.style.overflow = "hidden";
-
-    let splitText = new SplitType(heading, { types: "lines" });
-
-    gsap.from(splitText.lines, {
-      scrollTrigger: {
-        trigger: heading,
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      yPercent: 100,
-      opacity: 0,
-      stagger: 0.2, // Increased stagger for line-by-line effect
-      duration: 0.7,
-      ease: "power2.out",
-    });
-  });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
   let headings = document.querySelectorAll("[Heading=wordanimation]");
 
   headings.forEach((heading) => {
