@@ -389,6 +389,7 @@ mm.add("(min-width: 768px)", () => {
     .to(".sign-in_simple", { opacity: 0 })
     .to(".is--sign-1", { opacity: 1 })
     .to("[signform='image']", { x: "-10%", width: "70%" })
+
     .to(".is--sign-contenr1", { opacity: 1 })
     .to(".is--sign-1", { opacity: 0 })
     .to(".is--sign-2", { opacity: 1 })
@@ -508,3 +509,38 @@ gsap
   })
   .to(".is--usd-arrow33", { backgroundColor: "#000", color: "#a3abe3" })
   .to(".is--usd-arrow33", { backgroundColor: "black", color: "white" });
+
+document.addEventListener("DOMContentLoaded", function () {
+  let headings = document.querySelectorAll("[Heading=wordanimationb]");
+
+  headings.forEach((heading) => {
+    // Ensure the parent has overflow hidden
+    heading.style.overflow = "hidden";
+
+    let splitText = new SplitType(heading, { types: "words" });
+
+    // Wrap each word in a div with overflow hidden
+    splitText.words.forEach((word) => {
+      let wrapper = document.createElement("span");
+      wrapper.style.display = "inline-block";
+      wrapper.style.overflow = "hidden";
+      wrapper.style.verticalAlign = "top";
+
+      word.parentNode.insertBefore(wrapper, word);
+      wrapper.appendChild(word);
+    });
+
+    gsap.from(splitText.words, {
+      scrollTrigger: {
+        trigger: heading,
+        start: "top 90%",
+        toggleActions: "play none none none",
+      },
+      yPercent: 100,
+      opacity: 0,
+      stagger: 0.08,
+      duration: 1,
+      ease: "expo.out",
+    });
+  });
+});
