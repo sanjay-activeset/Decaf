@@ -209,3 +209,15 @@ gsap.from(".footer_right-content-image", {
     toggleActions: "play none none none",
   },
 });
+gsap.from("[Image1='Animation']", {
+  x: "-100%",
+  y: "-100%",
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: "[Image1=Animation]",
+    start: "top 80%",
+    toggleActions: "play none none none",
+  },
+});
