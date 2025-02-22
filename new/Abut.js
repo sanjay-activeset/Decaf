@@ -164,14 +164,6 @@ if (storyHeadingLine) {
   });
 }
 
-//////////////  Navbar Animatio
-gsap.from(".nav", {
-  y: -100,
-  opacity: 0,
-  duration: 2,
-  ease: "expo.out",
-});
-
 document.querySelectorAll("[Textline='animation']").forEach((el) => {
   // Initialize SplitType for each element separately
   const text = new SplitType(el, { types: "lines" });

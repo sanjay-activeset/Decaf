@@ -373,13 +373,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "-=0.5"
     );
 
-  gsap.from(".nav", {
-    y: -100,
-    opacity: 0,
-    duration: 2,
-    ease: "expo.out",
-  });
-
   const cardAnimTL = gsap.timeline({
     scrollTrigger: {
       trigger: ".section_decaf",
