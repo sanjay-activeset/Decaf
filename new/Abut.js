@@ -72,19 +72,6 @@ gsap.from("[Card='stagger']", {
   },
 });
 
-gsap.from("[Image1=Animation]", {
-  x: "100%",
-  y: "-100%",
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: "[Image=Animation]",
-    start: "top 60%",
-    toggleActions: "play none none none",
-  },
-});
-
 gsap.registerPlugin(ScrollTrigger);
 
 const splitTypes = document.querySelectorAll("[text='highlight']");
