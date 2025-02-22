@@ -618,7 +618,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-gsap.from("[Image1=Animation]", {
+///////////////////////// Footer animation
+
+gsap.from("[Image1='Animation']", {
   x: "-100%",
   y: "-100%",
   opacity: 0,
