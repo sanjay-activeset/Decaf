@@ -172,7 +172,7 @@ gsap.from("[Image=try]", {
 
 ///////////////////////// Footer animation
 
-gsap.from("[Image1=Animation]", {
+gsap.from("[Image1='Animation']", {
   x: "-100%",
   y: "-100%",
   opacity: 0,
