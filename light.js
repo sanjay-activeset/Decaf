@@ -16,6 +16,8 @@ function animateLineAndDot(line, dot, hideElement, showElement) {
     .to(showElement, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, ">");
 }
 
+console.log("Hello");
+
 animateLineAndDot(
   ".is--line-2",
   ".is--dot-2",
