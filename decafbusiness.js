@@ -198,14 +198,6 @@ gsap.from(".footer_right-content-image", {
   },
 });
 
-//////////////  Navbar Animatio
-gsap.from(".nav", {
-  y: -100,
-  opacity: 0,
-  duration: 2,
-  ease: "expo.out",
-});
-
 // (function () {
 //   const animateNumber = (element, target, duration) => {
 //     let startTime;
