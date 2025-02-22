@@ -1,18 +1,90 @@
+// Additional animations
+const lines1 = prepareText("[home=heading]"); // Assuming it returns an array or NodeList
+const lines2 = prepareText("[home2=heading]");
+const home3 = document.querySelector("[home3=heading]");
+
+let tl = gsap.timeline();
+
+tl.from(
+  ".home_your-logo-image",
+  {
+    y: 60,
+    autoAlpha: 0,
+    ease: "power3.out",
+    duration: 1.5,
+  },
+  "start"
+)
+  .from(
+    ".home_your-bg-image",
+    {
+      scale: 1.2,
+      ease: "power3.out",
+      duration: 1.5,
+    },
+    "start"
+  )
+  .from(
+    lines1,
+    {
+      yPercent: 100,
+      autoAlpha: 0,
+      ease: "expo.out",
+      duration: 1.5,
+      stagger: 0.08,
+    },
+    "start+=0.2"
+  )
+  .from(
+    lines2,
+    {
+      yPercent: 100,
+      autoAlpha: 0,
+      ease: "expo.out",
+      duration: 1.5,
+      stagger: 0.08,
+    },
+    "-=1.2"
+  );
+
+if (home3) {
+  tl.from(
+    home3,
+    {
+      y: 50,
+      autoAlpha: 0,
+      ease: "power2.out",
+      duration: 1.5,
+    },
+    "-=1.2"
+  );
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
 
-  // Function to prepare text for animation
-  function prepareText(selector) {
-    return new SplitType(selector, { types: "lines" }).lines;
-  }
-
-  // Hero Animation
   function heroAnim() {
     const mm = gsap.matchMedia();
-    const splitHeroPara = new SplitType("[home='head']", { types: "words" });
 
     mm.add("(min-width: 768px)", () => {
+      // Split text into lines for animation
+      const splitHeroLines = [
+        new SplitType("[hero='head']", { types: "lines" }),
+        new SplitType("[hero='line']", { types: "lines" }),
+        new SplitType("[hero2='line']", { types: "lines" }),
+        new SplitType("[hero3='line']", { types: "lines" }),
+        new SplitType("[hero4='line']", { types: "lines" }),
+      ];
+
+      document
+        .querySelectorAll(
+          "[hero='line'], [hero2='line'], [hero3='line'], [hero4='line']"
+        )
+        .forEach((el) => {
+          el.style.display = "block";
+          el.style.position = "relative";
+        });
+
       const heroAnimTL = gsap.timeline({
         scrollTrigger: {
           trigger: ".section_home",
@@ -27,37 +99,61 @@ document.addEventListener("DOMContentLoaded", function () {
         .to(".home_your-content-wrapper", { opacity: 0 })
         .to(
           ".home_your-bg-image",
-          {
-            width: "23rem",
-            height: "760px",
-            ease: "power1.out",
-            duration: 3,
-          },
+          { width: "23rem", height: "760px", ease: "power1.out", duration: 3 },
           0
         )
         .to(".home_your-bg-image", { opacity: 0.2 })
         .to(".home_send", { opacity: 1 })
-        .from(splitHeroPara.words, {
-          yPercent: 100,
-          opacity: 0,
-          stagger: 0.2,
-        })
         .to(".home_send-h1", { opacity: 0.2 })
         .to(".home_send-h2", { opacity: 1 })
         .to(".home_send", { opacity: 0 })
         .to(".home_your-bg-image", { opacity: 0 })
         .to(".home_your-app", { opacity: 1 })
-        .to(".home_your-app", { opacity: 0 })
+        .from(splitHeroLines[0].lines, {
+          yPercent: 100,
+          opacity: 0,
+          stagger: 0.5,
+        })
+        .from(splitHeroLines[1].lines, {
+          yPercent: 100,
+          opacity: 0,
+          stagger: 0.5,
+        })
+        .to(".home_your-app", { opacity: 0 }, "+=1.5")
         .to(".home_your-set", { opacity: 1 })
-        .to(".home_your-set", { opacity: 0 })
+        .from(
+          splitHeroLines[2].lines,
+          { yPercent: 100, opacity: 0, stagger: 0.5 },
+          "-=0.5"
+        )
+        .to(".home_your-set", { opacity: 0 }, "+=1.5")
         .to(".home_your-make", { opacity: 1 })
-        .to(".home_your-make", { opacity: 0 })
+        .from(splitHeroLines[3].lines, {
+          yPercent: 100,
+          opacity: 0,
+          stagger: 0.5,
+        })
+        .to(".home_your-make", { opacity: 0 }, "+=1.5")
         .to(".home_your-trans", { opacity: 1 })
-        .to(".home_your-trans", { opacity: 0 })
+        .from(splitHeroLines[4].lines, {
+          yPercent: 100,
+          opacity: 0,
+          stagger: 0.5,
+        })
+        .to(".home_your-trans", { opacity: 0 }, "+=1.5")
         .to(".home_your-phone-image", { opacity: 1 });
     });
 
     mm.add("(max-width: 767px)", () => {
+      const splitHeroLinesMobile = new SplitType("[hero='line']", {
+        types: "lines",
+      });
+
+      document.querySelectorAll("[hero='line']").forEach((el) => {
+        el.style.display = "block";
+        el.style.position = "relative";
+      });
+
       const heroAnimTL = gsap.timeline({
         scrollTrigger: {
           trigger: ".section_home",
@@ -83,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
         )
         .to(".home_your-bg-image", { opacity: 0.2 })
         .to(".home_send", { opacity: 1 })
-        .from(splitHeroPara.words, {
+        .from(splitHeroLinesMobile.lines, {
           yPercent: 100,
           opacity: 0,
           stagger: 0.2,
@@ -164,7 +260,6 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       "-=1.2"
     );
-
   let headings = document.querySelectorAll("[Heading=wordanimation]");
   headings.forEach((heading) => {
     heading.style.overflow = "hidden";
