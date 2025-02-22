@@ -402,36 +402,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .to(".decaf_wallet", { opacity: 0 })
     .to(".decaf_visa-card", { opacity: 1 });
 
-  let footerImage = document.querySelector("[mobile='Footer']");
-
-  if (footerImage) {
-    gsap.from(footerImage, {
-      x: 200,
-      y: 250,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: footerImage,
-        start: "top 70%",
-        end: "top 90%",
-        toggleActions: "play none none none",
-      },
-    });
-  }
-
-  gsap.from("[Image1=Animation]", {
-    x: "-100%",
-    y: "-100%",
-    opacity: 0,
-    duration: 1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: "[Image1=Animation]",
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-  });
-
   const animations = [
     {
       headingsAttr: "Heading11",
@@ -653,4 +623,30 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     });
   }
+});
+
+gsap.from("[Image1=Animation]", {
+  x: "-100%",
+  y: "-100%",
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: "[Image1=Animation]",
+    start: "top 80%",
+    toggleActions: "play none none none",
+  },
+});
+
+gsap.from(".footer_right-content-image", {
+  x: "100%",
+  y: "100%",
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: ".footer_right-content",
+    start: "top 90%",
+    toggleActions: "play none none none",
+  },
 });
