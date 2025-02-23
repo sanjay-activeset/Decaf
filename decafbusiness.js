@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let tbl = gsap.timeline();
+  let tl = gsap.timeline();
 
   // Timeline 1: Animate .home_contact-image from bottom to top
   tl.from(".home_contact-image", {
@@ -378,7 +378,6 @@ function visa() {
     const splitDecafline2 = new SplitType("[decaf2='line']", {
       types: "lines",
     });
-
     const splitDecafPara3 = new SplitType("[decaf3='word']", {
       types: "lines",
     });
@@ -393,6 +392,7 @@ function visa() {
       types: "lines",
     });
 
+    // Create the timeline
     const form = gsap.timeline({
       scrollTrigger: {
         trigger: ".section_sign-in",
@@ -404,7 +404,7 @@ function visa() {
     });
 
     form
-      .to(".is--form-top", { y: "0%" })
+      .to(".is--form-top", { y: "0%" }) // Updated to transform: translateY(0%)
       .to(".is--sign-1", { opacity: 0.2 })
       .to(".sign-in_simple", { opacity: 1 })
       .to(".sign-in_simple-text-1", { opacity: 0.2 })
@@ -414,6 +414,7 @@ function visa() {
       .to(".sign-in_simple", { opacity: 0 })
       .to(".is--sign-1", { opacity: 1 })
       .to("[signform='image']", { x: "-10%", width: "70%" })
+
       .to(".is--sign-contenr1", { opacity: 1 })
       .from(
         splitDecafPara1.lines,
@@ -452,34 +453,6 @@ function visa() {
   });
 
   mm.add("(max-width: 767px)", () => {
-    const splitDecafPara1 = new SplitType("[decaf1='word']", {
-      types: "lines",
-    });
-    const splitDecafline1 = new SplitType("[decaf1='line']", {
-      types: "lines",
-    });
-
-    const splitDecafPara2 = new SplitType("[decaf2='word']", {
-      types: "lines",
-    });
-    const splitDecafline2 = new SplitType("[decaf2='line']", {
-      types: "lines",
-    });
-
-    const splitDecafPara3 = new SplitType("[decaf3='word']", {
-      types: "lines",
-    });
-    const splitDecafline3 = new SplitType("[decaf3='line']", {
-      types: "lines",
-    });
-
-    const splitDecafPara4 = new SplitType("[decaf4='word']", {
-      types: "lines",
-    });
-    const splitDecafline4 = new SplitType("[decaf4='line']", {
-      types: "lines",
-    });
-
     const formMobile = gsap.timeline({
       scrollTrigger: {
         trigger: ".section_sign-in",
@@ -491,7 +464,7 @@ function visa() {
     });
 
     formMobile
-      .to(".is--form-top", { y: "0%" })
+      .to(".is--form-top", { y: "0%" }) // Updated to transform: translateY(0%)
       .to(".is--sign-1", { opacity: 0.2 })
       .to(".sign-in_simple", { opacity: 1 })
       .to(".sign-in_simple-text-1", { opacity: 0.2 })
@@ -502,36 +475,12 @@ function visa() {
       .to(".is--sign-1", { opacity: 1 })
       .to("[signform='image']", { y: "22%" })
       .to(".is--sign-contenr1", { opacity: 1 })
-      .from(
-        splitDecafPara1.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitDecafline1.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
       .to(".is--sign-1", { opacity: 0 })
       .to(".is--sign-2", { opacity: 1 })
-      .from(
-        splitDecafPara2.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitDecafline2.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
       .to(".is--sign-2", { opacity: 0 })
       .to(".is--sign-3", { opacity: 1 })
-      .from(
-        splitDecafPara3.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitDecafline3.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
       .to(".is--sign-3", { opacity: 0 })
-      .to(".is--sign-4", { opacity: 1 })
-      .from(
-        splitDecafPara4.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitDecafline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
+      .to(".is--sign-4", { opacity: 1 });
 
     return () => {
       formMobile.kill();
