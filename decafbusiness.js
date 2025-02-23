@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let tl = gsap.timeline();
+  let tbl = gsap.timeline();
 
   // Timeline 1: Animate .home_contact-image from bottom to top
-  tl.from(".home_contact-image", {
+  tbl.from(".home_contact-image", {
     scale: 0.7,
     duration: 1,
     ease: "power2.out",
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (headingsWords.length) {
     let splitTextWords = new SplitType(headingsWords, { types: "words" });
 
-    tl.from(
+    tbl.from(
       splitTextWords.words,
       {
         yPercent: 100,
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (headingsLines.length) {
     let splitTextLines = new SplitType(headingsLines, { types: "lines" });
 
-    tl.from(
+    tbl.from(
       splitTextLines.lines,
       {
         yPercent: 100,
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Timeline 4: Animate .home_contact-button-wrapper from bottom to top
-  tl.from(
+  tbl.from(
     ".home_contact-button-wrapper",
     {
       y: 100,
