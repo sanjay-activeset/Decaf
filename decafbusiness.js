@@ -356,79 +356,190 @@ allCountryName.from(
   "<"
 );
 
-const mm = gsap.matchMedia();
+// Function to prepare text for animation
+function prepareText(selector) {
+  return new SplitType(selector, { types: "lines" }).lines;
+}
 
-mm.add("(min-width: 768px)", () => {
-  // Create the timeline
-  const form = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".section_sign-in",
-      start: "top top",
-      end: "bottom bottom",
-      scrub: true,
-    },
-    defaults: { duration: 1, ease: "none" },
+function visa() {
+  const mm = gsap.matchMedia();
+
+  mm.add("(min-width: 768px)", () => {
+    const splitDecafPara1 = new SplitType("[decaf1='word']", {
+      types: "lines",
+    });
+    const splitDecafline1 = new SplitType("[decaf1='line']", {
+      types: "lines",
+    });
+
+    const splitDecafPara2 = new SplitType("[decaf2='word']", {
+      types: "lines",
+    });
+    const splitDecafline2 = new SplitType("[decaf2='line']", {
+      types: "lines",
+    });
+
+    const splitDecafPara3 = new SplitType("[decaf3='word']", {
+      types: "lines",
+    });
+    const splitDecafline3 = new SplitType("[decaf3='line']", {
+      types: "lines",
+    });
+
+    const splitDecafPara4 = new SplitType("[decaf4='word']", {
+      types: "lines",
+    });
+    const splitDecafline4 = new SplitType("[decaf4='line']", {
+      types: "lines",
+    });
+
+    const form = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section_sign-in",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+      defaults: { duration: 1, ease: "none" },
+    });
+
+    form
+      .to(".is--form-top", { y: "0%" })
+      .to(".is--sign-1", { opacity: 0.2 })
+      .to(".sign-in_simple", { opacity: 1 })
+      .to(".sign-in_simple-text-1", { opacity: 0.2 })
+      .to(".sign-in_simple-text-2", { opacity: 1 })
+      .to(".sign-in_simple-text-2", { opacity: 0.2 })
+      .to(".sign-in_simple-text-3", { opacity: 1 })
+      .to(".sign-in_simple", { opacity: 0 })
+      .to(".is--sign-1", { opacity: 1 })
+      .to("[signform='image']", { x: "-10%", width: "70%" })
+      .to(".is--sign-contenr1", { opacity: 1 })
+      .from(
+        splitDecafPara1.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline1.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .to(".is--sign-1", { opacity: 0 }, "+=1.5")
+      .to(".is--sign-2", { opacity: 1 })
+      .from(
+        splitDecafPara2.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline2.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .to(".is--sign-2", { opacity: 0 }, "+=1.5")
+      .to(".is--sign-3", { opacity: 1 })
+      .from(
+        splitDecafPara3.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline3.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .to(".is--sign-3", { opacity: 0 }, "+=1.5")
+      .to(".is--sign-4", { opacity: 1 })
+      .from(
+        splitDecafPara4.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
+
+    return () => {
+      form.kill();
+    };
   });
 
-  form
-    .to(".is--form-top", { y: "0%" }) // Updated to transform: translateY(0%)
-    .to(".is--sign-1", { opacity: 0.2 })
-    .to(".sign-in_simple", { opacity: 1 })
-    .to(".sign-in_simple-text-1", { opacity: 0.2 })
-    .to(".sign-in_simple-text-2", { opacity: 1 })
-    .to(".sign-in_simple-text-2", { opacity: 0.2 })
-    .to(".sign-in_simple-text-3", { opacity: 1 })
-    .to(".sign-in_simple", { opacity: 0 })
-    .to(".is--sign-1", { opacity: 1 })
-    .to("[signform='image']", { x: "-10%", width: "70%" })
+  mm.add("(max-width: 767px)", () => {
+    const splitDecafPara1 = new SplitType("[decaf1='word']", {
+      types: "lines",
+    });
+    const splitDecafline1 = new SplitType("[decaf1='line']", {
+      types: "lines",
+    });
 
-    .to(".is--sign-contenr1", { opacity: 1 })
-    .to(".is--sign-1", { opacity: 0 })
-    .to(".is--sign-2", { opacity: 1 })
-    .to(".is--sign-2", { opacity: 0 })
-    .to(".is--sign-3", { opacity: 1 })
-    .to(".is--sign-3", { opacity: 0 })
-    .to(".is--sign-4", { opacity: 1 });
+    const splitDecafPara2 = new SplitType("[decaf2='word']", {
+      types: "lines",
+    });
+    const splitDecafline2 = new SplitType("[decaf2='line']", {
+      types: "lines",
+    });
 
-  return () => {
-    form.kill();
-  };
-});
+    const splitDecafPara3 = new SplitType("[decaf3='word']", {
+      types: "lines",
+    });
+    const splitDecafline3 = new SplitType("[decaf3='line']", {
+      types: "lines",
+    });
 
-mm.add("(max-width: 767px)", () => {
-  const formMobile = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".section_sign-in",
-      start: "top top",
-      end: "bottom bottom",
-      scrub: true,
-    },
-    defaults: { duration: 1, ease: "none" },
+    const splitDecafPara4 = new SplitType("[decaf4='word']", {
+      types: "lines",
+    });
+    const splitDecafline4 = new SplitType("[decaf4='line']", {
+      types: "lines",
+    });
+
+    const formMobile = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section_sign-in",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+      defaults: { duration: 1, ease: "none" },
+    });
+
+    formMobile
+      .to(".is--form-top", { y: "0%" })
+      .to(".is--sign-1", { opacity: 0.2 })
+      .to(".sign-in_simple", { opacity: 1 })
+      .to(".sign-in_simple-text-1", { opacity: 0.2 })
+      .to(".sign-in_simple-text-2", { opacity: 1 })
+      .to(".sign-in_simple-text-2", { opacity: 0.2 })
+      .to(".sign-in_simple-text-3", { opacity: 1 })
+      .to(".sign-in_simple", { opacity: 0 })
+      .to(".is--sign-1", { opacity: 1 })
+      .to("[signform='image']", { y: "22%" })
+      .to(".is--sign-contenr1", { opacity: 1 })
+      .from(
+        splitDecafPara1.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline1.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .to(".is--sign-1", { opacity: 0 })
+      .to(".is--sign-2", { opacity: 1 })
+      .from(
+        splitDecafPara2.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline2.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .to(".is--sign-2", { opacity: 0 })
+      .to(".is--sign-3", { opacity: 1 })
+      .from(
+        splitDecafPara3.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline3.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .to(".is--sign-3", { opacity: 0 })
+      .to(".is--sign-4", { opacity: 1 })
+      .from(
+        splitDecafPara4.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
+
+    return () => {
+      formMobile.kill();
+    };
   });
+}
 
-  formMobile
-    .to(".is--form-top", { y: "0%" }) // Updated to transform: translateY(0%)
-    .to(".is--sign-1", { opacity: 0.2 })
-    .to(".sign-in_simple", { opacity: 1 })
-    .to(".sign-in_simple-text-1", { opacity: 0.2 })
-    .to(".sign-in_simple-text-2", { opacity: 1 })
-    .to(".sign-in_simple-text-2", { opacity: 0.2 })
-    .to(".sign-in_simple-text-3", { opacity: 1 })
-    .to(".sign-in_simple", { opacity: 0 })
-    .to(".is--sign-1", { opacity: 1 })
-    .to("[signform='image']", { y: "22%" })
-    .to(".is--sign-contenr1", { opacity: 1 })
-    .to(".is--sign-1", { opacity: 0 })
-    .to(".is--sign-2", { opacity: 1 })
-    .to(".is--sign-2", { opacity: 0 })
-    .to(".is--sign-3", { opacity: 1 })
-    .to(".is--sign-3", { opacity: 0 })
-    .to(".is--sign-4", { opacity: 1 });
-
-  return () => {
-    formMobile.kill();
-  };
-});
+visa();
 
 gsap
   .timeline({
