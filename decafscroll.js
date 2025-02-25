@@ -471,7 +471,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  let timelines = {}; // Store all GSAP timelines
+  let timelines = {}; // Store all timelines
 
   animations.forEach(({ headingsAttr, textLinesAttr, trigger }, index) => {
     let headings = document.querySelectorAll(`[${headingsAttr}=wordanimation]`);
@@ -534,19 +534,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Store the timeline
       timelines[trigger] = tl;
-    }
-  });
 
-  gsap.timeline().add(() => {
-    let firstAnimation = timelines[".send_content"];
-    let secondAnimation = timelines[".manage-component"];
-
-    if (firstAnimation && secondAnimation) {
-      firstAnimation.eventCallback("onUpdate", () => {
-        if (firstAnimation.progress() >= 0.1) {
-          secondAnimation.play();
-        }
-      });
+      // If this is the first animation, add a call to start the second one at 50%
+      if (index === 0 && animations[1]) {
+        tl.add(() => {
+          timelines[animations[1].trigger].play();
+        }, tl.duration() * 0.5); // Trigger when the first timeline is 50% complete
+      }
     }
   });
 
