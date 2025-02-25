@@ -610,8 +610,20 @@ gsap.matchMedia().add("(max-width: 768px)", () => {
     defaults: { duration: 1, ease: "none" },
   });
 
-  contactMobile.to(".section_home-contact", {
-    scale: 0.9,
-    borderRadius: "16px",
-  });
+  contactMobile
+    .to(
+      ".section_home-contact",
+      {
+        scale: 0.9,
+        borderRadius: "16px",
+      },
+      0
+    ) // Added time parameter properly
+    .to(
+      ".home_contact-image",
+      {
+        borderRadius: "16px",
+      },
+      0
+    ); // Synchronized animations using the same start time
 });
