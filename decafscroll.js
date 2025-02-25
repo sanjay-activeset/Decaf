@@ -528,7 +528,7 @@ document.addEventListener("DOMContentLoaded", function () {
             stagger: 0.1,
             ease: "power3.out",
           },
-          "-=0.3"
+          "-=0.5"
         );
       });
 
