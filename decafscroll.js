@@ -340,12 +340,40 @@ document.addEventListener("DOMContentLoaded", function () {
         .to(".home_send", { opacity: 0 })
         .to(".home_your-bg-image", { opacity: 0 })
         .to(".home_your-app", { opacity: 1 })
-        .to(".home_your-app", { opacity: 0 })
+        .from(
+          splitHeroPara1.lines,
+          { yPercent: 100, opacity: 0, stagger: 0.5 },
+          "-=0.5"
+        )
+        .from(splitHeroline1.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+        .to(".home_your-app", { opacity: 0 }, "+=1.5")
         .to(".home_your-set", { opacity: 1 })
-        .to(".home_your-set", { opacity: 0 })
+        .from(
+          splitHeroPara2.lines,
+          { yPercent: 100, opacity: 0, stagger: 0.5 },
+          "-=0.5"
+        )
+        .from(splitHeroline2.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+        .to(".home_your-set", { opacity: 0 }, "+=1.5")
         .to(".home_your-make", { opacity: 1 })
-        .to(".home_your-make", { opacity: 0 })
-        .to(".home_your-trans", { opacity: 1 });
+        .from(
+          splitHeroPara3.lines,
+          { yPercent: 100, opacity: 0, stagger: 0.5 },
+          "-=0.5"
+        )
+        .from(splitHeroline3.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+        .to(".home_your-make", { opacity: 0 }, "+=1.5")
+        .to(".home_your-trans", { opacity: 1 })
+        .from(
+          splitHeroPara4.lines,
+          { yPercent: 100, opacity: 0, stagger: 0.5 },
+          "-=0.5"
+        )
+        .from(splitHeroline4.lines, {
+          yPercent: 100,
+          opacity: 0,
+          stagger: 0.5,
+        });
       // .to(".home_your-trans", { opacity: 0 })
       // .to(".home_your-phone-image", { opacity: 1 });
     });
