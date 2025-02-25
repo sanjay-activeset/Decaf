@@ -610,7 +610,7 @@ gsap.matchMedia().add("(max-width: 768px)", () => {
     defaults: { duration: 1, ease: "none" },
   });
 
-  contactMobile.to(".section_home-contact", {
+  contactMobile.to(".home_contect-component", {
     scale: 0.9,
     borderRadius: "1rem",
   });
