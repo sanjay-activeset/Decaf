@@ -404,7 +404,6 @@ function visa() {
     });
 
     form
-      .to(".is--form-top", { y: "80%" }, "+=1.5")
       .to(".is--form-top", { y: "50%" }, "+=1.5")
       .to(".is--form-top", { y: "0%" }, "+=1.5")
       .to(".is--sign-1", { opacity: 0.2 })
