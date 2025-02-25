@@ -528,7 +528,7 @@ document.addEventListener("DOMContentLoaded", function () {
             stagger: 0.1,
             ease: "power3.out",
           },
-          "0"
+          "-=0.5"
         );
       });
 
@@ -539,7 +539,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (index === 0 && animations[1]) {
         tl.add(() => {
           timelines[animations[1].trigger].play();
-        }, tl.duration() * 0); // Trigger when the first timeline is 50% complete
+        }, tl.duration() * 0.5); // Trigger when the first timeline is 50% complete
       }
     }
   });
