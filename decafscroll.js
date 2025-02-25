@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       heroAnimTL.to(
         ".home_your-bg-image",
         { width: "16rem", height: "600px", borderRadius: "1.5rem" },
-        "+=3"
+        "+=0.5"
       );
     } else {
       heroAnimTL.to(
