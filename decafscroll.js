@@ -448,108 +448,107 @@ document.addEventListener("DOMContentLoaded", function () {
     .to(".decaf_wallet", { opacity: 0 })
     .to(".decaf_visa-card", { opacity: 1 });
 
-  // const animations = [
-  //   {
-  //     headingsAttr: "Heading11",
-  //     textLinesAttr: "Textline11",
-  //     trigger: ".send_content",
-  //   },
-  //   {
-  //     headingsAttr: "Heading12",
-  //     textLinesAttr: "Textline12",
-  //     trigger: ".manage-component",
-  //   },
-  //   {
-  //     headingsAttr: "Heading13",
-  //     textLinesAttr: "Textline13",
-  //     trigger: ".grow-component",
-  //   },
-  //   {
-  //     headingsAttr: "Heading14",
-  //     textLinesAttr: "Textline14",
-  //     trigger: ".receive-component",
-  //   },
-  // ];
+  const animations = [
+    {
+      headingsAttr: "Heading11",
+      textLinesAttr: "Textline11",
+      trigger: ".send_content",
+    },
+    {
+      headingsAttr: "Heading12",
+      textLinesAttr: "Textline12",
+      trigger: ".manage-component",
+    },
+    {
+      headingsAttr: "Heading13",
+      textLinesAttr: "Textline13",
+      trigger: ".grow-component",
+    },
+    {
+      headingsAttr: "Heading14",
+      textLinesAttr: "Textline14",
+      trigger: ".receive-component",
+    },
+  ];
 
-  // let timelines = {}; // Store all GSAP timelines
+  let timelines = {}; // Store all GSAP timelines
 
-  // animations.forEach(({ headingsAttr, textLinesAttr, trigger }, index) => {
-  //   let headings = document.querySelectorAll(`[${headingsAttr}=wordanimation]`);
-  //   let textLines = document.querySelectorAll(`[${textLinesAttr}='animation']`);
-  //   let triggerElement = document.querySelector(trigger);
+  animations.forEach(({ headingsAttr, textLinesAttr, trigger }, index) => {
+    let headings = document.querySelectorAll(`[${headingsAttr}=wordanimation]`);
+    let textLines = document.querySelectorAll(`[${textLinesAttr}='animation']`);
+    let triggerElement = document.querySelector(trigger);
 
-  //   if (triggerElement) {
-  //     let tl = gsap.timeline({
-  //       scrollTrigger: {
-  //         trigger: triggerElement,
-  //         start: "top 80%",
-  //         toggleActions: "play none none none",
-  //         once: true,
-  //       },
-  //     });
+    if (triggerElement) {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: triggerElement,
+          start: "top 80%",
+          toggleActions: "play none none none",
+          once: true,
+        },
+      });
 
-  //     headings.forEach((heading) => {
-  //       heading.style.overflow = "hidden";
-  //       let splitText = new SplitType(heading, { types: "words" });
+      headings.forEach((heading) => {
+        heading.style.overflow = "hidden";
+        let splitText = new SplitType(heading, { types: "words" });
 
-  //       splitText.words.forEach((word) => {
-  //         let wrapper = document.createElement("span");
-  //         wrapper.style.display = "inline-block";
-  //         wrapper.style.overflow = "hidden";
-  //         wrapper.style.verticalAlign = "top";
-  //         word.parentNode.insertBefore(wrapper, word);
-  //         wrapper.appendChild(word);
-  //       });
+        splitText.words.forEach((word) => {
+          let wrapper = document.createElement("span");
+          wrapper.style.display = "inline-block";
+          wrapper.style.overflow = "hidden";
+          wrapper.style.verticalAlign = "top";
+          word.parentNode.insertBefore(wrapper, word);
+          wrapper.appendChild(word);
+        });
 
-  //       tl.from(
-  //         splitText.words,
-  //         {
-  //           yPercent: 100,
-  //           opacity: 0,
-  //           stagger: 0.08,
-  //           duration: 1,
-  //           ease: "expo.out",
-  //         },
-  //         0
-  //       );
-  //     });
+        tl.from(
+          splitText.words,
+          {
+            yPercent: 100,
+            opacity: 0,
+            stagger: 0.08,
+            duration: 1,
+            ease: "expo.out",
+          },
+          0
+        );
+      });
 
-  //     textLines.forEach((el) => {
-  //       el.style.overflow = "hidden";
-  //       const text = new SplitType(el, { types: "lines" });
-  //       gsap.set(text.lines, { yPercent: 100, opacity: 0 });
+      textLines.forEach((el) => {
+        el.style.overflow = "hidden";
+        const text = new SplitType(el, { types: "lines" });
+        gsap.set(text.lines, { yPercent: 100, opacity: 0 });
 
-  //       tl.to(
-  //         text.lines,
-  //         {
-  //           yPercent: 0,
-  //           opacity: 1,
-  //           duration: 1,
-  //           stagger: 0.1,
-  //           ease: "power3.out",
-  //         },
-  //         "-=0.5"
-  //       );
-  //     });
+        tl.to(
+          text.lines,
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.1,
+            ease: "power3.out",
+          },
+          "-=0.5"
+        );
+      });
 
-  //     // Store the timeline
-  //     timelines[trigger] = tl;
-  //   }
-  // });
+      // Store the timeline
+      timelines[trigger] = tl;
+    }
+  });
 
-  // // ✅ Ensure second animation starts when the first is 50% complete
-  // gsap.timeline().add(() => {
-  //   let firstAnimation = timelines[".send_content"];
-  //   let secondAnimation = timelines[".manage-component"];
+  gsap.timeline().add(() => {
+    let firstAnimation = timelines[".send_content"];
+    let secondAnimation = timelines[".manage-component"];
 
-  //   if (firstAnimation && secondAnimation) {
-  //     firstAnimation.eventCallback("onUpdate", () => {
-  //       if (firstAnimation.progress() >= 0.5) {
-  //         secondAnimation.play();
-  //       }
-  //     });
-  //   }
-  // });
+    if (firstAnimation && secondAnimation) {
+      firstAnimation.eventCallback("onUpdate", () => {
+        if (firstAnimation.progress() >= 0.1) {
+          secondAnimation.play();
+        }
+      });
+    }
+  });
 
   let headings15 = document.querySelectorAll("[Heading15=wordanimation]");
   let textLines15 = document.querySelectorAll("[Textline15='animation']");
