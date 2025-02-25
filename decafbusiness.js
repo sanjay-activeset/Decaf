@@ -610,8 +610,8 @@ gsap.matchMedia().add("(max-width: 768px)", () => {
     defaults: { duration: 1, ease: "none" },
   });
 
-  contactMobile.to(".home_contect-component", {
+  contactMobile.to(".section_home-contact", {
     scale: 0.9,
-    borderRadius: "1rem",
+    borderRadius: "1rem", // Ensure the unit is included
   });
 });
