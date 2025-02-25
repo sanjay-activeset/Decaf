@@ -33,9 +33,24 @@ document.addEventListener("DOMContentLoaded", function () {
       defaults: { duration: 1, ease: "none" },
     });
 
+    heroAnimTL.to(".home_your-content-wrapper", { opacity: 0 });
+
+    // Check if the screen width is mobile (e.g., max-width: 768px)
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      heroAnimTL.to(
+        ".home_your-bg-image",
+        { width: "16rem", height: "600px" },
+        "+=3"
+      );
+    } else {
+      heroAnimTL.to(
+        ".home_your-bg-image",
+        { width: "23rem", height: "760px" },
+        "+=3"
+      );
+    }
+
     heroAnimTL
-      .to(".home_your-content-wrapper", { opacity: 0 })
-      .to(".home_your-bg-image", { width: "23rem", height: "760px" }, "+=3")
       .to(".home_your-bg-image", { opacity: 0.2 })
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
@@ -73,8 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "-=0.5"
       )
       .from(splitHeroline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
-
-    // Adjust sizes for mobile using CSS media queries instead of JS
   }
 
   heroAnim();
