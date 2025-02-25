@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.matchMedia("(max-width: 768px)").matches) {
       heroAnimTL.to(
         ".home_your-bg-image",
-        { width: "16rem", height: "720px", borderRadius: "1.5rem" },
+        { width: "18rem", height: "700px", borderRadius: "1.5rem" },
         "+=0.5"
       );
     } else {
