@@ -404,8 +404,8 @@ function visa() {
     });
 
     form
-      .to(".is--form-top", { y: "50%" }, "+=2")
-      .to(".is--form-top", { y: "0%", scale: 1 }, "+=2")
+      .to(".is--form-top", { y: "50%" }, "+=3")
+      .to(".is--form-top", { y: "0%", scale: 1 }, "+=3")
       .to(".is--sign-1", { opacity: 0.2 })
       .to(".sign-in_simple", { opacity: 1 })
       .to(".sign-in_simple-text-1", { opacity: 0.2 })
