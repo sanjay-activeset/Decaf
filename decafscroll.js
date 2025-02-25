@@ -35,11 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroAnimTL
       .to(".home_your-content-wrapper", { opacity: 0 })
-      .to(
-        ".home_your-bg-image",
-        { width: "23rem", height: "760px", ease: "power1.out", duration: 3 },
-        0
-      )
+      .to(".home_your-bg-image", { width: "23rem", height: "760px" }, "+=3")
       .to(".home_your-bg-image", { opacity: 0.2 })
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
