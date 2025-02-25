@@ -612,6 +612,6 @@ gsap.matchMedia().add("(max-width: 768px)", () => {
 
   contactMobile.to(".section_home-contact", {
     scale: 0.9,
-    borderRadius: "1rem", // Ensure the unit is included
+    borderRadius: "16px",
   });
 });
