@@ -471,7 +471,9 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  animations.forEach(({ headingsAttr, textLinesAttr, trigger }) => {
+  let timelines = {}; // Store all GSAP timelines
+
+  animations.forEach(({ headingsAttr, textLinesAttr, trigger }, index) => {
     let headings = document.querySelectorAll(`[${headingsAttr}=wordanimation]`);
     let textLines = document.querySelectorAll(`[${textLinesAttr}='animation']`);
     let triggerElement = document.querySelector(trigger);
@@ -528,6 +530,23 @@ document.addEventListener("DOMContentLoaded", function () {
           },
           "-=0.5"
         );
+      });
+
+      // Store the timeline
+      timelines[trigger] = tl;
+    }
+  });
+
+  // ✅ Ensure second animation starts when the first is 50% complete
+  gsap.timeline().add(() => {
+    let firstAnimation = timelines[".send_content"];
+    let secondAnimation = timelines[".manage-component"];
+
+    if (firstAnimation && secondAnimation) {
+      firstAnimation.eventCallback("onUpdate", () => {
+        if (firstAnimation.progress() >= 0.5) {
+          secondAnimation.play();
+        }
       });
     }
   });
@@ -650,7 +669,7 @@ document.addEventListener("DOMContentLoaded", function () {
           duration: 1,
           ease: "expo.out",
         },
-        0
+        "-=0.5"
       );
     });
 
@@ -669,7 +688,7 @@ document.addEventListener("DOMContentLoaded", function () {
           stagger: 0.1,
           ease: "power3.out",
         },
-        "-=0.7"
+        "-=0.5"
       );
     });
 
@@ -719,17 +738,13 @@ document.addEventListener("DOMContentLoaded", function () {
         wrapper.appendChild(word);
       });
 
-      tl16.from(
-        splitText.words,
-        {
-          yPercent: 100,
-          opacity: 0,
-          stagger: 0.08,
-          duration: 1,
-          ease: "expo.out",
-        },
-        0
-      );
+      tl16.from(splitText.words, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 1,
+        ease: "expo.out",
+      });
     });
 
     bottomTopElements16.forEach((el) => {
