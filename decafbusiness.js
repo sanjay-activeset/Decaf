@@ -464,7 +464,9 @@ function visa() {
     });
 
     formMobile
-      .to(".is--form-top", { y: "0%" }, "+=3") // Updated to transform: translateY(0%)
+      .to(".is--form-top", { y: "80%" })
+      .to(".is--form-top", { y: "50%" })
+      .to(".is--form-top", { y: "0%" })
       .to(".is--sign-1", { opacity: 0.2 })
       .to(".sign-in_simple", { opacity: 1 })
       .to(".sign-in_simple-text-1", { opacity: 0.2 })
