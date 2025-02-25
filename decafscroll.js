@@ -11,6 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {
+      // Revert previous SplitType instances
+      SplitType.revert(
+        "[hero='word'], [hero='line'], [hero2='word'], [hero2='line'], [hero3='word'], [hero3='line'], [hero4='word'], [hero4='line']"
+      );
+
       // Desktop SplitType
       const splitHeroPara1 = new SplitType("[hero='word']", { types: "lines" });
       const splitHeroline1 = new SplitType("[hero='line']", { types: "lines" });
@@ -93,89 +98,124 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     mm.add("(max-width: 767px)", () => {
-      // Mobile SplitType
-      const splitHeroPara1 = new SplitType("[hero='word']", { types: "lines" });
-      const splitHeroline1 = new SplitType("[hero='line']", { types: "lines" });
-      const splitHeroPara2 = new SplitType("[hero2='word']", {
-        types: "lines",
-      });
-      const splitHeroline2 = new SplitType("[hero2='line']", {
-        types: "lines",
-      });
-      const splitHeroPara3 = new SplitType("[hero3='word']", {
-        types: "lines",
-      });
-      const splitHeroline3 = new SplitType("[hero3='line']", {
-        types: "lines",
-      });
-      const splitHeroPara4 = new SplitType("[hero4='word']", {
-        types: "lines",
-      });
-      const splitHeroline4 = new SplitType("[hero4='line']", {
-        types: "lines",
-      });
+      // Revert previous SplitType instances
+      SplitType.revert(
+        "[hero='word'], [hero='line'], [hero2='word'], [hero2='line'], [hero3='word'], [hero3='line'], [hero4='word'], [hero4='line']"
+      );
 
-      document
-        .querySelectorAll(
-          "[hero='line'], [hero2='line'], [hero3='line'], [hero4='line']"
-        )
-        .forEach((el) => {
-          el.style.display = "block";
-          el.style.position = "relative";
+      setTimeout(() => {
+        // Mobile SplitType
+        const splitHeroPara1 = new SplitType("[hero='word']", {
+          types: "lines",
+        });
+        const splitHeroline1 = new SplitType("[hero='line']", {
+          types: "lines",
+        });
+        const splitHeroPara2 = new SplitType("[hero2='word']", {
+          types: "lines",
+        });
+        const splitHeroline2 = new SplitType("[hero2='line']", {
+          types: "lines",
+        });
+        const splitHeroPara3 = new SplitType("[hero3='word']", {
+          types: "lines",
+        });
+        const splitHeroline3 = new SplitType("[hero3='line']", {
+          types: "lines",
+        });
+        const splitHeroPara4 = new SplitType("[hero4='word']", {
+          types: "lines",
+        });
+        const splitHeroline4 = new SplitType("[hero4='line']", {
+          types: "lines",
         });
 
-      const heroAnimTL = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".section_home",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-        },
-        defaults: { duration: 1, ease: "none" },
-      });
+        document
+          .querySelectorAll(
+            "[hero='line'], [hero2='line'], [hero3='line'], [hero4='line']"
+          )
+          .forEach((el) => {
+            el.style.display = "block";
+            el.style.position = "relative";
+          });
 
-      heroAnimTL
-        .to(".home_your-content-wrapper", { opacity: 0 })
-        .to(
-          ".home_your-bg-image",
-          {
-            width: "16rem",
-            height: "500px",
-            borderRadius: "1.5rem",
-            ease: "power1.out",
-            duration: 2,
+        // Debugging: Log split lines in mobile view
+        console.log("Mobile SplitType Lines:", {
+          hero1: splitHeroline1.lines,
+          hero2: splitHeroline2.lines,
+          hero3: splitHeroline3.lines,
+          hero4: splitHeroline4.lines,
+        });
+
+        const heroAnimTL = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".section_home",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
           },
-          0
-        )
-        .to(".home_your-bg-image", { opacity: 0.2 })
-        .to(".home_send", { opacity: 1 })
-        .from(splitHeroPara1.lines, { yPercent: 100, opacity: 0, stagger: 0.2 })
-        .from(splitHeroline1.lines, { yPercent: 100, opacity: 0, stagger: 0.2 })
-        .to(".home_your-app", { opacity: 1 })
-        .from(
-          splitHeroPara2.lines,
-          { yPercent: 100, opacity: 0, stagger: 0.2 },
-          "-=0.5"
-        )
-        .from(splitHeroline2.lines, { yPercent: 100, opacity: 0, stagger: 0.2 })
-        .to(".home_your-set", { opacity: 1 })
-        .from(
-          splitHeroPara3.lines,
-          { yPercent: 100, opacity: 0, stagger: 0.2 },
-          "-=0.5"
-        )
-        .from(splitHeroline3.lines, { yPercent: 100, opacity: 0, stagger: 0.2 })
-        .to(".home_your-make", { opacity: 1 })
-        .from(
-          splitHeroPara4.lines,
-          { yPercent: 100, opacity: 0, stagger: 0.2 },
-          "-=0.5"
-        )
-        .from(splitHeroline4.lines, {
-          yPercent: 100,
-          opacity: 0,
-          stagger: 0.2,
+          defaults: { duration: 1, ease: "none" },
         });
+
+        heroAnimTL
+          .to(".home_your-content-wrapper", { opacity: 0 })
+          .to(
+            ".home_your-bg-image",
+            {
+              width: "16rem",
+              height: "500px",
+              borderRadius: "1.5rem",
+              ease: "power1.out",
+              duration: 2,
+            },
+            0
+          )
+          .to(".home_your-bg-image", { opacity: 0.2 })
+          .to(".home_send", { opacity: 1 })
+          .from(splitHeroPara1.lines, {
+            yPercent: 100,
+            opacity: 0,
+            stagger: 0.2,
+          })
+          .from(splitHeroline1.lines, {
+            yPercent: 100,
+            opacity: 0,
+            stagger: 0.2,
+          })
+          .to(".home_your-app", { opacity: 1 })
+          .from(
+            splitHeroPara2.lines,
+            { yPercent: 100, opacity: 0, stagger: 0.2 },
+            "-=0.5"
+          )
+          .from(splitHeroline2.lines, {
+            yPercent: 100,
+            opacity: 0,
+            stagger: 0.2,
+          })
+          .to(".home_your-set", { opacity: 1 })
+          .from(
+            splitHeroPara3.lines,
+            { yPercent: 100, opacity: 0, stagger: 0.2 },
+            "-=0.5"
+          )
+          .from(splitHeroline3.lines, {
+            yPercent: 100,
+            opacity: 0,
+            stagger: 0.2,
+          })
+          .to(".home_your-make", { opacity: 1 })
+          .from(
+            splitHeroPara4.lines,
+            { yPercent: 100, opacity: 0, stagger: 0.2 },
+            "-=0.5"
+          )
+          .from(splitHeroline4.lines, {
+            yPercent: 100,
+            opacity: 0,
+            stagger: 0.2,
+          });
+      }, 100); // Small delay to ensure elements are available
     });
   }
 
