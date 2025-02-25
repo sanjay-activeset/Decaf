@@ -37,11 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check if the screen width is mobile (e.g., max-width: 768px)
     if (window.matchMedia("(max-width: 768px)").matches) {
-      heroAnimTL.to(
-        ".home_your-bg-image",
-        { width: "18rem", height: "700px", borderRadius: "1.5rem" },
-        "+=0.5"
-      );
+      heroAnimTL.to(".home_your-bg-image", {
+        width: "20rem",
+        height: "700px",
+        borderRadius: "1.5rem",
+      });
     } else {
       heroAnimTL.to(
         ".home_your-bg-image",
