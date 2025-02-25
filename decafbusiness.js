@@ -598,3 +598,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+gsap.matchMedia().add("(max-width: 768px)", () => {
+  const contactMobile = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".section_home-contact",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    },
+    defaults: { duration: 1, ease: "none" },
+  });
+
+  contactMobile.to(".section_home-contact", {
+    scale: 0.9,
+    borderRadius: "1rem",
+  });
+});
