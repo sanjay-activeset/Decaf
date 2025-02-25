@@ -477,12 +477,36 @@ function visa() {
       .to(".is--sign-1", { opacity: 1 })
       .to("[signform='image']", { y: "22%" })
       .to(".is--sign-contenr1", { opacity: 1 })
-      .to(".is--sign-1", { opacity: 0 })
+      .from(
+        splitDecafPara1.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline1.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .to(".is--sign-1", { opacity: 0 }, "+=1.5")
       .to(".is--sign-2", { opacity: 1 })
-      .to(".is--sign-2", { opacity: 0 })
+      .from(
+        splitDecafPara2.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline2.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .to(".is--sign-2", { opacity: 0 }, "+=1.5")
       .to(".is--sign-3", { opacity: 1 })
-      .to(".is--sign-3", { opacity: 0 })
-      .to(".is--sign-4", { opacity: 1 });
+      .from(
+        splitDecafPara3.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline3.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .to(".is--sign-3", { opacity: 0 }, "+=1.5")
+      .to(".is--sign-4", { opacity: 1 })
+      .from(
+        splitDecafPara4.lines,
+        { yPercent: 100, opacity: 0, stagger: 0.5 },
+        "-=0.5"
+      )
+      .from(splitDecafline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
 
     return () => {
       formMobile.kill();
