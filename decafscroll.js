@@ -93,9 +93,13 @@ document.addEventListener("DOMContentLoaded", function () {
           { yPercent: 100, opacity: 0, stagger: 0.5 },
           "-=0.5"
         )
-        .from(splitHeroline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
-        .to(".home_your-trans", { opacity: 0 }, "+=1.5")
-        .to(".home_your-phone-image", { opacity: 1 });
+        .from(splitHeroline4.lines, {
+          yPercent: 100,
+          opacity: 0,
+          stagger: 0.5,
+        });
+      // .to(".home_your-trans", { opacity: 0 }, "+=1.5")
+      // .to(".home_your-phone-image", { opacity: 1 });
     });
 
     mm.add("(max-width: 767px)", () => {
@@ -147,9 +151,9 @@ document.addEventListener("DOMContentLoaded", function () {
         .to(".home_your-set", { opacity: 0 })
         .to(".home_your-make", { opacity: 1 })
         .to(".home_your-make", { opacity: 0 })
-        .to(".home_your-trans", { opacity: 1 })
-        .to(".home_your-trans", { opacity: 0 })
-        .to(".home_your-phone-image", { opacity: 1 });
+        .to(".home_your-trans", { opacity: 1 });
+      // .to(".home_your-trans", { opacity: 0 })
+      // .to(".home_your-phone-image", { opacity: 1 });
     });
   }
 
