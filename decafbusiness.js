@@ -630,7 +630,7 @@ gsap.matchMedia().add("(max-width: 768px)", () => {
       ".section_home-contact",
       {
         scale: 0.9,
-        borderRadius: "16px",
+        borderRadius: "24px",
       },
       0
     ) // Added time parameter properly
