@@ -87,7 +87,6 @@ splitTypes.forEach((char) => {
       markers: false,
     },
     opacity: 0.2,
-    duration: 0,
     stagger: 0.1,
     ease: "expoScale.out",
   });
