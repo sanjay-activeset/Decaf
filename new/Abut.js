@@ -213,3 +213,16 @@ gsap.from("[Image1='Animation']", {
     toggleActions: "play none none none",
   },
 });
+
+gsap.from("[Image='Animation']", {
+  x: "100%",
+  y: "-100%",
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: "[Image=Animation]",
+    start: "top 70%",
+    toggleActions: "play none none none",
+  },
+});
