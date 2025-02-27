@@ -130,7 +130,7 @@ gsap.from("[Card='stagger']", {
   },
 });
 
-gsap.from("[Image=Animation]", {
+gsap.from("[Image='Animation']", {
   x: "100%",
   y: "-100%",
   opacity: 0,
@@ -138,7 +138,7 @@ gsap.from("[Image=Animation]", {
   ease: "power2.out",
   scrollTrigger: {
     trigger: "[Image=Animation]",
-    start: "top 60%",
+    start: "top 70%",
     toggleActions: "play none none none",
   },
 });
