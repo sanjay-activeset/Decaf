@@ -3,13 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   headings.forEach((heading) => {
     // Ensure the parent has overflow hidden
-    headings.style.overflow = "hidden";
+    heading.style.overflow = "hidden";
 
-    let splitText = new SplitType(headings, { types: "lines" });
+    let splitText = new SplitType(heading, { types: "lines" });
 
     gsap.from(splitText.lines, {
       scrollTrigger: {
-        trigger: headings,
+        trigger: heading,
         start: "top 85%",
         toggleActions: "play none none none",
       },
@@ -35,30 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: {
         trigger: heading,
         start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      yPercent: 100,
-      opacity: 0,
-      stagger: 0.08,
-      duration: 1,
-      ease: "expo.out",
-    });
-  });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  let headingA = document.querySelectorAll("[HeadingA=wordanimation]");
-
-  headingA.forEach((heading) => {
-    // Ensure the parent has overflow hidden
-    heading.style.overflow = "hidden";
-
-    let splitText = new SplitType(heading, { types: "words" });
-
-    gsap.from(splitText.words, {
-      scrollTrigger: {
-        trigger: heading,
-        start: "top 90%",
         toggleActions: "play none none none",
       },
       yPercent: 100,
