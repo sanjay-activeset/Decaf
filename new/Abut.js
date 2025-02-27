@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     gsap.from(splitText.lines, {
       scrollTrigger: {
-        trigger: heading,
+        trigger: headings,
         start: "top 85%",
         toggleActions: "play none none none",
       },
@@ -47,9 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  let headings = document.querySelectorAll("[HeadingA=wordanimation]");
+  let headingA = document.querySelectorAll("[HeadingA=wordanimation]");
 
-  headings.forEach((heading) => {
+  headingA.forEach((heading) => {
     // Ensure the parent has overflow hidden
     heading.style.overflow = "hidden";
 
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     gsap.from(splitText.words, {
       scrollTrigger: {
-        trigger: heading,
+        trigger: headingA,
         start: "top 85%",
         toggleActions: "play none none none",
       },
