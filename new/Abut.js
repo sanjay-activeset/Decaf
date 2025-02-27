@@ -83,12 +83,12 @@ splitTypes.forEach((char) => {
       trigger: char,
       start: "top 50%",
       end: "bottom 50%",
-      scrub: true,
       markers: false,
     },
     opacity: 0.2,
     stagger: 0.1,
-    ease: "expoScale.out",
+    duration: 0,
+    ease: "none",
   });
 });
 
