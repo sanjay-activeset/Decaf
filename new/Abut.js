@@ -51,13 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   headingA.forEach((heading) => {
     // Ensure the parent has overflow hidden
-    headingA.style.overflow = "hidden";
+    heading.style.overflow = "hidden";
 
-    let splitText = new SplitType(headingA, { types: "words" });
+    let splitText = new SplitType(heading, { types: "words" });
 
     gsap.from(splitText.words, {
       scrollTrigger: {
-        trigger: headingA,
+        trigger: heading,
         start: "top 90%",
         toggleActions: "play none none none",
       },
