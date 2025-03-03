@@ -228,7 +228,7 @@ gsap.from("[Image='Animation']", {
   },
 });
 
-let headings15 = document.querySelectorAll(".head-about");
+let headings15 = document.querySelectorAll("[HeadingAB=wordanimation]");
 
 headings15.forEach((heading) => {
   heading.style.overflow = "hidden";
