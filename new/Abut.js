@@ -229,25 +229,32 @@ gsap.from("[Image='Animation']", {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  let animatedHeadings = document.querySelectorAll("[data-word-animation]");
+  // Ensure GSAP and plugins are registered
+  gsap.registerPlugin(ScrollTrigger);
+
+  let animatedHeadings = document.querySelectorAll(".head-about");
 
   animatedHeadings.forEach((heading) => {
     // Ensure the parent has overflow hidden
     heading.style.overflow = "hidden";
 
+    // Split text into words
     let splitWords = new SplitType(heading, { types: "words" });
 
-    gsap.from(splitWords.words, {
-      scrollTrigger: {
-        trigger: heading,
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      yPercent: 100,
-      opacity: 0,
-      stagger: 0.08,
-      duration: 1,
-      ease: "expo.out",
-    });
+    // Ensure splitWords.words exists before animating
+    if (splitWords.words.length) {
+      gsap.from(splitWords.words, {
+        scrollTrigger: {
+          trigger: heading,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 1,
+        ease: "expo.out",
+      });
+    }
   });
 });
