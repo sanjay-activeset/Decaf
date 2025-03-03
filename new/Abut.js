@@ -227,3 +227,27 @@ gsap.from("[Image='Animation']", {
     toggleActions: "play none none none",
   },
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  let headings = document.querySelectorAll("[HeadingAb=wordanimation]");
+
+  headings.forEach((heading) => {
+    // Ensure the parent has overflow hidden
+    heading.style.overflow = "hidden";
+
+    let splitText = new SplitType(heading, { types: "words" });
+
+    gsap.from(splitText.words, {
+      scrollTrigger: {
+        trigger: heading,
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+      yPercent: 100,
+      opacity: 0,
+      stagger: 0.08,
+      duration: 1,
+      ease: "expo.out",
+    });
+  });
+});
