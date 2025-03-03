@@ -227,3 +227,38 @@ gsap.from("[Image='Animation']", {
     toggleActions: "play none none none",
   },
 });
+
+let headings15 = document.querySelectorAll(".head-about");
+
+headings15.forEach((heading) => {
+  heading.style.overflow = "hidden";
+
+  let splitText = new SplitType(heading, { types: "words" });
+
+  splitText.words.forEach((word) => {
+    let wrapper = document.createElement("span");
+    wrapper.style.display = "inline-block";
+    wrapper.style.overflow = "hidden";
+    wrapper.style.verticalAlign = "top";
+
+    word.parentNode.insertBefore(wrapper, word);
+    wrapper.appendChild(word);
+  });
+
+  gsap.from(
+    splitText.words.map((word) => word.parentNode), // Animate the wrapper
+    {
+      yPercent: 100,
+      opacity: 0,
+      stagger: 0.08,
+      duration: 1,
+      ease: "expo.out",
+      scrollTrigger: {
+        trigger: heading,
+        start: "top 80%", // Adjust to control when it starts
+        end: "bottom top",
+        toggleActions: "play none none none",
+      },
+    }
+  );
+});
