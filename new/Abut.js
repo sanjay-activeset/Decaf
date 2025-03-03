@@ -227,34 +227,3 @@ gsap.from("[Image='Animation']", {
     toggleActions: "play none none none",
   },
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Ensure GSAP and plugins are registered
-  gsap.registerPlugin(ScrollTrigger);
-
-  let animatedHeadings = document.querySelectorAll(".head-about");
-
-  animatedHeadings.forEach((heading) => {
-    // Ensure the parent has overflow hidden
-    heading.style.overflow = "hidden";
-
-    // Split text into words
-    let splitWords = new SplitType(heading, { types: "words" });
-
-    // Ensure splitWords.words exists before animating
-    if (splitWords.words.length) {
-      gsap.from(splitWords.words, {
-        scrollTrigger: {
-          trigger: heading,
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-        yPercent: 100,
-        opacity: 0,
-        stagger: 0.08,
-        duration: 1,
-        ease: "expo.out",
-      });
-    }
-  });
-});
