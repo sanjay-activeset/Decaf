@@ -724,7 +724,7 @@ gsap.from(".footer_right-content-image", {
   },
 });
 
-let headings15 = document.querySelectorAll("[Heading15=wordanimation]");
+let headings15 = document.querySelectorAll(".head-about");
 
 headings15.forEach((heading) => {
   heading.style.overflow = "hidden";
