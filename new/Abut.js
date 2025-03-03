@@ -229,15 +229,15 @@ gsap.from("[Image='Animation']", {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  let headings = document.querySelectorAll("[HeadingAb=wordanimation]");
+  let animatedHeadings = document.querySelectorAll("[data-word-animation]");
 
-  headings.forEach((heading) => {
+  animatedHeadings.forEach((heading) => {
     // Ensure the parent has overflow hidden
     heading.style.overflow = "hidden";
 
-    let splitText = new SplitType(heading, { types: "words" });
+    let splitWords = new SplitType(heading, { types: "words" });
 
-    gsap.from(splitText.words, {
+    gsap.from(splitWords.words, {
       scrollTrigger: {
         trigger: heading,
         start: "top 85%",
