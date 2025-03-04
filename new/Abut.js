@@ -46,18 +46,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-gsap.from(".new_content-card", {
-  y: 100,
-  opacity: 0,
-  stagger: 0.3,
-  duration: 1,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: ".new_content-card",
-    start: "top 80%",
-    toggleActions: "play none none none",
-  },
-});
+if (window.innerWidth > 1024) {
+  gsap.from(".new_content-card", {
+    y: 100,
+    opacity: 0,
+    stagger: 0.3,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".new_content-card",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+  });
+}
 
 gsap.from("[Card='stagger']", {
   y: 100,
