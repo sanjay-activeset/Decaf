@@ -228,7 +228,7 @@ gsap.from("[Image='Animation']", {
   },
 });
 
-let headings15 = document.querySelectorAll("[HeadingAB=wordanimation]");
+let headings15 = document.querySelectorAll("[HeadingAB= wordanimation]");
 
 headings15.forEach((heading) => {
   heading.style.overflow = "hidden";
@@ -255,7 +255,41 @@ headings15.forEach((heading) => {
       ease: "expo.out",
       scrollTrigger: {
         trigger: heading,
-        start: "top 80%", // Adjust to control when it starts
+        start: "top 90%", // Adjust to control when it starts
+        end: "bottom top",
+        toggleActions: "play none none none",
+      },
+    }
+  );
+});
+
+let animatedHeadings = document.querySelectorAll("[HeadingAB= lineanimation]");
+
+animatedHeadings.forEach((heading) => {
+  heading.style.overflow = "hidden";
+
+  let splitText = new SplitType(heading, { types: "lines" });
+
+  splitText.lines.forEach((line) => {
+    let wrapper = document.createElement("span");
+    wrapper.style.display = "block";
+    wrapper.style.overflow = "hidden";
+
+    line.parentNode.insertBefore(wrapper, line);
+    wrapper.appendChild(line);
+  });
+
+  gsap.from(
+    splitText.lines.map((line) => line.parentNode), // Animate the wrapper
+    {
+      yPercent: 100,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 1,
+      ease: "expo.out",
+      scrollTrigger: {
+        trigger: heading,
+        start: "top 90%", // Adjust to control when it starts
         end: "bottom top",
         toggleActions: "play none none none",
       },
