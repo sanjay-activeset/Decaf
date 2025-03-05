@@ -703,26 +703,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-gsap.fromTo(
-  "[Image1='Animation']",
-  {
-    x: "-100%",
-    y: "-100%",
-    opacity: 0,
+gsap.from("[Image1='Animation']", {
+  x: "-100%",
+  y: "-100%",
+  opacity: 0,
+  opacity: 1,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: "[Image1='Animation']",
+    start: "top 80%",
+    toggleActions: "play none none none",
   },
-  {
-    x: "0%",
-    y: "0%",
-    opacity: 1,
-    duration: 1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: "[Image1='Animation']",
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-  }
-);
+});
 
 gsap.from(".footer_right-content-image", {
   x: "100%",
