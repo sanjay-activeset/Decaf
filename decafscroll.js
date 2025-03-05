@@ -2,11 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
 
-  // Function to prepare text for animation
-  function prepareText(selector) {
-    return new SplitType(selector, { types: "lines" }).lines;
-  }
-
   function heroAnim() {
     // Apply SplitType to all elements once
     const splitHeroPara1 = new SplitType("[hero='word']", { types: "lines" });
@@ -35,19 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroAnimTL.to(".home_your-content-wrapper", { opacity: 0 });
 
-    // Check if the screen width is mobile (e.g., max-width: 768px)
-    if (window.matchMedia("(max-width: 768px)").matches) {
-      heroAnimTL.to(".home_your-bg-image", {
-        scale: 0.9,
-        borderRadius: "24px",
-      });
-    } else {
-      heroAnimTL.to(
-        ".home_your-bg-image",
-        { width: "23rem", height: "760px", duration: 2.5 },
-        "+=3"
-      );
-    }
+    heroAnimTL.to(
+      ".home_your-bg-image",
+      { width: "23rem", height: "760px", duration: 2.5 },
+      "+=3"
+    );
 
     heroAnimTL
       .to(".home_your-bg-image", { opacity: 0.2 })
@@ -89,7 +76,10 @@ document.addEventListener("DOMContentLoaded", function () {
       .from(splitHeroline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
   }
 
-  heroAnim();
+  // Run heroAnim only if the screen width is greater than 768px (Desktop only)
+  if (window.innerWidth > 768) {
+    heroAnim();
+  }
 
   // Additional animations
   const lines1 = prepareText("[home=heading]");
