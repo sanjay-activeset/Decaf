@@ -35,13 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroAnimTL.to(".home_your-content-wrapper", { opacity: 0 });
 
-    // Check if the screen width is mobile (e.g., max-width: 768px)
-    if (window.matchMedia("(max-width: 768px)").matches) {
-      heroAnimTL.to(".home_your-bg-image", {
-        scale: 0.9,
-        borderRadius: "24px",
-      });
-    } else {
+    if (window.innerWidth > 767) {
       heroAnimTL.to(
         ".home_your-bg-image",
         { width: "23rem", height: "760px", duration: 2.5 },
@@ -50,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     heroAnimTL
+
       .to(".home_your-bg-image", { opacity: 0.2 })
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
