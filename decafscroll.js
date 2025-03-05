@@ -727,14 +727,18 @@ function isTabletOrMobile() {
   return window.innerWidth <= 1024; // Adjust breakpoint if needed
 }
 
+let heroAnimMobTL; // Declare timeline variable globally
+let heroAnimMobInitialized = false; // Track if the animation is initialized
+
 function heroAnimMob() {
-  // Kill only the specific ScrollTrigger if it exists
-  if (heroAnimMobTL && heroAnimMobTL.scrollTrigger) {
-    heroAnimMobTL.scrollTrigger.kill();
-    heroAnimMobTL.kill(); // Also kill the timeline to avoid conflicts
+  // Kill existing timeline only if it's initialized
+  if (heroAnimMobInitialized && heroAnimMobTL) {
+    heroAnimMobTL.scrollTrigger?.kill();
+    heroAnimMobTL.kill();
+    heroAnimMobTL = null; // Reset timeline
   }
 
-  // Create the GSAP timeline for mobile & tablet landscape
+  // Create GSAP timeline for mobile & tablet landscape
   heroAnimMobTL = gsap.timeline({
     scrollTrigger: {
       trigger: ".home_your-comp-wrapper",
@@ -753,16 +757,28 @@ function heroAnimMob() {
     })
     .to(".home_your-bg-image", { opacity: 0.2 })
     .to(".home_send", { opacity: 1 });
+
+  heroAnimMobInitialized = true; // Mark animation as initialized
 }
 
-// Run animation only on mobile & tablet landscape
+// Initial check for screen size
 if (isTabletOrMobile()) {
   heroAnimMob();
 }
 
-// Re-run animation on resize if screen size matches
+// Re-run animation on resize only if necessary
 window.addEventListener("resize", function () {
   if (isTabletOrMobile()) {
-    heroAnimMob();
+    if (!heroAnimMobInitialized) {
+      heroAnimMob();
+    }
+  } else {
+    // If switching to a larger screen, kill the animation
+    if (heroAnimMobInitialized) {
+      heroAnimMobTL?.scrollTrigger?.kill();
+      heroAnimMobTL?.kill();
+      heroAnimMobTL = null;
+      heroAnimMobInitialized = false;
+    }
   }
 });
