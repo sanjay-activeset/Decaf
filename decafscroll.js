@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function heroAnim() {
+    // Run only on desktop (greater than 767px)
+    if (window.innerWidth <= 767) return;
+
     // Apply SplitType to all elements once
     const splitHeroPara1 = new SplitType("[hero='word']", { types: "lines" });
     const splitHeroline1 = new SplitType("[hero='line']", { types: "lines" });
@@ -35,16 +38,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroAnimTL.to(".home_your-content-wrapper", { opacity: 0 });
 
-    if (window.innerWidth > 767) {
-      heroAnimTL.to(
-        ".home_your-bg-image",
-        { width: "23rem", height: "760px", duration: 2.5 },
-        "+=3"
-      );
-    }
+    heroAnimTL.to(
+      ".home_your-bg-image",
+      { width: "23rem", height: "760px", duration: 2.5 },
+      "+=3"
+    );
 
     heroAnimTL
-
       .to(".home_your-bg-image", { opacity: 0.2 })
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
@@ -84,7 +84,10 @@ document.addEventListener("DOMContentLoaded", function () {
       .from(splitHeroline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
   }
 
-  heroAnim();
+  // Run the animation only if on desktop
+  if (window.innerWidth > 767) {
+    heroAnim();
+  }
 
   // Additional animations
   const lines1 = prepareText("[home=heading]");
