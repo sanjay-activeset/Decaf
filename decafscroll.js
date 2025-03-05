@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function heroAnim() {
     // Run only if screen width is greater than 768px (desktop)
-    if (window.matchMedia("(min-width: 769px)").matches) {
+    if (window.matchMedia("(min-width: 1025px)").matches) {
       // Apply SplitType to all elements once
       const splitHeroPara1 = new SplitType("[hero='word']", { types: "lines" });
       const splitHeroline1 = new SplitType("[hero='line']", { types: "lines" });
