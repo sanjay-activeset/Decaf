@@ -737,48 +737,43 @@ gsap.from(".footer_right-content-image", {
   },
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Register GSAP plugins
-  gsap.registerPlugin(ScrollTrigger);
+// Function to check screen size
+function isTabletOrMobile() {
+  return window.innerWidth <= 1024; // Adjust breakpoint if needed
+}
 
-  // Function to check screen size
-  function isTabletOrMobile() {
-    return window.innerWidth <= 1024; // Adjust breakpoint if needed
-  }
+function heroAnimMob() {
+  // Clear any existing ScrollTriggers
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
-  function heroAnimMob() {
-    // Clear any existing ScrollTriggers
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  const heroAnimMobTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".home_your-comp-wrapper",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    },
+    defaults: { duration: 1, ease: "none" },
+  });
 
-    const heroAnimMobTL = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".home_your-comp-wrapper",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: true,
-      },
-      defaults: { duration: 1, ease: "none" },
-    });
+  heroAnimMobTL
+    .to(".home_your-content-wrapper", { opacity: 0 })
+    .to(".home_your-bg-image", {
+      scale: 0.9,
+      borderRadius: "24px",
+    })
+    .to(".home_your-bg-image", { opacity: 0.2 })
+    .to(".home_send", { opacity: 1 });
+}
 
-    heroAnimMobTL
-      .to(".home_your-content-wrapper", { opacity: 0 })
-      .to(".home_your-bg-image", {
-        scale: 0.9,
-        borderRadius: "24px",
-      })
-      .to(".home_your-bg-image", { opacity: 0.2 })
-      .to(".home_send", { opacity: 1 });
-  }
+// Run animation only on mobile & tablet landscape
+if (isTabletOrMobile()) {
+  heroAnimMob();
+}
 
-  // Run animation only on mobile & tablet landscape
+// Re-run animation on resize if screen size matches
+window.addEventListener("resize", function () {
   if (isTabletOrMobile()) {
     heroAnimMob();
   }
-
-  // Re-run animation on resize if screen size matches
-  window.addEventListener("resize", function () {
-    if (isTabletOrMobile()) {
-      heroAnimMob();
-    }
-  });
 });
