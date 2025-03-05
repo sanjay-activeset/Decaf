@@ -718,7 +718,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
 
-  function heroAnim() {
+  function heroAnimMob() {
     // Apply SplitType to all elements once
     const splitHeroPara1 = new SplitType("[hero='word']", { types: "lines" });
     const splitHeroline1 = new SplitType("[hero='line']", { types: "lines" });
@@ -734,7 +734,7 @@ document.addEventListener("DOMContentLoaded", function () {
       el.style.position = "relative";
     });
 
-    const heroAnimTL = gsap.timeline({
+    const heroAnimMobTL = gsap.timeline({
       scrollTrigger: {
         trigger: ".home_your-comp-wrapper",
         start: "top top",
@@ -744,15 +744,15 @@ document.addEventListener("DOMContentLoaded", function () {
       defaults: { duration: 1, ease: "none" },
     });
 
-    heroAnimTL.to(".home_your-content-wrapper", { opacity: 0 });
+    heroAnimMobTL.to(".home_your-content-wrapper", { opacity: 0 });
 
-    heroAnimTL.to(
+    heroAnimMobTL.to(
       ".home_your-bg-image",
       { width: "23rem", height: "760px", duration: 2.5 },
       "+=3"
     );
 
-    heroAnimTL
+    heroAnimMobTL
       .to(".home_your-bg-image", { opacity: 0.2 })
       .to(".home_send", { opacity: 1 })
       .to(".home_send", { opacity: 0 })
@@ -785,4 +785,21 @@ document.addEventListener("DOMContentLoaded", function () {
       )
       .from(splitHeroline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
   }
+
+  // Function to check screen size
+  function isTabletOrMobile() {
+    return window.innerWidth <= 1024; // Adjust breakpoint if needed
+  }
+
+  // Run animation only on mobile & tablet landscape
+  if (isTabletOrMobile()) {
+    heroAnimMob();
+  }
+
+  // Optional: Re-run on window resize
+  window.addEventListener("resize", function () {
+    if (isTabletOrMobile()) {
+      heroAnimMob();
+    }
+  });
 });
