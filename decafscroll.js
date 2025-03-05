@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     heroAnimTL.to(".home_your-content-wrapper", { opacity: 0 });
 
     // Check if the screen width is mobile (e.g., max-width: 768px)
-    if (window.matchMedia("(max-width: 1024px)").matches) {
+    if (window.matchMedia("(max-width: 768px)").matches) {
       heroAnimTL.to(".home_your-bg-image", {
         scale: 0.9,
         borderRadius: "24px",
