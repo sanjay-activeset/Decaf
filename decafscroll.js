@@ -754,36 +754,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroAnimMobTL
       .to(".home_your-bg-image", { opacity: 0.2 })
-      .to(".home_send", { opacity: 1 })
-      .to(".home_send", { opacity: 0 })
-
-      .from(
-        splitHeroPara1.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitHeroline1.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
-
-      .from(
-        splitHeroPara2.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitHeroline2.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
-
-      .from(
-        splitHeroPara3.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitHeroline3.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
-
-      .from(
-        splitHeroPara4.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitHeroline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
+      .to(".home_send", { opacity: 1 });
   }
 
   // Function to check screen size
