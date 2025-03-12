@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const lines2 = prepareText("[home2=heading]");
   const home3 = document.querySelector("[home3=heading]");
 
-  let tl = gsap.timeline({ delay: 4 });
+  let tl = gsap.timeline({ delay: 3.5 });
 
   tl.from(
     ".home_your-logo-image",
