@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     heroAnimTL.to(".home_your-bg-image", {
       width: "23rem",
       height: "760px",
-      duration: 1.5,
+      duration: 1,
     });
 
     heroAnimTL
