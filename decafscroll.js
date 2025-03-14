@@ -42,11 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
       "+=3"
     );
 
-    heroAnimTL.to(
-      ".home_your-bg-image",
-      { width: "23rem", height: "760px", duration: 1.5 },
-      "+=1"
-    );
+    heroAnimTL.to(".home_your-bg-image", {
+      width: "23rem",
+      height: "760px",
+      duration: 1.5,
+    });
 
     heroAnimTL
       .to(".home_your-bg-image", { opacity: 0.2 })
