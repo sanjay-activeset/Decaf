@@ -36,11 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
       defaults: { duration: 1, ease: "none" },
     });
 
-    heroAnimTL.to(".home_your-content-wrapper", { opacity: 0 });
+    heroAnimTL.to(".home_your-content-wrapper", { opacity: 0, duration: 2 });
 
     heroAnimTL.to(
       ".home_your-bg-image",
-      { width: "23rem", height: "760px", duration: 2.5 },
+      { width: "23rem", height: "760px", duration: 2 },
       "+=3"
     );
 
