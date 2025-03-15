@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let headings = document.querySelectorAll("[Heading=wordanimation]");
   headings.forEach((heading) => {
-    heading.style.overflow = "hidden";
+    //heading.style.overflow = "hidden";
     let splitText = new SplitType(heading, { types: "words" });
 
     splitText.words.forEach((word) => {
