@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to prepare text for animation
   function prepareText(selector) {
-    return new SplitType(selector, { types: "lines" }).lines;
+    const element = document.querySelector(selector);
+    return element ? new SplitType(selector, { types: "lines" }).lines : [];
   }
 
   function heroAnim() {
