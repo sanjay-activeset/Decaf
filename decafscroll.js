@@ -11,21 +11,24 @@ document.addEventListener("DOMContentLoaded", function () {
     // Run only on desktop (greater than 767px)
     if (window.innerWidth <= 767) return;
 
-    // Apply SplitType to all elements once
-    const splitHeroPara1 = new SplitType("[hero='word']", { types: "lines" });
-    const splitHeroline1 = new SplitType("[hero='line']", { types: "lines" });
-    const splitHeroPara2 = new SplitType("[hero2='word']", { types: "lines" });
-    const splitHeroline2 = new SplitType("[hero2='line']", { types: "lines" });
-    const splitHeroPara3 = new SplitType("[hero3='word']", { types: "lines" });
-    const splitHeroline3 = new SplitType("[hero3='line']", { types: "lines" });
-    const splitHeroPara4 = new SplitType("[hero4='word']", { types: "lines" });
-    const splitHeroline4 = new SplitType("[hero4='line']", { types: "lines" });
+    // Apply SplitType to all elements with the given attributes
+    const heroAttributes = ["hero", "hero2", "hero3", "hero4"];
+    const splitText = {};
 
+    heroAttributes.forEach((attr) => {
+      splitText[attr] = {
+        words: new SplitType(`[${attr}='word']`, { types: "lines" }),
+        lines: new SplitType(`[${attr}='line']`, { types: "lines" }),
+      };
+    });
+
+    // Ensure all elements with `[hero='line']` or `[hero2='line']` are visible
     document.querySelectorAll("[hero='line'], [hero2='line']").forEach((el) => {
       el.style.display = "block";
       el.style.position = "relative";
     });
 
+    // GSAP Timeline with ScrollTrigger
     const heroAnimTL = gsap.timeline({
       scrollTrigger: {
         trigger: ".section_home",
@@ -61,41 +64,55 @@ document.addEventListener("DOMContentLoaded", function () {
       .to(".home_your-bg-image", { opacity: 0 })
       .to(".home_your-app", { opacity: 1 })
       .from(
-        splitHeroPara1.lines,
+        splitText.hero.words.lines,
         { yPercent: 100, opacity: 0, stagger: 0.5 },
         "-=0.5"
       )
-      .from(splitHeroline1.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .from(splitText.hero.lines.lines, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.5,
+      })
       .to(".home_your-app", { opacity: 0 }, "+=1.5")
       .to(".home_your-set", { opacity: 1 })
       .from(
-        splitHeroPara2.lines,
+        splitText.hero2.words.lines,
         { yPercent: 100, opacity: 0, stagger: 0.5 },
         "-=0.5"
       )
-      .from(splitHeroline2.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .from(splitText.hero2.lines.lines, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.5,
+      })
       .to(".home_your-set", { opacity: 0 }, "+=1.5")
       .to(".home_your-make", { opacity: 1 })
       .from(
-        splitHeroPara3.lines,
+        splitText.hero3.words.lines,
         { yPercent: 100, opacity: 0, stagger: 0.5 },
         "-=0.5"
       )
-      .from(splitHeroline3.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+      .from(splitText.hero3.lines.lines, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.5,
+      })
       .to(".home_your-make", { opacity: 0 }, "+=1.5")
       .to(".home_your-trans", { opacity: 1 })
       .from(
-        splitHeroPara4.lines,
+        splitText.hero4.words.lines,
         { yPercent: 100, opacity: 0, stagger: 0.5 },
         "-=0.5"
       )
-      .from(splitHeroline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
+      .from(splitText.hero4.lines.lines, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.5,
+      });
   }
 
-  // Run the animation only if on desktop
-  if (window.innerWidth > 767) {
-    heroAnim();
-  }
+  // Run the animation on page load (only if on desktop)
+  heroAnim();
 
   // Additional animations
   const lines1 = prepareText("[home=heading]");
