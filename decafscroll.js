@@ -11,25 +11,20 @@ document.addEventListener("DOMContentLoaded", function () {
     // Run only on desktop (greater than 767px)
     if (window.innerWidth <= 767) return;
 
-    // Apply SplitType once per type
-    const splitHeroLines = document.querySelectorAll(
-      "[hero='line'], [hero2='line'], [hero3='line'], [hero4='line']"
-    );
-    splitHeroLines.forEach((el) => {
+    // Apply SplitType to all elements once
+    const splitHeroPara1 = new SplitType("[hero='word']", { types: "lines" });
+    const splitHeroline1 = new SplitType("[hero='line']", { types: "lines" });
+    const splitHeroPara2 = new SplitType("[hero2='word']", { types: "lines" });
+    const splitHeroline2 = new SplitType("[hero2='line']", { types: "lines" });
+    const splitHeroPara3 = new SplitType("[hero3='word']", { types: "lines" });
+    const splitHeroline3 = new SplitType("[hero3='line']", { types: "lines" });
+    const splitHeroPara4 = new SplitType("[hero4='word']", { types: "lines" });
+    const splitHeroline4 = new SplitType("[hero4='line']", { types: "lines" });
+
+    document.querySelectorAll("[hero='line'], [hero2='line']").forEach((el) => {
       el.style.display = "block";
       el.style.position = "relative";
     });
-
-    // Create SplitType instances
-    const splitTextGroups = [
-      { words: "[hero='word']", lines: "[hero='line']" },
-      { words: "[hero2='word']", lines: "[hero2='line']" },
-      { words: "[hero3='word']", lines: "[hero3='line']" },
-      { words: "[hero4='word']", lines: "[hero4='line']" },
-    ].map(({ words, lines }) => ({
-      words: new SplitType(words, { types: "lines" }).lines,
-      lines: new SplitType(lines, { types: "lines" }).lines,
-    }));
 
     const heroAnimTL = gsap.timeline({
       scrollTrigger: {
@@ -46,9 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
       { opacity: 0, duration: 1.5 },
       "+=2"
     );
+
     heroAnimTL.to(
       ".home_your-bg-image",
-      { width: "23rem", height: "760px", duration: 2.5 },
+      {
+        width: "23rem",
+        height: "760px",
+        duration: 2.5,
+      },
       "+=2"
     );
 
@@ -61,59 +61,41 @@ document.addEventListener("DOMContentLoaded", function () {
       .to(".home_your-bg-image", { opacity: 0 })
       .to(".home_your-app", { opacity: 1 })
       .from(
-        splitTextGroups[0].words,
+        splitHeroPara1.lines,
         { yPercent: 100, opacity: 0, stagger: 0.5 },
         "-=0.5"
       )
-      .from(splitTextGroups[0].lines, {
-        yPercent: 100,
-        opacity: 0,
-        stagger: 0.5,
-      })
+      .from(splitHeroline1.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
       .to(".home_your-app", { opacity: 0 }, "+=1.5")
       .to(".home_your-set", { opacity: 1 })
       .from(
-        splitTextGroups[1].words,
+        splitHeroPara2.lines,
         { yPercent: 100, opacity: 0, stagger: 0.5 },
         "-=0.5"
       )
-      .from(splitTextGroups[1].lines, {
-        yPercent: 100,
-        opacity: 0,
-        stagger: 0.5,
-      })
+      .from(splitHeroline2.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
       .to(".home_your-set", { opacity: 0 }, "+=1.5")
       .to(".home_your-make", { opacity: 1 })
       .from(
-        splitTextGroups[2].words,
+        splitHeroPara3.lines,
         { yPercent: 100, opacity: 0, stagger: 0.5 },
         "-=0.5"
       )
-      .from(splitTextGroups[2].lines, {
-        yPercent: 100,
-        opacity: 0,
-        stagger: 0.5,
-      })
+      .from(splitHeroline3.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
       .to(".home_your-make", { opacity: 0 }, "+=1.5")
       .to(".home_your-trans", { opacity: 1 })
       .from(
-        splitTextGroups[3].words,
+        splitHeroPara4.lines,
         { yPercent: 100, opacity: 0, stagger: 0.5 },
         "-=0.5"
       )
-      .from(splitTextGroups[3].lines, {
-        yPercent: 100,
-        opacity: 0,
-        stagger: 0.5,
-      });
+      .from(splitHeroline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
   }
 
   // Run the animation only if on desktop
-  window.addEventListener("load", () => {
-    if (window.innerWidth > 767) {
-      heroAnim();
-    }
-  });
+  if (window.innerWidth > 767) {
+    heroAnim();
+  }
 
   // Additional animations
   const lines1 = prepareText("[home=heading]");
