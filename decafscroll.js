@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // }
 
   // Additional animations
-  const lines1 = prepareText("[home=heading]");
+  //const lines1 = prepareText("[home=heading]");
   const lines2 = prepareText("[home2=heading]");
   const home3 = document.querySelector("[home3=heading]");
 
