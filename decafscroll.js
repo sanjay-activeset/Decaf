@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function heroAnim() {
     // Run only on desktop (greater than 767px)
-    if (window.innerWidth <= 767) return;
+    if (window.innerWidth <= 991) return;
 
     // Apply SplitType to all elements once
     const splitHeroPara1 = new SplitType("[hero='word']", { types: "lines" });
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Run the animation only if on desktop
-  if (window.innerWidth > 767) {
+  if (window.innerWidth > 991) {
     heroAnim();
   }
 
