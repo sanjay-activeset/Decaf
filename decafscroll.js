@@ -11,21 +11,32 @@ document.addEventListener("DOMContentLoaded", function () {
     // Run only on desktop (greater than 767px)
     if (window.innerWidth <= 767) return;
 
-    // Apply SplitType to all elements once
-    const splitHeroPara1 = new SplitType("[hero='word']", { types: "lines" });
-    const splitHeroline1 = new SplitType("[hero='line']", { types: "lines" });
-    const splitHeroPara2 = new SplitType("[hero2='word']", { types: "lines" });
-    const splitHeroline2 = new SplitType("[hero2='line']", { types: "lines" });
-    const splitHeroPara3 = new SplitType("[hero3='word']", { types: "lines" });
-    const splitHeroline3 = new SplitType("[hero3='line']", { types: "lines" });
-    const splitHeroPara4 = new SplitType("[hero4='word']", { types: "lines" });
-    const splitHeroline4 = new SplitType("[hero4='line']", { types: "lines" });
+    // Apply SplitType once for each hero section
+    const splitHeroElements = [
+      { word: "[hero='word']", line: "[hero='line']" },
+      { word: "[hero2='word']", line: "[hero2='line']" },
+      { word: "[hero3='word']", line: "[hero3='line']" },
+      { word: "[hero4='word']", line: "[hero4='line']" },
+    ];
 
-    document.querySelectorAll("[hero='line'], [hero2='line']").forEach((el) => {
-      el.style.display = "block";
-      el.style.position = "relative";
+    const splitHeroData = splitHeroElements.map(({ word, line }) => {
+      return {
+        words: new SplitType(word, { types: "lines" }),
+        lines: new SplitType(line, { types: "lines" }),
+      };
     });
 
+    // Ensure lines are visible
+    document
+      .querySelectorAll(
+        "[hero='line'], [hero2='line'], [hero3='line'], [hero4='line']"
+      )
+      .forEach((el) => {
+        el.style.display = "block";
+        el.style.position = "relative";
+      });
+
+    // Create timeline
     const heroAnimTL = gsap.timeline({
       scrollTrigger: {
         trigger: ".section_home",
@@ -36,60 +47,35 @@ document.addEventListener("DOMContentLoaded", function () {
       defaults: { duration: 1, ease: "none" },
     });
 
+    // Initial animations
     heroAnimTL.to(
       ".home_your-content-wrapper",
       { opacity: 0, duration: 1.5 },
       "+=2"
     );
-
     heroAnimTL.to(
       ".home_your-bg-image",
-      {
-        width: "23rem",
-        height: "760px",
-        duration: 2.5,
-      },
+      { width: "23rem", height: "760px", duration: 2.5 },
       "+=2"
     );
 
-    heroAnimTL
-      .to(".home_your-bg-image", { opacity: 0.2 })
-      .to(".home_send", { opacity: 1 })
-      .to(".home_send-h1", { opacity: 0.2 })
-      .to(".home_send-h2", { opacity: 1 })
-      .to(".home_send", { opacity: 0 })
-      .to(".home_your-bg-image", { opacity: 0 })
-      .to(".home_your-app", { opacity: 1 })
-      .from(
-        splitHeroPara1.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitHeroline1.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
-      .to(".home_your-app", { opacity: 0 }, "+=1.5")
-      .to(".home_your-set", { opacity: 1 })
-      .from(
-        splitHeroPara2.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitHeroline2.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
-      .to(".home_your-set", { opacity: 0 }, "+=1.5")
-      .to(".home_your-make", { opacity: 1 })
-      .from(
-        splitHeroPara3.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitHeroline3.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
-      .to(".home_your-make", { opacity: 0 }, "+=1.5")
-      .to(".home_your-trans", { opacity: 1 })
-      .from(
-        splitHeroPara4.lines,
-        { yPercent: 100, opacity: 0, stagger: 0.5 },
-        "-=0.5"
-      )
-      .from(splitHeroline4.lines, { yPercent: 100, opacity: 0, stagger: 0.5 });
+    // Sequential text and section animations
+    const sections = [
+      { section: ".home_your-app", index: 0 },
+      { section: ".home_your-set", index: 1 },
+      { section: ".home_your-make", index: 2 },
+      { section: ".home_your-trans", index: 3 },
+    ];
+
+    sections.forEach(({ section, index }) => {
+      const { words, lines } = splitHeroData[index];
+
+      heroAnimTL
+        .to(section, { opacity: 1 })
+        .from(words.lines, { yPercent: 100, opacity: 0, stagger: 0.5 }, "-=0.5")
+        .from(lines.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+        .to(section, { opacity: 0 }, "+=1.5");
+    });
   }
 
   // Run the animation only if on desktop
