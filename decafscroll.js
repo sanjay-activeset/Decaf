@@ -98,63 +98,63 @@ document.addEventListener("DOMContentLoaded", function () {
   // }
 
   // Additional animations
-  const lines1 = prepareText("[home=heading]");
-  const lines2 = prepareText("[home2=heading]");
-  const home3 = document.querySelector("[home3=heading]");
+  // const lines1 = prepareText("[home=heading]");
+  // const lines2 = prepareText("[home2=heading]");
+  // const home3 = document.querySelector("[home3=heading]");
 
-  let tl = gsap.timeline({ delay: 4 });
+  // let tl = gsap.timeline({ delay: 4 });
 
-  tl.from(
-    ".home_your-logo-image",
-    {
-      y: 60,
-      autoAlpha: 0,
-      ease: "power3.out",
-      duration: 1.5,
-    },
-    "start"
-  )
-    .from(
-      ".home_your-bg-image",
-      {
-        scale: 1.2,
-        ease: "power3.out",
-        duration: 1.5,
-      },
-      "start"
-    )
-    .from(
-      lines1,
-      {
-        yPercent: 100,
-        autoAlpha: 0,
-        ease: "expo.out",
-        duration: 1.5,
-        stagger: 0.08,
-      },
-      "start+=0.2"
-    )
-    .from(
-      lines2,
-      {
-        yPercent: 100,
-        autoAlpha: 0,
-        ease: "expo.out",
-        duration: 1.5,
-        stagger: 0.08,
-      },
-      "-=1.2"
-    )
-    .from(
-      home3,
-      {
-        y: 50,
-        autoAlpha: 0,
-        ease: "power2.out",
-        duration: 1.5,
-      },
-      "-=1.2"
-    );
+  // tl.from(
+  //   ".home_your-logo-image",
+  //   {
+  //     y: 60,
+  //     autoAlpha: 0,
+  //     ease: "power3.out",
+  //     duration: 1.5,
+  //   },
+  //   "start"
+  // )
+  //   .from(
+  //     ".home_your-bg-image",
+  //     {
+  //       scale: 1.2,
+  //       ease: "power3.out",
+  //       duration: 1.5,
+  //     },
+  //     "start"
+  //   )
+  //   .from(
+  //     lines1,
+  //     {
+  //       yPercent: 100,
+  //       autoAlpha: 0,
+  //       ease: "expo.out",
+  //       duration: 1.5,
+  //       stagger: 0.08,
+  //     },
+  //     "start+=0.2"
+  //   )
+  //   .from(
+  //     lines2,
+  //     {
+  //       yPercent: 100,
+  //       autoAlpha: 0,
+  //       ease: "expo.out",
+  //       duration: 1.5,
+  //       stagger: 0.08,
+  //     },
+  //     "-=1.2"
+  //   )
+  //   .from(
+  //     home3,
+  //     {
+  //       y: 50,
+  //       autoAlpha: 0,
+  //       ease: "power2.out",
+  //       duration: 1.5,
+  //     },
+  //     "-=1.2"
+  //   );
 
   let headings = document.querySelectorAll("[Heading=wordanimation]");
   headings.forEach((heading) => {
