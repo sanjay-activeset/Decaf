@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to prepare text for animation
   function prepareText(selector) {
-    const element = document.querySelector(selector);
-    return element ? new SplitType(selector, { types: "lines" }).lines : [];
+    return new SplitType(selector, { types: "lines" }).lines;
   }
 
   function heroAnim() {
@@ -159,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let headings = document.querySelectorAll("[Heading=wordanimation]");
   headings.forEach((heading) => {
-    //heading.style.overflow = "hidden";
+    heading.style.overflow = "hidden";
     let splitText = new SplitType(heading, { types: "words" });
 
     splitText.words.forEach((word) => {
