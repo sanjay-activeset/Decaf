@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Run the animation only if on desktop
-  if (window.innerWidth > 76) {
+  if (window.innerWidth > 767) {
     heroAnim();
   }
 
