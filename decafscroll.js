@@ -12,17 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.innerWidth <= 767) return;
 
     // Apply SplitType once for each hero section
-    const splitHeroElements = [
-      { word: "[hero='word']", line: "[hero='line']" },
-      { word: "[hero2='word']", line: "[hero2='line']" },
-      { word: "[hero3='word']", line: "[hero3='line']" },
-      { word: "[hero4='word']", line: "[hero4='line']" },
+    const heroSections = [
+      { text: "[hero='word']", line: "[hero='line']" },
+      { text: "[hero2='word']", line: "[hero2='line']" },
+      { text: "[hero3='word']", line: "[hero3='line']" },
+      { text: "[hero4='word']", line: "[hero4='line']" },
     ];
 
-    const splitHeroData = splitHeroElements.map(({ word, line }) => {
+    const splitTextData = heroSections.map(({ text, line }) => {
       return {
-        words: new SplitType(word, { types: "lines" }),
-        lines: new SplitType(line, { types: "lines" }),
+        splitWords: new SplitType(text, { types: "lines" }),
+        splitLines: new SplitType(line, { types: "lines" }),
       };
     });
 
@@ -31,13 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
       .querySelectorAll(
         "[hero='line'], [hero2='line'], [hero3='line'], [hero4='line']"
       )
-      .forEach((el) => {
-        el.style.display = "block";
-        el.style.position = "relative";
+      .forEach((element) => {
+        element.style.display = "block";
+        element.style.position = "relative";
       });
 
-    // Create timeline
-    const heroAnimTL = gsap.timeline({
+    // Create GSAP timeline
+    const heroTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".section_home",
         start: "top top",
@@ -48,33 +48,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Initial animations
-    heroAnimTL.to(
+    heroTimeline.to(
       ".home_your-content-wrapper",
       { opacity: 0, duration: 1.5 },
       "+=2"
     );
-    heroAnimTL.to(
+    heroTimeline.to(
       ".home_your-bg-image",
       { width: "23rem", height: "760px", duration: 2.5 },
       "+=2"
     );
 
     // Sequential text and section animations
-    const sections = [
-      { section: ".home_your-app", index: 0 },
-      { section: ".home_your-set", index: 1 },
-      { section: ".home_your-make", index: 2 },
-      { section: ".home_your-trans", index: 3 },
+    const contentSections = [
+      { sectionClass: ".home_your-app", dataIndex: 0 },
+      { sectionClass: ".home_your-set", dataIndex: 1 },
+      { sectionClass: ".home_your-make", dataIndex: 2 },
+      { sectionClass: ".home_your-trans", dataIndex: 3 },
     ];
 
-    sections.forEach(({ section, index }) => {
-      const { words, lines } = splitHeroData[index];
+    contentSections.forEach(({ sectionClass, dataIndex }) => {
+      const { splitWords, splitLines } = splitTextData[dataIndex];
 
-      heroAnimTL
-        .to(section, { opacity: 1 })
-        .from(words.lines, { yPercent: 100, opacity: 0, stagger: 0.5 }, "-=0.5")
-        .from(lines.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
-        .to(section, { opacity: 0 }, "+=1.5");
+      heroTimeline
+        .to(sectionClass, { opacity: 1 })
+        .from(
+          splitWords.lines,
+          { yPercent: 100, opacity: 0, stagger: 0.5 },
+          "-=0.5"
+        )
+        .from(splitLines.lines, { yPercent: 100, opacity: 0, stagger: 0.5 })
+        .to(sectionClass, { opacity: 0 }, "+=1.5");
     });
   }
 
