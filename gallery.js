@@ -1,4 +1,19 @@
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { InertiaPlugin } from "gsap/InertiaPlugin";
+import { sectionBio } from "./section-bio";
+import { sectionGallery } from "./section-gallery";
+import { sectionJournelScroll } from "./section-journal";
+import { sectionDraggable } from "./section-draggable";
+import { Draggable } from "gsap/Draggable";
+import { sectionDiscover } from "./section-discover";
+import { sectionPhilosophy } from "./section-philosophy";
+import { sectionWork } from "./section-work";
+import { sectionFooter } from "./section-footer";
+import { navbarAnimation, navbarToggle } from "./navbar";
+
+import gsap from "gsap";
 
 export const sectionGallery = () => {
   // Disable scrolling function
