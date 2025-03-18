@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
   function heroAnim() {
-    // Run only on desktop (greater than 767px)
     if (window.innerWidth <= 991) return;
 
     const heroAnimTL = gsap.timeline({
@@ -75,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scrub: true,
       },
       defaults: { duration: 1, ease: "none" },
+      paused: false, // Start playing automatically
     });
 
     heroAnimTL.to(".home_your-content-wrapper", { y: "-50", duration: 1 }, "0");
@@ -82,18 +82,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroAnimTL.to(
       ".home_your-bg-image",
-      {
-        width: "23rem",
-        height: "80vh",
-        duration: 0.5,
-      },
+      { width: "23rem", height: "80vh", duration: 0.5 },
       "<"
     );
     heroAnimTL.to(".home_your-bg-image", { opacity: 0.2, duration: 0.5 }, "<");
     heroAnimTL.to(".home_send", { opacity: 1, duration: 0.5 });
 
     heroAnimTL
-
       .to(".home_send-h1", { opacity: 0.2, duration: 0.2 })
       .to(".home_send-h2", { opacity: 1, duration: 0.7 })
       .to(".home_send", { opacity: 0 })
@@ -105,9 +100,24 @@ document.addEventListener("DOMContentLoaded", function () {
       .to(".home_your-make", { opacity: 1 })
       .to(".home_your-make", { opacity: 0 }, "+=1")
       .to(".home_your-trans", { opacity: 1 });
+
+    // Toggle Play/Pause Button
+    const toggleButton = document.querySelector("#toggleAnimation");
+    let isPlaying = true;
+
+    toggleButton.addEventListener("click", () => {
+      if (isPlaying) {
+        heroAnimTL.pause();
+        toggleButton.innerText = "Play Animation";
+      } else {
+        heroAnimTL.resume();
+        toggleButton.innerText = "Pause Animation";
+      }
+      isPlaying = !isPlaying;
+    });
   }
 
-  // Run the animation only if on desktop
+  // Run the animation only on desktop
   if (window.innerWidth > 991) {
     heroAnim();
   }
