@@ -17,4 +17,17 @@ splitTypes.forEach((char) => {
     stagger: 0.1,
     ease: "expoScale.out",
   });
+
+  gsap.from(".new_content-card", {
+    y: 100,
+    opacity: 0,
+    stagger: 0.3,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".new_content-wrapper", // Use a parent container
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+  });
 });
