@@ -77,18 +77,19 @@ document.addEventListener("DOMContentLoaded", function () {
     heroAnimTL.to(
       ".home_your-content-wrapper",
       { opacity: 0, duration: 2.5, ease: "power2.out" },
-      2 // Delay of 2 seconds before starting
+      "<" // Start at the same time as the next animation
     );
 
-    heroAnimTL.to(
+    heroAnimTL.fromTo(
       ".home_your-bg-image",
+      { height: "100%" }, // Ensure GSAP recognizes the initial height
       {
         width: "23rem",
-        height: "760px",
-        duration: 2.5,
+        height: "80%", // Ensure this value is animatable
         ease: "power1.inOut",
+        duration: 2.5,
       },
-      "-=2" // Start at the same time as the previous animation
+      "<" // Start at the same time as the previous animation
     );
 
     heroAnimTL
