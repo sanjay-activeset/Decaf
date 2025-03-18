@@ -255,8 +255,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   cardAnimTL
-    .to(".decaf_visa-card", { opacity: 0.2 })
-    .to(".decaf_every", { opacity: 1 }, "1")
     .to(".decaf_every-content-h-1", { opacity: 0.2 })
     .to(".decaf_every-content-h-2", { opacity: 1 })
     .to(".decaf_every", { opacity: 0 })
