@@ -86,9 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
         height: "90vh",
         duration: 1,
       },
-      "<"
+      "0"
     );
-    heroAnimTL.to(".home_your-bg-image", { opacity: 0.2 }, "<");
+    heroAnimTL.to(".home_your-bg-image", { opacity: 0.2 }, "0");
 
     heroAnimTL
 
