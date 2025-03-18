@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const cardAnimTL = gsap.timeline({
     scrollTrigger: {
-      trigger: ".latest_heading-wrapper",
+      trigger: ".section_latest",
       start: "top top",
       end: "bottom bottom",
       scrub: true,
