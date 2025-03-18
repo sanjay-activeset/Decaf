@@ -1,14 +1,15 @@
-let allcontent = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".latest_heading-wrapper",
-    start: "top top",
-    end: "bottom bottom",
-    scrub: true,
-  },
-});
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.registerPlugin(ScrollTrigger);
 
-allcontent.fromTo(
-  ".latest_heading",
-  { scale: 1.1 },
-  { scale: 0.8, duration: 1 }
-);
+  const cardAnimTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".latest_heading-wrapper",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    },
+    defaults: { ease: "none" },
+  });
+
+  cardAnimTL.fromTo(".latest_heading", { scale: 1.3 }, { scale: 0.7 });
+});
