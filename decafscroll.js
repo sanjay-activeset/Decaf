@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         width: "23rem",
         height: "760px",
         duration: 2.5,
-        ease: "power2.out",
+        ease: "power1.inOut",
       },
       "2"
     );
