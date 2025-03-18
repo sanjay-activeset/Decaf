@@ -12,6 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   cardAnimTL
-    .fromTo(".latest_heading", { scale: 1.3 }, { scale: 0.7 })
-    .fromTo(".latest_heading", { y: "0" }, { y: 40 });
+    .fromTo(".latest_heading", { scale: 1.5 }, { scale: 0.7 })
+    .fromTo(".latest_heading", { y: "0" }, { y: 400 });
 });
