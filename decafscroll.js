@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "-=1.2"
     );
 
-  function heroAnimDesktop() {
+  function heroAnim() {
     const heroAnimTL = gsap.timeline({
       scrollTrigger: {
         trigger: ".section_home",
@@ -77,23 +77,23 @@ document.addEventListener("DOMContentLoaded", function () {
     heroAnimTL.to(
       ".home_your-content-wrapper",
       { opacity: 0, duration: 2.5, ease: "power2.out" },
-      "+=1.5"
+      "<" // Start at the same time as the next animation
     );
 
     heroAnimTL.fromTo(
       ".home_your-bg-image",
-      { height: "100%" },
+      { height: "100%" }, // Ensure GSAP recognizes the initial height
       {
         width: "23rem",
-        height: "80%",
+        height: "80%", // Ensure this value is animatable
         ease: "power1.inOut",
         duration: 2.5,
       },
-      "+=1.5"
+      "<" // Start at the same time as the previous animation
     );
 
     heroAnimTL
-      .to(".home_your-bg-image", { opacity: 0.2 }, "+=1.5")
+      .to(".home_your-bg-image", { opacity: 0.2 }, "2")
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
       .to(".home_send-h2", { opacity: 1 })
@@ -106,6 +106,12 @@ document.addEventListener("DOMContentLoaded", function () {
       .to(".home_your-make", { opacity: 1 })
       .to(".home_your-make", { opacity: 0 }, "+=1")
       .to(".home_your-trans", { opacity: 1 });
+  }
+
+  function checkAndRunAnimation() {
+    if (window.innerWidth > 991) {
+      heroAnim();
+    }
   }
 
   gsap.set(".send_globe-send", { scale: 0, x: -50, opacity: 0 });
