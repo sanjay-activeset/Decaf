@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroAnimTL
 
-      .to(".home_send-h1", { opacity: 0.2, duration: 0.3 })
+      .to(".home_send-h1", { opacity: 0.2, duration: 0.1 })
       .to(".home_send-h2", { opacity: 1 })
       .to(".home_send", { opacity: 0 })
       .to(".home_your-bg-image", { opacity: 0 })
