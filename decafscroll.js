@@ -77,11 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
       defaults: { duration: 1, ease: "none" },
     });
 
-    heroAnimTL.to(
-      ".home_your-content-wrapper",
-      { y: "-50", duration: 1 },
-      "+=1"
-    );
+    heroAnimTL.to(".home_your-content-wrapper", { y: "-50", duration: 1 }, "0");
     heroAnimTL.to(".home_your-content-wrapper", { opacity: 0, duration: 1 });
 
     heroAnimTL.to(
