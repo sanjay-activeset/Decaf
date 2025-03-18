@@ -17,29 +17,4 @@ splitTypes.forEach((char) => {
     stagger: 0.1,
     ease: "expoScale.out",
   });
-
-  const storyHeadingLine = document.querySelector(".story_heading-line");
-
-  if (storyHeadingLine) {
-    // Ensure SplitType is applied only once
-    if (!storyHeadingLine.dataset.splitApplied) {
-      new SplitType(storyHeadingLine, { types: "lines" });
-      storyHeadingLine.dataset.splitApplied = true;
-    }
-
-    let firstSequence = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".story_content-wrapper",
-        start: "top top",
-        end: "80% top",
-        scrub: 1,
-      },
-    });
-
-    firstSequence.from(".story_heading-line .line", {
-      opacity: 0.2, // Ensure it starts invisible
-      stagger: 0.1,
-      ease: "expo.out",
-    });
-  }
 });
