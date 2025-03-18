@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "-=1.2"
     );
 
-  function heroAnim() {
+  function heroAnimDesktop() {
     const heroAnimTL = gsap.timeline({
       scrollTrigger: {
         trigger: ".section_home",
@@ -77,19 +77,19 @@ document.addEventListener("DOMContentLoaded", function () {
     heroAnimTL.to(
       ".home_your-content-wrapper",
       { opacity: 0, duration: 2.5, ease: "power2.out" },
-      "<" // Start at the same time as the next animation
+      "<"
     );
 
     heroAnimTL.fromTo(
       ".home_your-bg-image",
-      { height: "100%" }, // Ensure GSAP recognizes the initial height
+      { height: "100%" },
       {
         width: "23rem",
-        height: "80%", // Ensure this value is animatable
+        height: "80%",
         ease: "power1.inOut",
         duration: 2.5,
       },
-      "<" // Start at the same time as the previous animation
+      "<"
     );
 
     heroAnimTL
@@ -108,11 +108,39 @@ document.addEventListener("DOMContentLoaded", function () {
       .to(".home_your-trans", { opacity: 1 });
   }
 
-  function checkAndRunAnimation() {
-    if (window.innerWidth > 991) {
-      heroAnim();
-    }
+  function heroAnimMobile() {
+    const heroAnimTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section_home",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+
+    heroAnimTL
+      .fromTo(
+        ".home_your-content-wrapper",
+        { opacity: 1 },
+        { opacity: 0, duration: 1.5, ease: "power2.out" }
+      )
+      .fromTo(
+        ".home_your-bg-image",
+        { scale: 1 },
+        { scale: 0.8, duration: 1.5, ease: "power2.out" },
+        "<"
+      )
+      .fromTo(".home_send", { opacity: 0 }, { opacity: 1, duration: 1.5 }, "<");
   }
+
+  // Run different animations based on screen width
+  gsap.matchMedia().add("(min-width: 992px)", () => {
+    heroAnimDesktop();
+  });
+
+  gsap.matchMedia().add("(max-width: 991px)", () => {
+    heroAnimMobile();
+  });
 
   gsap.set(".send_globe-send", { scale: 0, x: -50, opacity: 0 });
   gsap.set("[send='arrow']", { y: 100, opacity: 0 });
