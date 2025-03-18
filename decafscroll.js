@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     heroAnimTL
-      .to(".home_your-bg-image", { opacity: 0.2 }, "1.5")
+      .to(".home_your-bg-image", { opacity: 0.2 }, "1")
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
       .to(".home_send-h2", { opacity: 1 })
@@ -112,6 +112,63 @@ document.addEventListener("DOMContentLoaded", function () {
       heroAnim();
     }
   }
+
+  gsap.set(".send_globe-send", { scale: 0, x: -50, opacity: 0 });
+  gsap.set("[send='arrow']", { y: 100, opacity: 0 });
+  gsap.set("[send='text']", { y: 100, opacity: 0 });
+  gsap.set(".send_globe-recevie", { scale: 0, x: -50, opacity: 0 });
+  gsap.set("[send2='arrow']", { y: -100, opacity: 0 });
+  gsap.set("[send2='text']", { y: -100, opacity: 0 });
+
+  const t2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".send_globe-send",
+      start: "top 90%",
+      toggleActions: "play none none none",
+    },
+  });
+
+  const tl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: "[send2='animation']",
+      start: "top 90%",
+      toggleActions: "play none none none",
+    },
+  });
+
+  tl2
+    .to(".send_globe-send", {
+      scale: 1,
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+    })
+    .to(
+      "[send='arrow']",
+      { y: 0, opacity: 1, delay: 0.2, duration: 0.8, ease: "power2.out" },
+      "-=0.6"
+    )
+    .to(
+      "[send='text']",
+      { y: 0, opacity: 1, delay: 0.2, duration: 0.8, ease: "power2.out" },
+      "-=0.6"
+    )
+    .to(
+      ".send_globe-recevie",
+      { scale: 1, x: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+      "-=0.5"
+    )
+    .to(
+      "[send2='arrow']",
+      { y: 0, opacity: 1, delay: 0.2, duration: 0.6, ease: "power2.out" },
+      "-=0.5"
+    )
+    .to(
+      "[send2='text']",
+      { y: 0, opacity: 1, delay: 0.2, duration: 0.6, ease: "power2.out" },
+      "-=0.5"
+    );
 
   checkAndRunAnimation();
   window.addEventListener("resize", checkAndRunAnimation);
