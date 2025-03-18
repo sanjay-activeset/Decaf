@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         duration: 2.5,
         ease: "power2.out",
       },
-      "2"
+      "2.5"
     );
 
     heroAnimTL
