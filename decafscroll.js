@@ -183,6 +183,22 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
+  gsap.from("[manage='ball']", {
+    x: "-100%",
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".manage-component",
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+    stagger: {
+      amount: 0.5,
+      from: "center",
+    },
+  });
+
   checkAndRunAnimation();
   window.addEventListener("resize", checkAndRunAnimation);
 });
