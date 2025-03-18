@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Ensure prepareText is defined before calling
   function prepareText(selector) {
     return document.querySelectorAll(selector);
   }
 
-  // Additional animations
   const lines1 = prepareText("[home=heading]");
   const lines2 = prepareText("[home2=heading]");
   const home3 = document.querySelector("[home3=heading]");
@@ -78,8 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroAnimTL.to(
       ".home_your-content-wrapper",
-      { opacity: 0, duration: 1.5, ease: "power2.out" },
-      "1"
+      { opacity: 0, duration: 2, ease: "power2.out" },
+      "1.5"
     );
 
     heroAnimTL.to(
@@ -90,11 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
         duration: 2,
         ease: "power2.out",
       },
-      "1"
+      "1.5"
     );
 
     heroAnimTL
-      .to(".home_your-bg-image", { opacity: 0.2 }, "1")
+      .to(".home_your-bg-image", { opacity: 0.2 }, "1.5")
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
       .to(".home_send-h2", { opacity: 1 })
