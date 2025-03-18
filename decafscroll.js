@@ -85,10 +85,10 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         width: "23rem",
         height: "760px",
-        duration: 3,
+        duration: 2.5,
         ease: "power2.out",
       },
-      "2.5"
+      "2"
     );
 
     heroAnimTL
