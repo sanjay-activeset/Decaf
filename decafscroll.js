@@ -99,11 +99,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .to(".home_send", { opacity: 0 })
       .to(".home_your-bg-image", { opacity: 0 })
       .to(".home_your-app", { opacity: 1 })
-      .to(".home_your-app", { opacity: 0 }, "+=1")
+      .to(".home_your-app", { opacity: 0 }, "+=0.5")
       .to(".home_your-set", { opacity: 1 })
-      .to(".home_your-set", { opacity: 0 }, "+=1")
+      .to(".home_your-set", { opacity: 0 }, "+=0.5")
       .to(".home_your-make", { opacity: 1 })
-      .to(".home_your-make", { opacity: 0 }, "+=1")
+      .to(".home_your-make", { opacity: 0 }, "+=0.5")
       .to(".home_your-trans", { opacity: 1 });
   }
 
