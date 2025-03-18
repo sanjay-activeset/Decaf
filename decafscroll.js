@@ -77,32 +77,34 @@ document.addEventListener("DOMContentLoaded", function () {
     heroAnimTL.to(
       ".home_your-content-wrapper",
       { opacity: 0, duration: 2.5, ease: "power2.out" },
-      "+=2"
+      2 // Delay of 2 seconds before starting
     );
 
     heroAnimTL.to(
       ".home_your-bg-image",
       {
         width: "23rem",
-        height: "48rem",
+        height: "760px",
         duration: 2.5,
+        ease: "power1.inOut",
       },
-      "0"
-    ),
-      heroAnimTL
-        .to(".home_your-bg-image", { opacity: 0.2 })
-        .to(".home_send", { opacity: 1 })
-        .to(".home_send-h1", { opacity: 0.2 })
-        .to(".home_send-h2", { opacity: 1 })
-        .to(".home_send", { opacity: 0 })
-        .to(".home_your-bg-image", { opacity: 0 })
-        .to(".home_your-app", { opacity: 1 })
-        .to(".home_your-app", { opacity: 0 }, "+=1")
-        .to(".home_your-set", { opacity: 1 })
-        .to(".home_your-set", { opacity: 0 }, "+=1")
-        .to(".home_your-make", { opacity: 1 })
-        .to(".home_your-make", { opacity: 0 }, "+=1")
-        .to(".home_your-trans", { opacity: 1 });
+      "-=2" // Start at the same time as the previous animation
+    );
+
+    heroAnimTL
+      .to(".home_your-bg-image", { opacity: 0.2 }, "2")
+      .to(".home_send", { opacity: 1 })
+      .to(".home_send-h1", { opacity: 0.2 })
+      .to(".home_send-h2", { opacity: 1 })
+      .to(".home_send", { opacity: 0 })
+      .to(".home_your-bg-image", { opacity: 0 })
+      .to(".home_your-app", { opacity: 1 })
+      .to(".home_your-app", { opacity: 0 }, "+=1")
+      .to(".home_your-set", { opacity: 1 })
+      .to(".home_your-set", { opacity: 0 }, "+=1")
+      .to(".home_your-make", { opacity: 1 })
+      .to(".home_your-make", { opacity: 0 }, "+=1")
+      .to(".home_your-trans", { opacity: 1 });
   }
 
   function checkAndRunAnimation() {
