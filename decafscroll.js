@@ -309,16 +309,16 @@ document.addEventListener("DOMContentLoaded", function () {
       end: "bottom bottom",
       scrub: true,
     },
-    defaults: { ease: "none" },
+    defaults: { duration: 1, ease: "none" },
   });
 
   cardAnimTL
     .to(".decaf_every-content-h-1", { opacity: 0.2, duration: 0.3 })
-    .to(".decaf_every-content-h-2", { opacity: 1, duration: 0.7 }, "-=0.3") // Adjust timing to avoid conflicts
-    .to(".decaf_every", { autoAlpha: 0 }) // autoAlpha also hides visibility
-    .to(".decaf_wallet", { autoAlpha: 1 })
+    .to(".decaf_every-content-h-2", { opacity: 1, duration: 0.7 }, "0.5")
+    .to(".decaf_every", { opacity: 0 })
+    .to(".decaf_wallet", { opacity: 1 })
     .to(".decaf_wallet-content-h-1", { opacity: 0.2, duration: 0.3 })
-    .to(".decaf_wallet-content-h-2", { opacity: 1, duration: 0.7 }, "-=0.3");
+    .to(".decaf_wallet-content-h-2", { opacity: 1, duration: 0.7 });
 
   const animations = [
     {
