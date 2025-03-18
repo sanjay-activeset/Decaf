@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "<"
     );
     heroAnimTL.to(".home_your-bg-image", { opacity: 0.2, duration: 0.5 }, "<");
-    heroAnimTL.to(".home_send", { opacity: 1, duration: 0.5 }, "<");
+    heroAnimTL.to(".home_send", { opacity: 1, duration: 0.5 });
 
     heroAnimTL
 
