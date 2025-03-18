@@ -83,18 +83,14 @@ document.addEventListener("DOMContentLoaded", function () {
       "+=2"
     );
 
-    heroAnimTL.to(
-      ".home_your-bg-image",
-      {
-        width: "23rem",
-        height: "760px",
-        duration: 2.5,
-      },
-      "+=2"
-    );
+    heroAnimTL.to(".home_your-bg-image", {
+      width: "23rem",
+      height: "760px",
+      duration: 2.5,
+    });
 
     heroAnimTL
-      .to(".home_your-bg-image", { opacity: 0.2 })
+      .to(".home_your-bg-image", { opacity: 0.2 }, "<")
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
       .to(".home_send-h2", { opacity: 1 })
@@ -293,4 +289,65 @@ document.addEventListener("DOMContentLoaded", function () {
 
   checkAndRunAnimation();
   window.addEventListener("resize", checkAndRunAnimation);
+});
+
+// Function to check screen size
+function isTabletOrMobile() {
+  return window.innerWidth <= 1024; // Adjust breakpoint if needed
+}
+
+let heroAnimMobTL; // Declare timeline variable globally
+let heroAnimMobInitialized = false; // Track if the animation is initialized
+
+function heroAnimMob() {
+  // Kill existing timeline only if it's initialized
+  if (heroAnimMobInitialized && heroAnimMobTL) {
+    heroAnimMobTL.scrollTrigger?.kill();
+    heroAnimMobTL.kill();
+    heroAnimMobTL = null; // Reset timeline
+  }
+
+  // Create GSAP timeline for mobile & tablet landscape
+  heroAnimMobTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".home_your-comp-wrapper",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    },
+    defaults: { duration: 1, ease: "none" },
+  });
+
+  heroAnimMobTL
+    .to(".home_your-content-wrapper", { opacity: 0 })
+    .to(".home_your-bg-image", {
+      scale: 0.9,
+      borderRadius: "24px",
+    })
+    .to(".home_your-bg-image", { opacity: 0.2 })
+    .to(".home_send", { opacity: 1 });
+
+  heroAnimMobInitialized = true; // Mark animation as initialized
+}
+
+// Initial check for screen size
+if (isTabletOrMobile()) {
+  heroAnimMob();
+}
+
+// Re-run animation on resize only if necessary
+window.addEventListener("resize", function () {
+  if (isTabletOrMobile()) {
+    if (!heroAnimMobInitialized) {
+      heroAnimMob();
+    }
+  } else {
+    // If switching to a larger screen, kill the animation
+    if (heroAnimMobInitialized) {
+      heroAnimMobTL?.scrollTrigger?.kill();
+      heroAnimMobTL?.kill();
+      heroAnimMobTL = null;
+      heroAnimMobInitialized = false;
+    }
+  }
 });
