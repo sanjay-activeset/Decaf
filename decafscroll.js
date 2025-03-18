@@ -223,6 +223,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  gsap.set("[card='margin']", { marginTop: "-0.5rem" });
+
+  let mm = gsap.matchMedia();
+
+  mm.add("(min-width: 768px)", () => {
+    gsap.to("[card='margin']", {
+      marginTop: "-3.5rem",
+      duration: 1,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "[card='margin']",
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
+  });
+
+  mm.add("(max-width: 767px)", () => {
+    gsap.to("[card='margin']", {
+      marginTop: "-2.1rem",
+      duration: 1,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "[card='margin']",
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
+  });
+
   checkAndRunAnimation();
   window.addEventListener("resize", checkAndRunAnimation);
 });
