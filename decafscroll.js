@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const lines2 = prepareText("[home2=heading]");
   const home3 = document.querySelector("[home3=heading]");
 
-  let tl = gsap.timeline({ delay: 4 });
+  let tl = gsap.timeline({ delay: 2.5 });
 
   tl.from(
     ".home_your-logo-image",
@@ -257,12 +257,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   cardAnimTL
-    .to(".decaf_every-content-h-1", { opacity: 0.2 })
-    .to(".decaf_every-content-h-2", { opacity: 1 }, "<")
-    .to(".decaf_every", { opacity: 0 }, "+=1")
-    .to(".decaf_wallet", { opacity: 1 })
+    .to(".decaf_every-content-h-1", { opacity: 0.2, duration: 0.5 })
+    .to(".decaf_every-content-h-2", { opacity: 1, duration: 0.5 }, "0.5")
+    .to(".decaf_every", { opacity: 0 })
+    .to(".decaf_wallet", { opacity: 1, duration: 0.5 }, "0.5")
     .to(".decaf_wallet-content-h-1", { opacity: 0.2 })
-    .to(".decaf_wallet-content-h-2", { opacity: 1 }, "<");
+    .to(".decaf_wallet-content-h-2", { opacity: 1 });
 
   const animations = [
     {
