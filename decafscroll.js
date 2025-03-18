@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ".home_your-bg-image",
       {
         width: "23rem",
-        height: "90vh",
+        height: "80vh",
         duration: 1,
       },
       "0"
