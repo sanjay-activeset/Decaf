@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .to(".decaf_every-content-h-1", { opacity: 0.2, duration: 0.3 })
     .to(".decaf_every-content-h-2", { opacity: 1, duration: 0.7 }, "0.5")
     .to(".decaf_every", { opacity: 0 })
-    .to(".decaf_wallet", { opacity: 1 }, "0.5")
+    .to(".decaf_wallet", { opacity: 1 })
     .to(".decaf_wallet-content-h-1", { opacity: 0.2, duration: 0.3 })
     .to(".decaf_wallet-content-h-2", { opacity: 1, duration: 0.7 });
 
