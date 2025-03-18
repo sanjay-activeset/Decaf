@@ -64,6 +64,9 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
   function heroAnim() {
+    // Run only on desktop (greater than 767px)
+    if (window.innerWidth <= 991) return;
+
     const heroAnimTL = gsap.timeline({
       scrollTrigger: {
         trigger: ".section_home",
@@ -71,47 +74,44 @@ document.addEventListener("DOMContentLoaded", function () {
         end: "bottom bottom",
         scrub: true,
       },
-      defaults: { duration: 1.5, ease: "none" },
+      defaults: { duration: 1, ease: "none" },
     });
 
     heroAnimTL.to(
       ".home_your-content-wrapper",
-      { opacity: 0, duration: 2.5, ease: "power2.out" },
-      "<" // Start at the same time as the next animation
+      { opacity: 0, duration: 1.5 },
+      "+=2"
     );
 
-    heroAnimTL.fromTo(
+    heroAnimTL.to(
       ".home_your-bg-image",
-      { height: "100%" }, // Ensure GSAP recognizes the initial height
       {
         width: "23rem",
-        height: "80%", // Ensure this value is animatable
-        ease: "power1.inOut",
+        height: "760px",
         duration: 2.5,
       },
-      "<" // Start at the same time as the previous animation
+      "+=2"
     );
 
     heroAnimTL
-      .to(".home_your-bg-image", { opacity: 0.2 }, "2")
+      .to(".home_your-bg-image", { opacity: 0.2 })
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
       .to(".home_send-h2", { opacity: 1 })
       .to(".home_send", { opacity: 0 })
       .to(".home_your-bg-image", { opacity: 0 })
       .to(".home_your-app", { opacity: 1 })
-      .to(".home_your-app", { opacity: 0 }, "+=1")
+      .to(".home_your-app", { opacity: 0 }, "+=1.5")
       .to(".home_your-set", { opacity: 1 })
-      .to(".home_your-set", { opacity: 0 }, "+=1")
+      .to(".home_your-set", { opacity: 0 }, "+=1.5")
       .to(".home_your-make", { opacity: 1 })
-      .to(".home_your-make", { opacity: 0 }, "+=1")
+      .to(".home_your-make", { opacity: 0 }, "+=1.5")
       .to(".home_your-trans", { opacity: 1 });
   }
 
-  function checkAndRunAnimation() {
-    if (window.innerWidth > 991) {
-      heroAnim();
-    }
+  // Run the animation only if on desktop
+  if (window.innerWidth > 991) {
+    heroAnim();
   }
 
   gsap.set(".send_globe-send", { scale: 0, x: -50, opacity: 0 });
