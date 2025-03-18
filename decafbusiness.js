@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .to(".is--form-top", { y: "0%", scale: 1 })
         .to(".is--sign-1", { opacity: 0.2 })
         .to(".sign-in_simple", { opacity: 1 })
-        .to(".sign-in_simple-text-1", { opacity: 0.2 })
+        .to(".sign-in_simple-text-1", { opacity: 0.2 }, "0.5")
         .to(".sign-in_simple-text-2", { opacity: 1 }, "0.5")
         .to(".sign-in_simple-text-2", { opacity: 0.2 }, "0.5")
         .to(".sign-in_simple-text-3", { opacity: 1 }, "0.5")
