@@ -255,6 +255,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  const cardAnimTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".section_decaf",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    },
+    defaults: { duration: 1, ease: "none" },
+  });
+
   cardAnimTL
     .to(".decaf_visa-card", { opacity: 0.2 })
     .to(".decaf_every", { opacity: 1 })
@@ -263,7 +273,10 @@ document.addEventListener("DOMContentLoaded", function () {
     .to(".decaf_every", { opacity: 0 })
     .to(".decaf_wallet", { opacity: 1 })
     .to(".decaf_wallet-content-h-1", { opacity: 0.2 })
-    .to(".decaf_wallet-content-h-2", { opacity: 1 });
+    .to(".decaf_wallet-content-h-2", { opacity: 1 })
+    .to(".decaf_wallet", { opacity: 0 })
+    .to(".decaf_visa-card", { opacity: 1 });
+
   const animations = [
     {
       headingsAttr: "Heading11",
@@ -286,8 +299,6 @@ document.addEventListener("DOMContentLoaded", function () {
       trigger: ".receive-component",
     },
   ];
-
-  let timelines = {}; // Store all timelines
 
   checkAndRunAnimation();
   window.addEventListener("resize", checkAndRunAnimation);
