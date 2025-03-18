@@ -199,6 +199,30 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
+  const cards = [
+    "[us1='card']",
+    "[us2='card']",
+    "[us3='card']",
+    "[us4='card']",
+    "[us5='card']",
+  ];
+
+  cards.forEach((card, index) => {
+    gsap.set(card, { scale: 0 });
+
+    gsap.to(card, {
+      scale: 1,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+      delay: index * 0.1,
+    });
+  });
+
   checkAndRunAnimation();
   window.addEventListener("resize", checkAndRunAnimation);
 });
