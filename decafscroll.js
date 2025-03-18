@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
     heroAnimTL.to(
       ".home_your-content-wrapper",
       { opacity: 0, duration: 2.5, ease: "power2.out" },
-      "<"
+      "+=1.5"
     );
 
     heroAnimTL.fromTo(
@@ -89,11 +89,11 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power1.inOut",
         duration: 2.5,
       },
-      "<"
+      "+=1.5"
     );
 
     heroAnimTL
-      .to(".home_your-bg-image", { opacity: 0.2 }, "2")
+      .to(".home_your-bg-image", { opacity: 0.2 }, "+=1.5")
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
       .to(".home_send-h2", { opacity: 1 })
@@ -107,40 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .to(".home_your-make", { opacity: 0 }, "+=1")
       .to(".home_your-trans", { opacity: 1 });
   }
-
-  function heroAnimMobile() {
-    const heroAnimTL = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".section_home",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: true,
-      },
-    });
-
-    heroAnimTL
-      .fromTo(
-        ".home_your-content-wrapper",
-        { opacity: 1 },
-        { opacity: 0, duration: 1.5, ease: "power2.out" }
-      )
-      .fromTo(
-        ".home_your-bg-image",
-        { scale: 1 },
-        { scale: 0.8, duration: 1.5, ease: "power2.out" },
-        "<"
-      )
-      .fromTo(".home_send", { opacity: 0 }, { opacity: 1, duration: 1.5 }, "<");
-  }
-
-  // Run different animations based on screen width
-  gsap.matchMedia().add("(min-width: 992px)", () => {
-    heroAnimDesktop();
-  });
-
-  gsap.matchMedia().add("(max-width: 991px)", () => {
-    heroAnimMobile();
-  });
 
   gsap.set(".send_globe-send", { scale: 0, x: -50, opacity: 0 });
   gsap.set("[send='arrow']", { y: 100, opacity: 0 });
