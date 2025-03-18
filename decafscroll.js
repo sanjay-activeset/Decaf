@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
       y: 60,
       autoAlpha: 0,
       ease: "power3.out",
-      duration: 1.5,
+      duration: 2,
     },
     "start"
   )
@@ -76,8 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroAnimTL.to(
       ".home_your-content-wrapper",
-      { opacity: 0, duration: 2, ease: "power2.out" },
-      "1.5"
+      { opacity: 0, duration: 2.5, ease: "power2.out" },
+      "2"
     );
 
     heroAnimTL.to(
@@ -85,14 +85,14 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         width: "23rem",
         height: "760px",
-        duration: 2,
+        duration: 2.5,
         ease: "power2.out",
       },
-      "1.5"
+      "2"
     );
 
     heroAnimTL
-      .to(".home_your-bg-image", { opacity: 0.2 }, "1")
+      .to(".home_your-bg-image", { opacity: 0.2 }, "2")
       .to(".home_send", { opacity: 1 })
       .to(".home_send-h1", { opacity: 0.2 })
       .to(".home_send-h2", { opacity: 1 })
@@ -269,11 +269,11 @@ document.addEventListener("DOMContentLoaded", function () {
     .to(".decaf_visa-card", { opacity: 0.2 })
     .to(".decaf_every", { opacity: 1 }, "1")
     .to(".decaf_every-content-h-1", { opacity: 0.2 })
-    .to(".decaf_every-content-h-2", { opacity: 1 }, "1")
+    .to(".decaf_every-content-h-2", { opacity: 1 })
     .to(".decaf_every", { opacity: 0 })
-    .to(".decaf_wallet", { opacity: 1 }, "1")
+    .to(".decaf_wallet", { opacity: 1 })
     .to(".decaf_wallet-content-h-1", { opacity: 0.2 })
-    .to(".decaf_wallet-content-h-2", { opacity: 1 }, "1");
+    .to(".decaf_wallet-content-h-2", { opacity: 1 });
 
   const animations = [
     {
