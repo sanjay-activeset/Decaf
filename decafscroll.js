@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
         end: "bottom bottom",
         scrub: true,
       },
-      defaults: { duration: 1, ease: "none" },
+      defaults: { duration: 1.5, ease: "none" },
     });
 
     heroAnimTL.to(
       ".home_your-content-wrapper",
-      { opacity: 0, duration: 2, ease: "power2.out" },
+      { opacity: 0, duration: 1.5, ease: "power2.out" },
       "1"
     );
 
