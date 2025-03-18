@@ -170,6 +170,19 @@ document.addEventListener("DOMContentLoaded", function () {
       "-=0.5"
     );
 
+  gsap.set(".send_image-send", { scale: 2 });
+
+  gsap.to(".send_image-send", {
+    scale: 1,
+    duration: 1.5,
+    ease: "power1.out",
+    scrollTrigger: {
+      trigger: ".send_image-send",
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+  });
+
   checkAndRunAnimation();
   window.addEventListener("resize", checkAndRunAnimation);
 });
