@@ -120,14 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap.set("[send2='arrow']", { y: -100, opacity: 0 });
   gsap.set("[send2='text']", { y: -100, opacity: 0 });
 
-  const t2 = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".send_globe-send",
-      start: "top 90%",
-      toggleActions: "play none none none",
-    },
-  });
-
   const tl2 = gsap.timeline({
     scrollTrigger: {
       trigger: "[send2='animation']",
