@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     heroAnimTL.to(
       ".home_your-content-wrapper",
       { opacity: 0, duration: 1.5, ease: "expo.Out" },
-      "0"
+      "1"
     );
 
     heroAnimTL.to(
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         duration: 1.5,
         ease: "expo.Out",
       },
-      "0"
+      "1"
     );
 
     heroAnimTL
