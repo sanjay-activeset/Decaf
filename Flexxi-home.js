@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const cardAnimTL = gsap.timeline({
     scrollTrigger: {
-      trigger: ".section_latest",
+      trigger: ".latest_head-wrapper",
       start: "top top",
       end: "bottom bottom",
       scrub: true,
@@ -11,5 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     defaults: { ease: "none" },
   });
 
-  cardAnimTL.fromTo(".latest_heading", { scale: 1.5 }, { scale: 0.7 });
+  cardAnimTL.fromTo(".latest_heading", { scale: 1.2 }, { scale: 0.7 });
+  cardAnimTL.to(".work_wrapper", {
+    y: "-40vh",
+  });
 });
