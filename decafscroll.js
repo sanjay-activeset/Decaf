@@ -63,6 +63,52 @@ document.addEventListener("DOMContentLoaded", function () {
       "-=1.2"
     );
 
+  // function heroAnim() {
+  //   if (window.innerWidth <= 991) return;
+
+  //   const heroAnimTL = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: ".section_home",
+  //       start: "top top",
+  //       end: "bottom bottom",
+  //       toggleActions: "play pause resume reset", // Play on scroll down, reset when scrolling up
+  //     },
+  //     defaults: { duration: 1, ease: "none" },
+  //   });
+
+  //   // Define Animation Sequence
+  //   heroAnimTL
+  //     .to(".home_your-content-wrapper", { y: "-50", duration: 1 }, "0")
+  //     .to(".home_your-content-wrapper", { opacity: 0, duration: 0.5 })
+  //     .to(
+  //       ".home_your-bg-image",
+  //       { width: "23rem", height: "80vh", duration: 0.5 },
+  //       "<"
+  //     )
+  //     .to(".home_your-bg-image", { opacity: 0.2, duration: 0.5 }, "<")
+  //     .to(".home_send", { opacity: 1, duration: 0.5 });
+
+  //   // Toggle Play/Pause Button
+  //   const toggleButton = document.querySelector("#toggleAnimation");
+  //   let isPlaying = true;
+
+  //   toggleButton.addEventListener("click", () => {
+  //     if (isPlaying) {
+  //       heroAnimTL.pause();
+  //       toggleButton.innerText = "Play Animation";
+  //     } else {
+  //       heroAnimTL.play();
+  //       toggleButton.innerText = "Pause Animation";
+  //     }
+  //     isPlaying = !isPlaying;
+  //   });
+  // }
+
+  // // Run the animation only on desktop
+  // if (window.innerWidth > 991) {
+  //   heroAnim();
+  // }
+
   function heroAnim() {
     if (window.innerWidth <= 991) return;
 
@@ -263,16 +309,16 @@ document.addEventListener("DOMContentLoaded", function () {
       end: "bottom bottom",
       scrub: true,
     },
-    defaults: { duration: 1, ease: "none" },
+    defaults: { ease: "none" },
   });
 
   cardAnimTL
     .to(".decaf_every-content-h-1", { opacity: 0.2, duration: 0.3 })
-    .to(".decaf_every-content-h-2", { opacity: 1, duration: 0.7 }, "0.5")
-    .to(".decaf_every", { opacity: 0 })
-    .to(".decaf_wallet", { opacity: 1 })
+    .to(".decaf_every-content-h-2", { opacity: 1, duration: 0.7 }, "-=0.3") // Adjust timing to avoid conflicts
+    .to(".decaf_every", { autoAlpha: 0 }) // autoAlpha also hides visibility
+    .to(".decaf_wallet", { autoAlpha: 1 })
     .to(".decaf_wallet-content-h-1", { opacity: 0.2, duration: 0.3 })
-    .to(".decaf_wallet-content-h-2", { opacity: 1, duration: 0.7 });
+    .to(".decaf_wallet-content-h-2", { opacity: 1, duration: 0.7 }, "-=0.3");
 
   const animations = [
     {
