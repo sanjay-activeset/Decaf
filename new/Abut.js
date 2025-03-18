@@ -19,16 +19,20 @@ splitTypes.forEach((char) => {
   });
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.from(".new_content-card", {
-    y: 100,
-    opacity: 0,
-    stagger: 0.3,
-    duration: 1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".new_content",
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-  });
+  gsap.fromTo(
+    ".new_content-card",
+    { y: 100, opacity: 0 }, // FROM values
+    {
+      y: 0,
+      opacity: 1, // TO values
+      stagger: 0.3,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".new_content",
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    }
+  );
 });
