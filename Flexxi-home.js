@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: {
         trigger: ".latest_head-wrapper",
         start: "top 0%",
-        end: "bottom bottom",
+        end: "bottom 50%",
         scrub: true,
       },
       defaults: { ease: "none" },
