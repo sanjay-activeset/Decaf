@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .to(".home_your-set", { opacity: 0, duration: 0.1 }, "+=0.5")
       .to(".home_your-make", { opacity: 1, duration: 0.1 })
       .to(".home_your-make", { opacity: 0, duration: 0.1 }, "+=0.5")
-      .to(".home_your-trans", { opacity: 1, duration: 0.1 }, "+=0.2");
+      .to(".home_your-trans", { opacity: 1, duration: 0.1 });
   }
 
   // Run the animation only if on desktop
