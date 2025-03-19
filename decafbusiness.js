@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .to(".is--sign-3", { opacity: 1, duration: 0.3 })
 
         .to(".is--sign-3", { opacity: 0, duration: 0.1 }, "+=0.5")
-        .to(".is--sign-4", { opacity: 1 });
+        .to(".is--sign-4", { opacity: 1, duration: 0.3 });
 
       return () => {
         form.kill();
