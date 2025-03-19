@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
           end: "bottom bottom",
           scrub: true,
         },
-        defaults: { duration: 1, ease: "none" },
+        defaults: { duration: 0.5, ease: "none" },
       });
 
       form
