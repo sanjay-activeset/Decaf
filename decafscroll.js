@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap
-    .timeline()
+    .timeline({ delay: 2.5 })
     .from(".home_your-logo-image", {
       y: 100,
       opacity: 0,
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power3.out",
       },
       "-=0.5"
-    ); // Overlaps the animations for a smoother effect
+    );
 
   function heroAnim() {
     // Run only on desktop (greater than 767px)
