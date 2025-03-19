@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
       { y: "-50", duration: 0.5 },
       "0"
     );
-    heroAnimTL.to(".home_your-content-wrapper", { opacity: 0, duration: 0.5 });
+    heroAnimTL.to(".home_your-content-wrapper", { opacity: 0, duration: 0.3 });
 
     heroAnimTL.to(
       ".home_your-bg-image",
@@ -102,13 +102,13 @@ document.addEventListener("DOMContentLoaded", function () {
       // .to(".home_send-h2", { opacity: 1, duration: 0.7 })
       .to(".home_send", { opacity: 0, duration: 0.3 })
       .to(".home_your-bg-image", { opacity: 0, duration: 0.3 }, "<")
-      .to(".home_your-app", { opacity: 1, duration: 0.2 })
+      .to(".home_your-app", { opacity: 1, duration: 0.1 })
       .to(".home_your-app", { opacity: 0, duration: 0.1 }, "+=0.5")
-      .to(".home_your-set", { opacity: 1, duration: 0.2 })
+      .to(".home_your-set", { opacity: 1, duration: 0.1 })
       .to(".home_your-set", { opacity: 0, duration: 0.1 }, "+=0.5")
-      .to(".home_your-make", { opacity: 1, duration: 0.2 })
+      .to(".home_your-make", { opacity: 1, duration: 0.1 })
       .to(".home_your-make", { opacity: 0, duration: 0.1 }, "+=0.5")
-      .to(".home_your-trans", { opacity: 1, duration: 0.2 });
+      .to(".home_your-trans", { opacity: 1, duration: 0.1 }, "+=0.2");
   }
 
   // Run the animation only if on desktop
