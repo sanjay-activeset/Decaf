@@ -1,68 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
-  function prepareText(selector) {
-    return document.querySelectorAll(selector);
-  }
-
-  const lines1 = prepareText("[home=heading]");
-  const lines2 = prepareText("[home2=heading]");
-  const home3 = document.querySelector("[home3=heading]");
-
-  let tl = gsap.timeline({ delay: 2.5 });
-
-  tl.from(
-    ".home_your-logo-image",
-    {
-      y: 60,
-      autoAlpha: 0,
-      ease: "power3.out",
-      duration: 2,
-    },
-    "start"
-  )
-    .from(
-      ".home_your-bg-image",
-      {
-        scale: 1.2,
-        ease: "power3.out",
-        duration: 1.5,
-      },
-      "start"
-    )
-    .from(
-      lines1,
-      {
-        yPercent: 100,
-        autoAlpha: 0,
-        ease: "expo.out",
-        duration: 1.5,
-        stagger: 0.08,
-      },
-      "start+=0.2"
-    )
-    .from(
-      lines2,
-      {
-        yPercent: 100,
-        autoAlpha: 0,
-        ease: "expo.out",
-        duration: 1.5,
-        stagger: 0.08,
-      },
-      "-=1.2"
-    )
-    .from(
-      home3,
-      {
-        y: 50,
-        autoAlpha: 0,
-        ease: "power2.out",
-        duration: 1.5,
-      },
-      "-=1.2"
-    );
-
   function heroAnim() {
     // Run only on desktop (greater than 767px)
     if (window.innerWidth <= 991) return;
