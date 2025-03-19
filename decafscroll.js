@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         duration: 1,
         ease: "power3.out",
       },
-      "-=0.2"
+      "-=0.7"
     );
 
   function heroAnim() {
