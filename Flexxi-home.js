@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap
     .timeline({
       scrollTrigger: {
-        trigger: ".latest_head-block",
-        start: "top 0%",
-        end: "bottom 50%",
+        trigger: ".latest_head-wrapper",
+        start: "top top",
+        end: "bottom bottom",
         scrub: true,
       },
       defaults: { ease: "none" },
