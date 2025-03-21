@@ -13,12 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .to(".latest_heading", {
       scale: 0.7,
-    })
-    .to(
-      " .work_wrapper",
-      {
-        marginTop: "-40vh",
-      },
-      "<"
-    );
+    });
+  // .to(" .work_wrapper", {
+  //   marginTop: "-40vh",
+  // });
 });
