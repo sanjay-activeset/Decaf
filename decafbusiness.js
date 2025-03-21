@@ -199,23 +199,23 @@ document.addEventListener("DOMContentLoaded", function () {
       form
         .to(".is--form-top", { y: "50%", duration: 0.5 })
         .to(".is--form-top", { y: "0%", scale: 1, duration: 0.5 })
-        .to(".is--sign-1", { opacity: 0.2, duration: 0.3 })
-        .to(".sign-in_simple", { opacity: 1, duration: 0.3 })
+        .to(".is--sign-1", { opacity: 0.2, duration: 0.5 })
+        .to(".sign-in_simple", { opacity: 1, duration: 0.5 })
         // .to(".sign-in_simple-text-1", { opacity: 0.2, duration: 0.3 })
         // .to(".sign-in_simple-text-2", { opacity: 1, duration: 0.7 })
         // .to(".sign-in_simple-text-2", { opacity: 0.2, duration: 0.3 })
         // .to(".sign-in_simple-text-3", { opacity: 1, duration: 0.7 })
-        .to(".sign-in_simple", { opacity: 0, duration: 0.1 }, "+=0.5")
-        .to(".is--sign-1", { opacity: 1, duration: 0.1 })
+        .to(".sign-in_simple", { opacity: 0, duration: 0.5 }, "+=0.5")
+        .to(".is--sign-1", { opacity: 1, duration: 0.5 })
         .to("[signform='image']", { x: "-10%", width: "70%" })
-        .to(".is--sign-contenr1", { opacity: 1, duration: 0.2 })
-        .to(".is--sign-1", { opacity: 0, duration: 0.1 }, "+=0.5")
-        .to(".is--sign-2", { opacity: 1, duration: 0.1 })
-        .to(".is--sign-2", { opacity: 0, duration: 0.1 }, "+=0.5")
-        .to(".is--sign-3", { opacity: 1, duration: 0.1 })
+        .to(".is--sign-contenr1", { opacity: 1, duration: 0.5 })
+        .to(".is--sign-1", { opacity: 0, duration: 0.5 }, "+=0.5")
+        .to(".is--sign-2", { opacity: 1, duration: 0.5 })
+        .to(".is--sign-2", { opacity: 0, duration: 0.5 }, "+=0.5")
+        .to(".is--sign-3", { opacity: 1, duration: 0.5 })
 
-        .to(".is--sign-3", { opacity: 0, duration: 0.1 }, "+=0.5")
-        .to(".is--sign-4", { opacity: 1, duration: 0.1 });
+        .to(".is--sign-3", { opacity: 0, duration: 0.5 }, "+=0.5")
+        .to(".is--sign-4", { opacity: 1, duration: 0.5 });
 
       return () => {
         form.kill();
