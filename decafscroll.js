@@ -39,19 +39,19 @@ document.addEventListener("DOMContentLoaded", function () {
       { y: "-50", duration: 0.5 },
       "0"
     );
-    heroAnimTL.to(".home_your-content-wrapper", { opacity: 0, duration: 0.3 });
+    heroAnimTL.to(".home_your-content-wrapper", { opacity: 0, duration: 0.5 });
 
     heroAnimTL.to(
       ".home_your-bg-image",
       {
         width: "23rem",
         height: "80vh",
-        duration: 0.5,
+        duration: 0.8,
       },
       "<"
     );
-    heroAnimTL.to(".home_your-bg-image", { opacity: 0.2, duration: 0.5 });
-    heroAnimTL.to(".home_send", { opacity: 1, duration: 0.3 }, "<");
+    heroAnimTL.to(".home_your-bg-image", { opacity: 0.2, duration: 0.8 });
+    heroAnimTL.to(".home_send", { opacity: 1, duration: 0.5 }, "<");
 
     heroAnimTL
 
