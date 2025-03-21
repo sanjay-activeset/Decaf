@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .to(".decaf_wallet", { opacity: 1, duration: 0.5 })
     .to(".decaf_wallet", { opacity: 0, duration: 0.5 }, "+=0.5")
     .to(".decaf_visa-card", { opacity: 1, duration: 0.5 }, "+=0.1")
-    .to(".section_decaf", { scale: 0.9, duration: 0.5 });
+    .to(".section_decaf", { scale: 0.95, duration: 0.5 });
   // .to(".decaf_wallet-content-h-1", { opacity: 0.2, duration: 0.3 })
   // .to(".decaf_wallet-content-h-2", { opacity: 1, duration: 0.7 });
 
