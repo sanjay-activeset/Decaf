@@ -207,6 +207,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  gsap.registerPlugin(ScrollTrigger);
+
   const cardAnimTL = gsap.timeline({
     scrollTrigger: {
       trigger: ".section_decaf",
@@ -223,12 +225,27 @@ document.addEventListener("DOMContentLoaded", function () {
     .to(".decaf_every", { opacity: 0, duration: 0.3 })
     .to(".decaf_wallet", { opacity: 1, duration: 0.5 })
     .to(".decaf_wallet", { opacity: 0, duration: 0.5 }, "+=0.5")
-    .to(".decaf_visa-card", { opacity: 1, duration: 0.5 }, "+=0.1")
-    .to(".decaf_bg-layer", {
+    .to(".decaf_visa-card", { opacity: 1, duration: 0.5 }, "+=0.1");
+
+  // Adjust borderRadius based on screen size
+  let mm = gsap.matchMedia();
+
+  mm.add("(max-width: 768px)", () => {
+    cardAnimTL.to(".decaf_bg-layer", {
+      scale: 0.95,
+      borderRadius: "8px",
+      duration: 0.5,
+    });
+  });
+
+  mm.add("(min-width: 769px)", () => {
+    cardAnimTL.to(".decaf_bg-layer", {
       scale: 0.95,
       borderRadius: "24px",
       duration: 0.5,
     });
+  });
+
   // .to(".decaf_wallet-content-h-1", { opacity: 0.2, duration: 0.3 })
   // .to(".decaf_wallet-content-h-2", { opacity: 1, duration: 0.7 });
 
