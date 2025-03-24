@@ -228,9 +228,9 @@ document.addEventListener("DOMContentLoaded", function () {
     .to(".decaf_visa-card", { opacity: 1, duration: 0.5 }, "+=0.1");
 
   // Adjust borderRadius based on screen size
-  let mm = gsap.matchMedia();
+  let cardMM = gsap.matchMedia();
 
-  mm.add("(max-width: 768px)", () => {
+  cardMM.add("(max-width: 768px)", () => {
     cardAnimTL.to(".decaf_bg-layer", {
       scale: 0.95,
       borderRadius: "8px",
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  mm.add("(min-width: 769px)", () => {
+  cardMM.add("(min-width: 769px)", () => {
     cardAnimTL.to(".decaf_bg-layer", {
       scale: 0.95,
       borderRadius: "24px",
