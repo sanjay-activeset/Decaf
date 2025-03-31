@@ -60,11 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .to(".home_send", { opacity: 0, duration: 0.8 })
       .to(".home_your-bg-image", { opacity: 0, duration: 1 }, "<")
       .to(".home_your-app", { opacity: 1, duration: 1 })
-      .to(".home_your-app", { opacity: 0, duration: 0.5 }, "+=0.5")
+      .to(".home_your-app", { opacity: 0, duration: 0.7 }, "+=0.5")
       .to(".home_your-set", { opacity: 1, duration: 0.5 })
-      .to(".home_your-set", { opacity: 0, duration: 0.5 }, "+=0.5")
+      .to(".home_your-set", { opacity: 0, duration: 0.7 }, "+=0.5")
       .to(".home_your-make", { opacity: 1, duration: 0.5 })
-      .to(".home_your-make", { opacity: 0, duration: 0.5 }, "+=0.5")
+      .to(".home_your-make", { opacity: 0, duration: 0.7 }, "+=0.5")
       .to(".home_your-trans", { opacity: 1, duration: 0.5 });
   }
 
