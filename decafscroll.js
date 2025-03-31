@@ -39,14 +39,14 @@ document.addEventListener("DOMContentLoaded", function () {
       { y: "-50", duration: 0.5 },
       "0"
     );
-    heroAnimTL.to(".home_your-content-wrapper", { opacity: 0, duration: 0.5 });
+    heroAnimTL.to(".home_your-content-wrapper", { opacity: 0, duration: 0.8 });
 
     heroAnimTL.to(
       ".home_your-bg-image",
       {
         width: "23rem",
         height: "80vh",
-        duration: 0.8,
+        duration: 1.2,
       },
       "<"
     );
@@ -58,8 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // .to(".home_send-h1", { opacity: 0.2, duration: 0.2 })
       // .to(".home_send-h2", { opacity: 1, duration: 0.7 })
       .to(".home_send", { opacity: 0, duration: 0.8 })
-      .to(".home_your-bg-image", { opacity: 0, duration: 0.8 }, "<")
-      .to(".home_your-app", { opacity: 1, duration: 0.8 })
+      .to(".home_your-bg-image", { opacity: 0, duration: 1 }, "<")
+      .to(".home_your-app", { opacity: 1, duration: 1 })
       .to(".home_your-app", { opacity: 0, duration: 0.5 }, "+=0.5")
       .to(".home_your-set", { opacity: 1, duration: 0.5 })
       .to(".home_your-set", { opacity: 0, duration: 0.5 }, "+=0.5")
