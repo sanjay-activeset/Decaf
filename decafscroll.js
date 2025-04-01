@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap
-    .timeline({ delay: 2.5 })
+    .timeline({ delay: 2.1 })
     .from(".home_your-logo-image", {
       y: 100,
       opacity: 0,
