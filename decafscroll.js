@@ -1,25 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap
-    .timeline({ delay: 2.1 })
-    .from(".home_your-logo-image", {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      ease: "expo.out",
-    })
-    .from(
-      ".home_your-heading-wrapper",
-      {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      },
-      "-=0.7"
-    );
-
   function heroAnim() {
     // Run only on desktop (greater than 767px)
     if (window.innerWidth <= 991) return;
