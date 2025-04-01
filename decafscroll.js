@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         width: "23rem",
         height: "80vh",
-        duration: 1.3,
+        duration: 1.5,
       },
       "<"
     );
